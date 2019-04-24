@@ -16,8 +16,8 @@ import java.util.*;
 public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
     private String nombre;
     private HashMap<String, ClientInterface> amigosConectados;
-    private HashMap<String, ClientInterface> peticionesAmistad;
-    private HashMap<String, ClientInterface> amigos;
+    private ArrayList<String> peticionesAmistad;
+    private ArrayList<String> amigos;
     public ClientImpl() throws RemoteException {
       super( );
    }
@@ -30,10 +30,10 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
         
     }
       
-    public  HashMap<String, ClientInterface> getAmigos(){
+    public  ArrayList<String> getAmigos(){
         return null;
     }
-    public void setAmigos(HashMap<String, ClientInterface> amigos){
+    public void setAmigos( ArrayList<String> amigos){
         
     }
 
@@ -41,7 +41,7 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
         return amigosConectados;
     }
 
-    public HashMap<String, ClientInterface> getPeticionesAmistad() {
+    public ArrayList<String> getPeticionesAmistad() {
         return peticionesAmistad;
     }
 
@@ -49,7 +49,7 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
         this.amigosConectados = amigosConectados;
     }
 
-    public void setPeticionesAmistad(HashMap<String, ClientInterface> peticionesAmistad) {
+    public void setPeticionesAmistad(ArrayList<String> peticionesAmistad) {
         this.peticionesAmistad = peticionesAmistad;
     }
 
@@ -60,6 +60,9 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
+    public void recibirMensaje(String mensaje){
+          System.out.println(mensaje);
+    }
     
 }

@@ -5,10 +5,18 @@
  */
 package peer2peer;
 
+import java.util.*;
+
 /**
  *
  * @author raquel
  */
-public class ServerInterface {
+public interface ServerInterface extends java.rmi.Remote{
+    
+    public void iniciarSesion(ClientInterface callbackClientObject) throws java.rmi.RemoteException;
+
+    public void cerrarSesion( ClientInterface callbackClientObject)throws java.rmi.RemoteException;
+    
+    public ClientInterface buscarPersona(String nombre);
     
 }

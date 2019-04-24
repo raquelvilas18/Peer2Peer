@@ -30,8 +30,13 @@ public class Client {
             String portNum = (br.readLine()).trim();
             RMIPort = Integer.parseInt(portNum);
             String registryURL = "rmi://" + hostName + ":" + portNum + "/callback";
-            ServerInterface h = (ServerInterface) Naming.lookup(registryURL);
-            ClientInterface callbackObj = new ClientImpl();
+            ServerInterface servidor = (ServerInterface) Naming.lookup(registryURL);
+            ClientInterface cliente = new ClientImpl();
+            servidor.iniciarSesion(cliente);
+            System.out.println("Message to:");
+            String receptor = br.readLine();
+            ClientInterface clienteReceptor = cliente.getAmigosConectados().get(receptor);
+            clienteReceptor.recibirMensaje("Hola, que tal amigo mio?");
         } catch (Exception e) {
             System.out.println("Exception in CallbackClient: " + e);
         }
