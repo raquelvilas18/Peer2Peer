@@ -9,7 +9,7 @@ package peer2peer;
  *
  * @author raquel
  */
-public class Peer2PeerClient {
+public class Client {
 
     /**
      * @param args the command line arguments
