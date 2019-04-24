@@ -14,9 +14,10 @@ import java.util.*;
  * @author raquel
  */
 public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
-    private Vector amigosConectados;
-    private Vector peticionesAmistad;
-    private Vector amigos;
+    private String nombre;
+    private HashMap<String, ClientInterface> amigosConectados;
+    private HashMap<String, ClientInterface> peticionesAmistad;
+    private HashMap<String, ClientInterface> amigos;
     public ClientImpl() throws RemoteException {
       super( );
    }
@@ -29,27 +30,35 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
         
     }
       
-    public  Vector getAmigos(){
+    public  HashMap<String, ClientInterface> getAmigos(){
         return null;
     }
-    public void setAmigos(Vector amigos){
+    public void setAmigos(HashMap<String, ClientInterface> amigos){
         
     }
 
-    public Vector getAmigosConectados() {
+    public HashMap<String, ClientInterface> getAmigosConectados() {
         return amigosConectados;
     }
 
-    public Vector getPeticionesAmistad() {
+    public HashMap<String, ClientInterface> getPeticionesAmistad() {
         return peticionesAmistad;
     }
 
-    public void setAmigosConectados(Vector amigosConectados) {
+    public void setAmigosConectados(HashMap<String, ClientInterface> amigosConectados) {
         this.amigosConectados = amigosConectados;
     }
 
-    public void setPeticionesAmistad(Vector peticionesAmistad) {
+    public void setPeticionesAmistad(HashMap<String, ClientInterface> peticionesAmistad) {
         this.peticionesAmistad = peticionesAmistad;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     
