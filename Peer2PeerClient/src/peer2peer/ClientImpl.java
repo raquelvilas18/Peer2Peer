@@ -23,14 +23,21 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
     private String nombre;
     private HashMap<String, ClientInterface> amigosConectados;
     private ArrayList<String> peticionesAmistad;
-    private ArrayList<String> amigos;
+    private String[] amigos;
 
     public ClientImpl() throws RemoteException {
         super();
     }
+    
+     public void addAmigoConectado(ClientInterface amigoConectado) throws java.rmi.RemoteException{
+         if(!amigosConectados.containsKey(amigoConectado.getNombre())){
+            this.amigosConectados.put(amigoConectado.getNombre(), amigoConectado);
+         }
+     }
 
     public void nuevoAmigoConectado(ClientInterface amigoConectado) throws java.rmi.RemoteException{
-        amigosConectados.put(amigoConectado.getNombre(), amigoConectado);
+       addAmigoConectado(amigoConectado);
+       amigoConectado.recibirMensaje(amigoConectado.getNombre()+" se acaba de conectar");
     }
 
     public void nuevoAmigoDesconectado(ClientInterface amigoDesconectado) throws java.rmi.RemoteException{
@@ -38,12 +45,12 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
     }
 
     public String[] getAmigos() throws java.rmi.RemoteException{
-        return new String[2];
+        return amigos;
     }
 
     
     public void setAmigos( String[] amigos)throws java.rmi.RemoteException{
-        
+        this.amigos = amigos;
     }
 
 //    public ClientInterface getAmigosConectados() {
@@ -58,9 +65,9 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
 //       // this.amigosConectados = amigosConectados;
 //    }
 
-//    public void setPeticionesAmistad(ArrayList<String> peticionesAmistad) {
-//        this.peticionesAmistad = peticionesAmistad;
-//    }
+    public void setPeticionesAmistad(String[] peticionesAmistad) {
+        //this.peticionesAmistad = peticionesAmistad;
+    }
 //
 //   
 //
@@ -75,6 +82,7 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
         return nombre;
     }
     public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     public HashMap<String, ClientInterface> getAmigosConectados(){

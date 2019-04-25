@@ -37,14 +37,16 @@ public class Client {
             String nombreUsuario = br.readLine();
             String registryURL = "rmi://" + hostName + ":" + portNum + "/peer2peer";
             ServerInterface servidor = (ServerInterface) Naming.lookup(registryURL);
-            ClientInterface cliente = new ClientImpl();
-            cliente.setNombre(nombreUsuario.toLowerCase());
+            ClientImpl clienteIm = new ClientImpl();
+            ClientInterface cliente = clienteIm;
             servidor.iniciarSesion(cliente);
             System.out.println("Message to:");
             String receptor = br.readLine();
             cliente.getAmigos();
             //ClientInterface clienteReceptor = cliente.getAmigosConectados().get(receptor);
             //locclienteReceptor.recibirMensaje("Hola, que tal amigo mio?");
+            ClientInterface clienteReceptor = clienteIm.getAmigosConectados().get(receptor);
+            //clienteReceptor.recibirMensaje("Hola, que tal amigo mio?");
         } catch (Exception e) {
             System.out.println("Exception in CallbackClient: " + e);
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, e);
