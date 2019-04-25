@@ -44,12 +44,28 @@ public class Client {
             ClientInterface cliente = clienteIm;
             clienteIm.setNombre(nombreUsuario);
             servidor.iniciarSesion(cliente, contrasenha);
+            System.out.println("Amigos conectados:");
             for(Map.Entry<String, ClientInterface> entry : clienteIm.getAmigosConectados().entrySet()){
                 System.out.println("" + entry.getValue().getNombre());
             }
-            //System.out.println("Message to:");
-            //String receptor = br.readLine();
-            //clienteIm.getAmigosConectados().get(receptor).recibirMensaje("Hola amiguito", clienteIm.getNombre());
+            System.out.println("--------------------------------------");
+            while(true){
+                String lectura = br.readLine();
+                if(lectura.equals("salir")){
+                    servidor.cerrarSesion(cliente);
+                    return;
+                }
+                if(lectura.equals("enviar")){
+                    System.out.println("Message to:");
+                    String receptor = br.readLine();
+                    if(clienteIm.getAmigosConectados().get(receptor)!=null){
+                        System.out.println("Escribe el mensaje:");
+                        String mensaje = br.readLine();
+                        clienteIm.getAmigosConectados().get(receptor).recibirMensaje(mensaje, clienteIm.getNombre());  
+                    }else System.out.println("No es posible enviar mensaje a ese usuario (no existe o no se encuentra en línea)");
+                }
+            }
+            
 
         } catch (Exception e) {
             System.out.println("Exception in CallbackClient: " + e);
