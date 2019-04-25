@@ -13,10 +13,12 @@ import java.util.Vector;
  */
 public interface ServerInterface extends java.rmi.Remote{
     
-    public void iniciarSesion(ClientInterface callbackClientObject, String contrasenha) throws java.rmi.RemoteException;
+    public boolean iniciarSesion(ClientInterface callbackClientObject, String password) throws java.rmi.RemoteException;
 
     public void cerrarSesion( ClientInterface callbackClientObject)throws java.rmi.RemoteException;
     
-    public ClientInterface buscarPersona(String nombre)throws java.rmi.RemoteException;
+    public boolean buscarPersona(String nombre)throws java.rmi.RemoteException;
+    
+    public void enviarPeticion(String nombre)throws java.rmi.RemoteException;
     
 }

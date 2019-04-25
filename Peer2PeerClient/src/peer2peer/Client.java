@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
 import java.rmi.*;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,9 +44,12 @@ public class Client {
             ClientInterface cliente = clienteIm;
             clienteIm.setNombre(nombreUsuario);
             servidor.iniciarSesion(cliente, contrasenha);
-            System.out.println("Message to:");
-            String receptor = br.readLine();
-            clienteIm.getAmigosConectados().get(receptor).recibirMensaje("Hola amiguito", clienteIm.getNombre());
+            for(Map.Entry<String, ClientInterface> entry : clienteIm.getAmigosConectados().entrySet()){
+                System.out.println("" + entry.getValue().getNombre());
+            }
+            //System.out.println("Message to:");
+            //String receptor = br.readLine();
+            //clienteIm.getAmigosConectados().get(receptor).recibirMensaje("Hola amiguito", clienteIm.getNombre());
 
         } catch (Exception e) {
             System.out.println("Exception in CallbackClient: " + e);
