@@ -29,20 +29,20 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
         super();
     }
 
-    public void nuevoAmigoConectado(ClientInterface amigoConectado) {
-
+    public void nuevoAmigoConectado(ClientInterface amigoConectado) throws java.rmi.RemoteException{
+        amigosConectados.put(amigoConectado.getNombre(), amigoConectado);
     }
 
-    public void nuevoAmigoDesconectado(ClientInterface amigoConectado) {
-
+    public void nuevoAmigoDesconectado(ClientInterface amigoDesconectado) throws java.rmi.RemoteException{
+        amigosConectados.remove(amigoDesconectado.getNombre());
     }
 
-    public String[] getAmigos() {
+    public String[] getAmigos() throws java.rmi.RemoteException{
         return new String[2];
     }
 
     
-    public void setAmigos( String[] amigos){
+    public void setAmigos( String[] amigos)throws java.rmi.RemoteException{
         
     }
 
@@ -73,6 +73,8 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
 
     public String getNombre() {
         return nombre;
+    }
+    public void setNombre(String nombre) {
     }
     
     public HashMap<String, ClientInterface> getAmigosConectados(){

@@ -33,15 +33,17 @@ public class Client {
             System.out.println("Enter the RMIregistry port number:");
             String portNum = (br.readLine()).trim();
             RMIPort = Integer.parseInt(portNum);
-            
+            System.out.println("Introduce el nombre de usuario:");
+            String nombreUsuario = br.readLine();
             String registryURL = "rmi://" + hostName + ":" + portNum + "/peer2peer";
             ServerInterface servidor = (ServerInterface) Naming.lookup(registryURL);
             ClientInterface cliente = new ClientImpl();
+            cliente.setNombre(nombreUsuario.toLowerCase());
             servidor.iniciarSesion(cliente);
             System.out.println("Message to:");
             String receptor = br.readLine();
             cliente.getAmigos();
-           // ClientInterface clienteReceptor = cliente.getAmigosConectados().get(receptor);
+            //ClientInterface clienteReceptor = cliente.getAmigosConectados().get(receptor);
             //locclienteReceptor.recibirMensaje("Hola, que tal amigo mio?");
         } catch (Exception e) {
             System.out.println("Exception in CallbackClient: " + e);

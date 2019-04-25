@@ -21,6 +21,7 @@ public interface ClientInterface extends java.rmi.Remote{
 //    public void setAmigosConectados(ClientInterface[] amigosConectados);
 //    public void setPeticionesAmistad(ArrayList<String> peticionesAmistad);
     public String getNombre() throws java.rmi.RemoteException; 
+    public void setNombre(String nombre) throws java.rmi.RemoteException;
    /* public void setNombre(String nombre);
     public void recibirMensaje(String mensaje);*/
     
