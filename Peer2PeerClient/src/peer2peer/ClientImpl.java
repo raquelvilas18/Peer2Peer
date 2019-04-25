@@ -5,64 +5,78 @@
  */
 package peer2peer;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author raquel
  */
 public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
+
     private String nombre;
     private HashMap<String, ClientInterface> amigosConectados;
     private ArrayList<String> peticionesAmistad;
     private ArrayList<String> amigos;
+
     public ClientImpl() throws RemoteException {
-      super( );
-   }
-    public void nuevoAmigoConectado(ClientInterface amigoConectado){
-        
-        
+        super();
     }
-    public void nuevoAmigoDesconectado(ClientInterface amigoConectado){
-        
-        
+
+    public void nuevoAmigoConectado(ClientInterface amigoConectado) {
+
     }
-      
-    public  ArrayList<String> getAmigos(){
-        return null;
+
+    public void nuevoAmigoDesconectado(ClientInterface amigoConectado) {
+
     }
-    public void setAmigos( ArrayList<String> amigos){
+
+    public String[] getAmigos() {
+        return new String[2];
+    }
+
+    
+    public void setAmigos( String[] amigos){
         
     }
 
-    public HashMap<String, ClientInterface> getAmigosConectados() {
-        return amigosConectados;
-    }
+//    public ClientInterface getAmigosConectados() {
+//        return null;
+//    }
 
-    public ArrayList<String> getPeticionesAmistad() {
-        return peticionesAmistad;
-    }
+//    public ArrayList<String> getPeticionesAmistad() {
+//        return peticionesAmistad;
+//    }
 
-    public void setAmigosConectados(HashMap<String, ClientInterface> amigosConectados) {
-        this.amigosConectados = amigosConectados;
-    }
+//    public void setAmigosConectados(ClientInterface[] amigosConectados) {
+//       // this.amigosConectados = amigosConectados;
+//    }
 
-    public void setPeticionesAmistad(ArrayList<String> peticionesAmistad) {
-        this.peticionesAmistad = peticionesAmistad;
+//    public void setPeticionesAmistad(ArrayList<String> peticionesAmistad) {
+//        this.peticionesAmistad = peticionesAmistad;
+//    }
+//
+//   
+//
+//    public void setNombre(String nombre) {
+//        this.nombre = nombre;
+//    }
+    public void recibirMensaje(String mensaje) {
+        System.out.println(mensaje);
     }
 
     public String getNombre() {
         return nombre;
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void recibirMensaje(String mensaje){
-          System.out.println(mensaje);
-    }
     
+    public HashMap<String, ClientInterface> getAmigosConectados(){
+        return this.amigosConectados;
+    }
+
 }

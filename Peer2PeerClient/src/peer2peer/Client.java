@@ -7,7 +7,11 @@ package peer2peer;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
 import java.rmi.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,17 +33,20 @@ public class Client {
             System.out.println("Enter the RMIregistry port number:");
             String portNum = (br.readLine()).trim();
             RMIPort = Integer.parseInt(portNum);
-            String registryURL = "rmi://" + hostName + ":" + portNum + "/callback";
+            
+            String registryURL = "rmi://" + hostName + ":" + portNum + "/peer2peer";
             ServerInterface servidor = (ServerInterface) Naming.lookup(registryURL);
             ClientInterface cliente = new ClientImpl();
             servidor.iniciarSesion(cliente);
             System.out.println("Message to:");
             String receptor = br.readLine();
-            ClientInterface clienteReceptor = cliente.getAmigosConectados().get(receptor);
-            clienteReceptor.recibirMensaje("Hola, que tal amigo mio?");
+            cliente.getAmigos();
+           // ClientInterface clienteReceptor = cliente.getAmigosConectados().get(receptor);
+            //locclienteReceptor.recibirMensaje("Hola, que tal amigo mio?");
         } catch (Exception e) {
             System.out.println("Exception in CallbackClient: " + e);
+            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-    
+
 }
