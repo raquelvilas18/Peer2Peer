@@ -37,7 +37,7 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
 
     public void nuevoAmigoConectado(ClientInterface amigoConectado) throws java.rmi.RemoteException{
        addAmigoConectado(amigoConectado);
-       amigoConectado.recibirMensaje(amigoConectado.getNombre()+" se acaba de conectar");
+       amigoConectado.recibirMensaje("Se acaba de conectar",amigoConectado.getNombre());
     }
 
     public void nuevoAmigoDesconectado(ClientInterface amigoDesconectado) throws java.rmi.RemoteException{
@@ -53,36 +53,19 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
         this.amigos = amigos;
     }
 
-//    public ClientInterface getAmigosConectados() {
-//        return null;
-//    }
-
-//    public ArrayList<String> getPeticionesAmistad() {
-//        return peticionesAmistad;
-//    }
-
-//    public void setAmigosConectados(ClientInterface[] amigosConectados) {
-//       // this.amigosConectados = amigosConectados;
-//    }
 
     public void setPeticionesAmistad(String[] peticionesAmistad) {
         //this.peticionesAmistad = peticionesAmistad;
     }
-//
-//   
-//
-//    public void setNombre(String nombre) {
-//        this.nombre = nombre;
-//    }
-    public void recibirMensaje(String mensaje) {
-        System.out.println(mensaje);
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public void recibirMensaje(String mensaje,String nombreEmisor) {
+        System.out.println(nombreEmisor + ": " + mensaje);
     }
 
     public String getNombre() {
         return nombre;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
     
     public HashMap<String, ClientInterface> getAmigosConectados(){

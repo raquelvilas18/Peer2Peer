@@ -28,25 +28,25 @@ public class Client {
             int RMIPort;
             InputStreamReader is = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(is);
-            System.out.println("Enter the RMIRegistry host namer:");
-            String hostName = br.readLine();
             System.out.println("Enter the RMIregistry port number:");
             String portNum = (br.readLine()).trim();
+            System.out.println("Enter the RMIRegistry host namer:");
+            String hostName = br.readLine();
             RMIPort = Integer.parseInt(portNum);
             System.out.println("Introduce el nombre de usuario:");
-            String nombreUsuario = br.readLine();
+            String nombreUsuario = br.readLine().toLowerCase();
+            System.out.println("Introduce la contrasenha de usuario:");
+            String contrasenha = br.readLine();
             String registryURL = "rmi://" + hostName + ":" + portNum + "/peer2peer";
             ServerInterface servidor = (ServerInterface) Naming.lookup(registryURL);
             ClientImpl clienteIm = new ClientImpl();
             ClientInterface cliente = clienteIm;
-            servidor.iniciarSesion(cliente);
+            clienteIm.setNombre(nombreUsuario);
+            servidor.iniciarSesion(cliente, contrasenha);
             System.out.println("Message to:");
             String receptor = br.readLine();
-            cliente.getAmigos();
-            //ClientInterface clienteReceptor = cliente.getAmigosConectados().get(receptor);
-            //locclienteReceptor.recibirMensaje("Hola, que tal amigo mio?");
-            ClientInterface clienteReceptor = clienteIm.getAmigosConectados().get(receptor);
-            //clienteReceptor.recibirMensaje("Hola, que tal amigo mio?");
+            clienteIm.getAmigosConectados().get(receptor).recibirMensaje("Hola amiguito", clienteIm.getNombre());
+
         } catch (Exception e) {
             System.out.println("Exception in CallbackClient: " + e);
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, e);
