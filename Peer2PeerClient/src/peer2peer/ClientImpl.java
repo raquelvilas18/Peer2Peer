@@ -40,8 +40,8 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
        amigoConectado.recibirMensaje("Se acaba de conectar",amigoConectado.getNombre());
     }
 
-    public void nuevoAmigoDesconectado(ClientInterface amigoDesconectado) throws java.rmi.RemoteException{
-        amigosConectados.remove(amigoDesconectado.getNombre());
+    public void nuevoAmigoDesconectado(String amigoDesconectado) throws java.rmi.RemoteException{
+        amigosConectados.remove(amigoDesconectado);
     }
 
     public String[] getAmigos() throws java.rmi.RemoteException{
