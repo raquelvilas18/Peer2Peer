@@ -27,7 +27,15 @@ public class GUIClient extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panelLogin = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        NombreText = new javax.swing.JTextField();
+        PasswordText = new javax.swing.JPasswordField();
+        botonIniciarSesion = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        panelDer = new javax.swing.JPanel();
         panelChats = new javax.swing.JPanel();
         panelAmigos = new javax.swing.JPanel();
         panelConversacion = new javax.swing.JPanel();
@@ -57,7 +65,7 @@ public class GUIClient extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         enviarPeticion4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        PanelIzq = new javax.swing.JPanel();
         botonChats = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         botonBuscar = new javax.swing.JPanel();
@@ -72,8 +80,36 @@ public class GUIClient extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/round-account-button-with-user-inside_icon-icons.com_72596 (1).png"))); // NOI18N
+        panelLogin.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 33, -1, -1));
+        panelLogin.add(NombreText, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 320, 40));
+        panelLogin.add(PasswordText, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 320, 40));
+
+        botonIniciarSesion.setBackground(new java.awt.Color(254, 254, 254));
+        botonIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonIniciarSesionMouseClicked(evt);
+            }
+        });
+        botonIniciarSesion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setText("Iniciar sesion");
+        botonIniciarSesion.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 120, 20));
+
+        panelLogin.add(botonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 220, 40));
+
+        jLabel17.setText("Nombre");
+        panelLogin.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
+
+        jLabel18.setText("Contraseña");
+        panelLogin.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, -1));
+
+        getContentPane().add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 450));
+
+        panelDer.setBackground(new java.awt.Color(204, 204, 255));
+        panelDer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelChats.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -105,7 +141,7 @@ public class GUIClient extends javax.swing.JFrame {
 
         panelChats.add(panelConversacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jPanel1.add(panelChats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
+        panelDer.add(panelChats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
 
         panelBuscar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -167,7 +203,7 @@ public class GUIClient extends javax.swing.JFrame {
         jLabel14.setText("BUSCAR USUARIOS");
         panelBuscar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 490, 30));
 
-        jPanel1.add(panelBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
+        panelDer.add(panelBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
 
         panelPerfil.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -236,7 +272,7 @@ public class GUIClient extends javax.swing.JFrame {
         jLabel10.setText("PERFIL DE USUARIO");
         panelPerfil.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 460, 30));
 
-        jPanel1.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
+        panelDer.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
 
         panelPeticiones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -315,12 +351,12 @@ public class GUIClient extends javax.swing.JFrame {
 
         panelPeticiones.add(enviarPeticion4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 160, 40));
 
-        jPanel1.add(panelPeticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
+        panelDer.add(panelPeticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 680, 450));
+        getContentPane().add(panelDer, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 680, 450));
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PanelIzq.setBackground(new java.awt.Color(153, 153, 255));
+        PanelIzq.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonChats.setBackground(new java.awt.Color(204, 255, 0));
 
@@ -345,7 +381,7 @@ public class GUIClient extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(botonChats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 240, 60));
+        PanelIzq.add(botonChats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 240, 60));
 
         botonBuscar.setBackground(new java.awt.Color(255, 51, 51));
 
@@ -370,7 +406,7 @@ public class GUIClient extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 240, 60));
+        PanelIzq.add(botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 240, 60));
 
         botonPeticiones.setBackground(new java.awt.Color(0, 255, 153));
 
@@ -395,7 +431,7 @@ public class GUIClient extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(botonPeticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 240, 60));
+        PanelIzq.add(botonPeticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 240, 60));
 
         botonCuenta.setBackground(new java.awt.Color(255, 204, 204));
 
@@ -420,21 +456,26 @@ public class GUIClient extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(botonCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 240, 60));
+        PanelIzq.add(botonCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 240, 60));
 
         fotoUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fotoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/round-account-button-with-user-inside_icon-icons.com_72596 (1).png"))); // NOI18N
-        jPanel2.add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 160, 140));
+        PanelIzq.add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 160, 140));
 
         nombreUsuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         nombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombreUsuario.setText("USUARIO");
-        jPanel2.add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, 30));
+        PanelIzq.add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 450));
+        getContentPane().add(PanelIzq, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIniciarSesionMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_botonIniciarSesionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -472,9 +513,13 @@ public class GUIClient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField NombreText;
+    private javax.swing.JPanel PanelIzq;
+    private javax.swing.JPasswordField PasswordText;
     private javax.swing.JPanel botonBuscar;
     private javax.swing.JPanel botonChats;
     private javax.swing.JPanel botonCuenta;
+    private javax.swing.JPanel botonIniciarSesion;
     private javax.swing.JPanel botonPeticiones;
     private javax.swing.JPanel buscar;
     private javax.swing.JTextField campoBuscar;
@@ -490,6 +535,10 @@ public class GUIClient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -498,8 +547,6 @@ public class GUIClient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -511,6 +558,8 @@ public class GUIClient extends javax.swing.JFrame {
     private javax.swing.JPanel panelBuscar;
     private javax.swing.JPanel panelChats;
     private javax.swing.JPanel panelConversacion;
+    private javax.swing.JPanel panelDer;
+    private javax.swing.JPanel panelLogin;
     private javax.swing.JPanel panelPerfil;
     private javax.swing.JPanel panelPeticiones;
     // End of variables declaration//GEN-END:variables
