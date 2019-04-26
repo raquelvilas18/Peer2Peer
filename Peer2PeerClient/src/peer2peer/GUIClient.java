@@ -4,18 +4,26 @@
  * and open the template in the editor.
  */
 package peer2peer;
-
+import java.util.*;
 /**
  *
  * @author carlo
  */
 public class GUIClient extends javax.swing.JFrame {
+    private HashMap<String, ArrayList<String[]>> mensajes;
+    private ClientInterface cliente;
+    private ClientImpl clienteIm;
+    private ServerInterface servidor;
 
     /**
      * Creates new form GUIClient
      */
     public GUIClient() {
         initComponents();
+        this.mensajes = new HashMap<>();
+        this.cliente = null;
+        this.clienteIm = null;
+        this.servidor = null;
     }
 
     /**
