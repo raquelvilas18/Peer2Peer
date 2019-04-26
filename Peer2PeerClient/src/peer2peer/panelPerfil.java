@@ -20,6 +20,7 @@ public class panelPerfil extends javax.swing.JPanel {
         initComponents();
         this.parent = parent;
         this.nombreUsuarioText.setText(nombre);
+        this.mensajePsswActualizada.setVisible(false);
     }
 
     /**
@@ -42,7 +43,9 @@ public class panelPerfil extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        mensajePsswActualizada = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(254, 254, 254));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setText("Contraseña");
@@ -76,12 +79,17 @@ public class panelPerfil extends javax.swing.JPanel {
 
         botonActualizarPassword.setBackground(new java.awt.Color(23, 118, 137));
         botonActualizarPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonActualizarPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonActualizarPasswordMouseClicked(evt);
+            }
+        });
         botonActualizarPassword.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setForeground(new java.awt.Color(254, 254, 254));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Actualizar contraseña");
-        botonActualizarPassword.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 136, 40));
+        botonActualizarPassword.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 180, 40));
 
         add(botonActualizarPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 200, 40));
 
@@ -91,18 +99,29 @@ public class panelPerfil extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("PERFIL DE USUARIO");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 460, 30));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 460, 30));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 720, 70));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 720, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-editar-usuario-masculino-100(1).png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, -1));
+
+        mensajePsswActualizada.setForeground(new java.awt.Color(1, 103, 21));
+        mensajePsswActualizada.setText("la contraseña se ha actualizado con exito");
+        add(mensajePsswActualizada, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 380, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonEliminarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarCuentaMouseClicked
         // TODO add your handling code here:
         parent.eliminarCuenta();
     }//GEN-LAST:event_botonEliminarCuentaMouseClicked
+
+    private void botonActualizarPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonActualizarPasswordMouseClicked
+        // TODO add your handling code here:
+       if( parent.actualizarPassword(this.passwordText.getText())){
+           this.mensajePsswActualizada.setVisible(true);
+       }
+    }//GEN-LAST:event_botonActualizarPasswordMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -115,6 +134,7 @@ public class panelPerfil extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel mensajePsswActualizada;
     private javax.swing.JTextField nombreUsuarioText;
     private javax.swing.JPasswordField passwordText;
     // End of variables declaration//GEN-END:variables

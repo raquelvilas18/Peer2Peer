@@ -314,6 +314,15 @@ public class GUIClient extends javax.swing.JFrame {
             Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public boolean actualizarPassword(String password){
+        try {
+            return (servidor.actualizarPassword(cliente.getNombre(), password));
+        } catch (RemoteException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField IpText;
