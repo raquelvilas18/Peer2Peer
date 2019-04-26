@@ -5,7 +5,10 @@
  */
 package peer2peer;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -24,6 +27,15 @@ public class panelPeticiones extends javax.swing.JPanel {
         ModeloTablaUsuarios tt;
         tt = (ModeloTablaUsuarios) tablaPeticiones.getModel();
         tt.setFilas(peticiones);
+        
+
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        Font fuente = new Font("SansSerif", Font.ITALIC, 25);
+        headerRenderer.setFont(fuente);
+        headerRenderer.setBackground(new Color(23,118,137));
+        headerRenderer.setForeground(Color.WHITE);
+        this.tablaPeticiones.getColumnModel().getColumn(0).setHeaderRenderer(headerRenderer);
+        
     }
 
     /**
@@ -51,6 +63,9 @@ public class panelPeticiones extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(680, 450));
         setPreferredSize(new java.awt.Dimension(680, 450));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane2.setBackground(new java.awt.Color(254, 254, 254));
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         tablaPeticiones.setModel(new ModeloTablaUsuarios());
         jScrollPane2.setViewportView(tablaPeticiones);
