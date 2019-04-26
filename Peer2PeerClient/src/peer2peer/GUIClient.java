@@ -485,9 +485,8 @@ public class GUIClient extends javax.swing.JFrame {
                 mensajes.get(amigo).set(i-1, mensajes.get(amigo).get(i));
             }
             mensajes.get(amigo).set(9, new Mensaje(emisor, mensaje));
-            
-            
         }
+        else mensajes.get(amigo).add(new Mensaje(emisor, mensaje));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
