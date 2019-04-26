@@ -57,6 +57,7 @@ public class panelDer extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         enviarPeticion2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         panelBuscar = new javax.swing.JPanel();
         campoBuscar = new javax.swing.JTextField();
@@ -154,19 +155,20 @@ public class panelDer extends javax.swing.JPanel {
 
         add(panelPeticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
 
+        panelPerfil.setBackground(new java.awt.Color(254, 254, 254));
         panelPerfil.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setText("Contraseña");
-        panelPerfil.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 100, 29));
+        panelPerfil.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 100, 29));
 
         jLabel7.setText("Nombre usuario");
-        panelPerfil.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 100, 29));
+        panelPerfil.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 100, 29));
 
         jTextField1.setText("jTextField1");
-        panelPerfil.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 180, 30));
+        panelPerfil.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 320, 30));
 
         jPasswordField1.setText("jPasswordField1");
-        panelPerfil.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 180, 30));
+        panelPerfil.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 320, 30));
 
         enviarPeticion1.setBackground(new java.awt.Color(51, 204, 255));
 
@@ -217,9 +219,29 @@ public class panelDer extends javax.swing.JPanel {
 
         panelPerfil.add(enviarPeticion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 160, 40));
 
+        jPanel1.setBackground(new java.awt.Color(165, 165, 165));
+
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("PERFIL DE USUARIO");
-        panelPerfil.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 460, 30));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(153, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        panelPerfil.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 720, 70));
 
         add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
 
@@ -392,6 +414,7 @@ public class panelDer extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
