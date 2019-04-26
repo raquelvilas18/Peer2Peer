@@ -43,6 +43,15 @@ public class GUIClient extends javax.swing.JFrame {
 
         this.setLocationRelativeTo(null);
         this.ocultarLabelErrores();
+        try{
+            for(String amigo : Arrays.asList(this.getClienteIm().getAmigos())){
+                if(mensajes.get(amigo)==null){
+                    mensajes.put(amigo, new ArrayList<Mensaje>());
+                }
+            }
+        }catch(Exception e){
+            
+        }
     }
 
     /**
@@ -103,7 +112,7 @@ public class GUIClient extends javax.swing.JFrame {
         panelLogin.add(PasswordText, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 320, 30));
 
         botonIniciarSesion.setBackground(new java.awt.Color(254, 254, 254));
-        botonIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonIniciarSesionMouseClicked(evt);
@@ -168,7 +177,7 @@ public class GUIClient extends javax.swing.JFrame {
 
         botonCrearCuenta.setBackground(new java.awt.Color(254, 254, 254));
         botonCrearCuenta.setForeground(new java.awt.Color(77, 117, 149));
-        botonCrearCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonCrearCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonCrearCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonCrearCuentaMouseClicked(evt);
@@ -342,8 +351,10 @@ public class GUIClient extends javax.swing.JFrame {
     }
 
     public void anadirMensaje(String amigo, String emisor, String mensaje) {
+        if (this.mensajes.get(amigo)==null){
+            this.mensajes.put(amigo, new ArrayList<Mensaje>());
+        }
         if (this.mensajes.get(amigo).size() == 10) {
-            ArrayList<Mensaje> aux = new ArrayList<>();
             for (int i = 1; i < 10; i++) {
                 mensajes.get(amigo).set(i - 1, mensajes.get(amigo).get(i));
             }
@@ -364,6 +375,15 @@ public class GUIClient extends javax.swing.JFrame {
     public ServerInterface getServidor() {
         return servidor;
     }
+
+    public HashMap<String, ArrayList<Mensaje>> getMensajes() {
+        return mensajes;
+    }
+
+    public JPanel getPanelActivo() {
+        return panelActivo;
+    }
+    
 
     public void eliminarCuenta() {
         try {
@@ -508,7 +528,7 @@ public class GUIClient extends javax.swing.JFrame {
         try{
             for(String amigo : Arrays.asList(this.getClienteIm().getAmigos())){
                 if(mensajes.get(amigo)==null){
-                    mensajes.put(amigo, new ArrayList<>());
+                    mensajes.put(amigo, new ArrayList<Mensaje>());
                 }
             }
         }catch(Exception e){
@@ -549,6 +569,13 @@ public class GUIClient extends javax.swing.JFrame {
             Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
+    }
+    public void escribirMensajes(String receptor){
+        if(panelActivo instanceof panelChats){
+            panelChats p =(panelChats) panelActivo;
+            p.escribirMensajes(receptor);
+        }
+        
     }
 
 }
