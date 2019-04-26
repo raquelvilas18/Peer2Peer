@@ -5,7 +5,10 @@
  */
 package peer2peer;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -24,6 +27,15 @@ public class panelPeticiones extends javax.swing.JPanel {
         ModeloTablaUsuarios tt;
         tt = (ModeloTablaUsuarios) tablaPeticiones.getModel();
         tt.setFilas(peticiones);
+        
+
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        Font fuente = new Font("SansSerif", Font.ITALIC, 25);
+        headerRenderer.setFont(fuente);
+        headerRenderer.setBackground(new Color(23,118,137));
+        headerRenderer.setForeground(Color.WHITE);
+        this.tablaPeticiones.getColumnModel().getColumn(0).setHeaderRenderer(headerRenderer);
+        
     }
 
     /**
@@ -52,6 +64,9 @@ public class panelPeticiones extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(680, 450));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane2.setBackground(new java.awt.Color(254, 254, 254));
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
         tablaPeticiones.setModel(new ModeloTablaUsuarios());
         jScrollPane2.setViewportView(tablaPeticiones);
 
@@ -68,7 +83,7 @@ public class panelPeticiones extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 720, 50));
 
         botonRechazarPeticion.setBackground(new java.awt.Color(23, 118, 137));
-        botonRechazarPeticion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonRechazarPeticion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonRechazarPeticion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonRechazarPeticionMouseClicked(evt);
@@ -84,7 +99,7 @@ public class panelPeticiones extends javax.swing.JPanel {
         add(botonRechazarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 200, 40));
 
         botonAceptarPeticion.setBackground(new java.awt.Color(23, 118, 137));
-        botonAceptarPeticion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonAceptarPeticion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonAceptarPeticion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonAceptarPeticionMouseClicked(evt);
@@ -105,7 +120,7 @@ public class panelPeticiones extends javax.swing.JPanel {
 
         mensajeRechazarPeticion.setForeground(new java.awt.Color(135, 1, 1));
         mensajeRechazarPeticion.setText("Has rechazado la peticion");
-        add(mensajeRechazarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, 190, -1));
+        add(mensajeRechazarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 290, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRechazarPeticionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRechazarPeticionMouseClicked

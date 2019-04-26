@@ -5,6 +5,9 @@
  */
 package peer2peer;
 
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
+
 /**
  *
  * @author raquel
@@ -41,12 +44,16 @@ public class panelNotificaciones extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-alarma-filled-18.png"))); // NOI18N
         jLabel1.setText("Notificaciones");
         header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 120, -1));
 
         add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 360, 50));
 
+        jScrollPane1.setBackground(new java.awt.Color(254, 254, 254));
+
         tablaNotificaciones.setModel(new ModeloTablaUsuarios());
+        tablaNotificaciones.setTableHeader(null);
         jScrollPane1.setViewportView(tablaNotificaciones);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 270, 300));
@@ -64,7 +71,7 @@ public class panelNotificaciones extends javax.swing.JPanel {
         jLabel2.setText("Marcar como leida");
         botonLeido.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -3, -1, 30));
 
-        add(botonLeido, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 150, 30));
+        add(botonLeido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 150, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonLeidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLeidoMouseClicked
@@ -72,9 +79,13 @@ public class panelNotificaciones extends javax.swing.JPanel {
         ModeloTablaUsuarios tt;
         tt = (ModeloTablaUsuarios) tablaNotificaciones.getModel();
         tt.removeFila(tablaNotificaciones.getSelectedRow());
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        tablaNotificaciones.setDefaultRenderer(String.class, centerRenderer);
     }//GEN-LAST:event_botonLeidoMouseClicked
 
-    public void addNotificacion(String notificacion){
+    public void addNotificacion(String notificacion) {
         ModeloTablaUsuarios tt;
         tt = (ModeloTablaUsuarios) tablaNotificaciones.getModel();
         tt.addFila(notificacion);

@@ -60,76 +60,84 @@ public class panelChats extends javax.swing.JPanel {
         enviarMensaje = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         textoMensaje = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
         panelAmigos = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaChats = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(680, 450));
         setPreferredSize(new java.awt.Dimension(680, 450));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        panelConver.setBackground(new java.awt.Color(255, 255, 255));
         panelConver.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(43, 96, 113));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        nombreAmigoChat.setBackground(new java.awt.Color(102, 102, 102));
-        nombreAmigoChat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombreAmigoChat.setBackground(new java.awt.Color(255, 255, 255));
+        nombreAmigoChat.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        nombreAmigoChat.setForeground(new java.awt.Color(255, 255, 255));
+        nombreAmigoChat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nombreAmigoChat.setText("NOMBRE DEL AMIGO");
-        jPanel1.add(nombreAmigoChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 270, 50));
+        jPanel1.add(nombreAmigoChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 210, 40));
 
+        enLinea.setForeground(new java.awt.Color(255, 255, 255));
         enLinea.setText("(EN LÍNEA)");
-        jPanel1.add(enLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 70, 50));
+        jPanel1.add(enLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 70, 40));
 
+        desconectado.setForeground(new java.awt.Color(255, 255, 255));
         desconectado.setText("DESCONECTADO");
-        jPanel1.add(desconectado, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 120, 50));
+        jPanel1.add(desconectado, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 120, 40));
 
-        jLabel3.setText("jLabel3");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-usuario-de-género-neutro-36.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
 
-        panelConver.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 50));
+        panelConver.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 40));
 
         mensaje0.setBackground(new java.awt.Color(102, 102, 102));
         mensaje0.setText("jLabel1");
-        panelConver.add(mensaje0, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 365, 420, 35));
+        panelConver.add(mensaje0, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 420, 35));
 
         mensaje9.setBackground(new java.awt.Color(102, 102, 102));
         mensaje9.setText("jLabel1");
-        panelConver.add(mensaje9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 420, 35));
+        panelConver.add(mensaje9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 420, 35));
 
         mensaje8.setBackground(new java.awt.Color(102, 102, 102));
         mensaje8.setText("jLabel1");
-        panelConver.add(mensaje8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 85, 420, 35));
+        panelConver.add(mensaje8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 420, 35));
 
         mensaje7.setBackground(new java.awt.Color(102, 102, 102));
         mensaje7.setText("jLabel1");
-        panelConver.add(mensaje7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 420, 35));
+        panelConver.add(mensaje7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 420, 35));
 
         mensaje6.setBackground(new java.awt.Color(102, 102, 102));
         mensaje6.setText("jLabel1");
-        panelConver.add(mensaje6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 155, 420, 35));
+        panelConver.add(mensaje6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 420, 35));
 
         mensaje5.setBackground(new java.awt.Color(102, 102, 102));
         mensaje5.setText("jLabel1");
-        panelConver.add(mensaje5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 420, 35));
+        panelConver.add(mensaje5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 420, 35));
 
         mensaje4.setBackground(new java.awt.Color(102, 102, 102));
         mensaje4.setText("jLabel1");
-        panelConver.add(mensaje4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 225, 420, 35));
+        panelConver.add(mensaje4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 420, 35));
 
         mensaje3.setBackground(new java.awt.Color(102, 102, 102));
         mensaje3.setText("jLabel1");
-        panelConver.add(mensaje3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 420, 35));
+        panelConver.add(mensaje3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 420, 35));
 
         mensaje2.setBackground(new java.awt.Color(102, 102, 102));
         mensaje2.setText("jLabel1");
-        panelConver.add(mensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 295, 420, 35));
+        panelConver.add(mensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 420, 35));
 
         mensaje1.setBackground(new java.awt.Color(102, 102, 102));
         mensaje1.setText("jLabel1");
-        panelConver.add(mensaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 420, 35));
+        panelConver.add(mensaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 420, 35));
 
+        enviarMensaje.setBackground(new java.awt.Color(255, 255, 255));
         enviarMensaje.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enviarMensajeMouseClicked(evt);
@@ -137,19 +145,20 @@ public class panelChats extends javax.swing.JPanel {
         });
         enviarMensaje.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setText("jLabel4");
-        enviarMensaje.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-enviado-34.png"))); // NOI18N
+        enviarMensaje.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 30));
 
-        panelConver.add(enviarMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 40, 40));
+        panelConver.add(enviarMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 40, 30));
 
         textoMensaje.setText("jTextField1");
-        panelConver.add(textoMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 400, 40));
-        panelConver.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 410, -1));
+        panelConver.add(textoMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 400, 30));
 
         add(panelConver, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 440, 450));
 
-        panelAmigos.setBackground(new java.awt.Color(153, 153, 153));
+        panelAmigos.setBackground(new java.awt.Color(255, 255, 255));
         panelAmigos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
 
         tablaChats.setModel(new ModeloTablaUsuarios());
         tablaChats.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -159,7 +168,17 @@ public class panelChats extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tablaChats);
 
-        panelAmigos.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 240, 400));
+        panelAmigos.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 400));
+
+        jPanel2.setBackground(new java.awt.Color(234, 168, 87));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Amigos");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 210, 40));
+
+        panelAmigos.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 40));
 
         add(panelAmigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 450));
     }// </editor-fold>//GEN-END:initComponents
@@ -183,6 +202,11 @@ public class panelChats extends javax.swing.JPanel {
 
     private void enviarMensajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviarMensajeMouseClicked
         // TODO add your handling code here:
+        if(parent.getClienteIm().getAmigosConectados().get(nombreAmigoChat.getText())==null || textoMensaje.getText()==null || textoMensaje.getText()==""){
+            return;
+        }else{
+            
+        }
         //clienteIm.getAmigosConectados().get(receptor).recibirMensaje(mensaje, clienteIm.getNombre());
     }//GEN-LAST:event_enviarMensajeMouseClicked
     public void escribirMensajes(String receptor){
@@ -493,11 +517,12 @@ public class panelChats extends javax.swing.JPanel {
     private javax.swing.JLabel desconectado;
     private javax.swing.JLabel enLinea;
     private javax.swing.JPanel enviarMensaje;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel mensaje0;
     private javax.swing.JLabel mensaje1;
     private javax.swing.JLabel mensaje2;

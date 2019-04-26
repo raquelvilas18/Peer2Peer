@@ -6,6 +6,7 @@
 package peer2peer;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -94,6 +95,11 @@ public class GUIClient extends javax.swing.JFrame {
         PasswordText.setBackground(new java.awt.Color(43, 96, 113));
         PasswordText.setForeground(new java.awt.Color(207, 207, 207));
         PasswordText.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 144, 160), 1, true));
+        PasswordText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PasswordTextKeyPressed(evt);
+            }
+        });
         panelLogin.add(PasswordText, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 320, 30));
 
         botonIniciarSesion.setBackground(new java.awt.Color(254, 254, 254));
@@ -267,6 +273,38 @@ public class GUIClient extends javax.swing.JFrame {
         // TODO add your handling code here:
         botonIniciarSesion.setBackground(new Color(254,254,254));
     }//GEN-LAST:event_botonIniciarSesionMouseExited
+
+    private void PasswordTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PasswordTextKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+             this.ocultarLabelErrores();
+        try {
+            // TODO add your handling code here:
+            String hostname = this.IpText.getText();
+            String puerto = this.PuertoText.getText();
+            String nombre = this.NombreText.getText();
+            String password = this.PasswordText.getText();
+
+            if (hostname.equals("") || puerto.equals("") || nombre.equals("") || password.equals("")) {
+                this.errorCamposVacios.setVisible(true);
+            } else {
+                //Establecer la conexion con el servidor
+                String registryURL = "rmi://" + hostname + ":" + puerto + "/peer2peer";
+                this.servidor = (ServerInterface) Naming.lookup(registryURL);
+                this.iniciarSesion(nombre, password);
+            }
+        } catch (RemoteException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+            this.errorConexionLabel.setVisible(true);
+        } catch (NotBoundException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+            this.errorConexionLabel.setVisible(true);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+            this.errorConexionLabel.setVisible(true);
+        }
+        }
+    }//GEN-LAST:event_PasswordTextKeyPressed
 
     /**
      * @param args the command line arguments
@@ -502,6 +540,15 @@ public class GUIClient extends javax.swing.JFrame {
         this.NombreText.setText("");
         this.PasswordText.setText("");
         this.PuertoText.setText("");
+    }
+    
+    public boolean enviarPeticion(String receptor){
+        try {
+            return (servidor.enviarPeticion(cliente.getNombre(), receptor));
+        } catch (RemoteException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
 
 }
