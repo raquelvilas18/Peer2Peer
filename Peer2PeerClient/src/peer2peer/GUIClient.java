@@ -376,20 +376,20 @@ public class GUIClient extends javax.swing.JFrame {
     
     public void panelPeticiones() {
         this.remove(this.panelActivo);
-        //this.panelActivo = new panelPerfil(this, this.clienteIm.getPeticionesAmistad());
+        this.panelActivo = new panelPeticiones(this, this.clienteIm.getPeticionesAmistad());
         this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
         this.panelActivo.setVisible(true);
     }
     
      public void panelBusqueda() {
         this.remove(this.panelActivo);
-        //this.panelActivo = new panel(this, this.clienteIm.getPeticionesAmistad());
+        this.panelActivo = new panelBuscar(this);
         this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
         this.panelActivo.setVisible(true);
     }
       public void panelChats() {
         this.remove(this.panelActivo);
-        //this.panelActivo = new panelPerfil(this, this.clienteIm.getPeticionesAmistad());
+        this.panelActivo = new panelPeticiones(this,  null);
         this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
         this.panelActivo.setVisible(true);
     }
