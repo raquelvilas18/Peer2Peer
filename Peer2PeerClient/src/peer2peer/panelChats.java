@@ -65,6 +65,7 @@ public class panelChats extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaChats = new javax.swing.JTable();
 
+        setMaximumSize(new java.awt.Dimension(680, 450));
         setPreferredSize(new java.awt.Dimension(680, 450));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

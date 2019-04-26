@@ -47,12 +47,15 @@ public class panelPeticiones extends javax.swing.JPanel {
         mensajeRechazarPeticion = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(254, 254, 254));
+        setMaximumSize(new java.awt.Dimension(680, 450));
+        setMinimumSize(new java.awt.Dimension(680, 450));
+        setPreferredSize(new java.awt.Dimension(680, 450));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tablaPeticiones.setModel(new ModeloTablaUsuarios());
         jScrollPane2.setViewportView(tablaPeticiones);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 490, 240));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 500, 240));
 
         jPanel1.setBackground(new java.awt.Color(234, 168, 87));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -76,9 +79,9 @@ public class panelPeticiones extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(254, 254, 254));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Rechazar peticion");
-        botonRechazarPeticion.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 136, 40));
+        botonRechazarPeticion.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 136, 40));
 
-        add(botonRechazarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 240, 40));
+        add(botonRechazarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 200, 40));
 
         botonAceptarPeticion.setBackground(new java.awt.Color(23, 118, 137));
         botonAceptarPeticion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -92,17 +95,17 @@ public class panelPeticiones extends javax.swing.JPanel {
         jLabel9.setForeground(new java.awt.Color(254, 254, 254));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Aceptar peticion");
-        botonAceptarPeticion.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 136, 40));
+        botonAceptarPeticion.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 136, 40));
 
-        add(botonAceptarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 240, 40));
+        add(botonAceptarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 190, 40));
 
         mensajeAcetarPeticion.setForeground(new java.awt.Color(12, 87, 0));
         mensajeAcetarPeticion.setText("Has agregado un nuevo amigo");
-        add(mensajeAcetarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
+        add(mensajeAcetarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
 
         mensajeRechazarPeticion.setForeground(new java.awt.Color(135, 1, 1));
         mensajeRechazarPeticion.setText("Has rechazado la peticion");
-        add(mensajeRechazarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 190, -1));
+        add(mensajeRechazarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, 190, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRechazarPeticionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRechazarPeticionMouseClicked
