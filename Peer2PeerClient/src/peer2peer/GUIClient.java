@@ -394,7 +394,7 @@ public class GUIClient extends javax.swing.JFrame {
     public void panelChats() {
         this.panelActivo.setVisible(false);
         this.remove(this.panelActivo);
-        this.panelActivo = new panelChats(this);
+        this.panelActivo = new panelChats(this, null);
         this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
         this.panelActivo.setVisible(true);
     }
