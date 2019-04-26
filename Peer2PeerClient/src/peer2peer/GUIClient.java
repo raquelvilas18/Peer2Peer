@@ -364,6 +364,7 @@ public class GUIClient extends javax.swing.JFrame {
     }
 
     public void panelPerfil() {
+        this.panelActivo.setVisible(false);
         try {
             this.remove(this.panelActivo);
             this.panelActivo = new panelPerfil(this, this.cliente.getNombre());
@@ -373,23 +374,27 @@ public class GUIClient extends javax.swing.JFrame {
             Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void panelPeticiones() {
+        this.panelActivo.setVisible(false);
         this.remove(this.panelActivo);
         this.panelActivo = new panelPeticiones(this, this.clienteIm.getPeticionesAmistad());
         this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
         this.panelActivo.setVisible(true);
     }
-    
-     public void panelBusqueda() {
+
+    public void panelBusqueda() {
+        this.panelActivo.setVisible(false);
         this.remove(this.panelActivo);
         this.panelActivo = new panelBuscar(this);
         this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
         this.panelActivo.setVisible(true);
     }
-      public void panelChats() {
+
+    public void panelChats() {
+        this.panelActivo.setVisible(false);
         this.remove(this.panelActivo);
-        this.panelActivo = new panelPeticiones(this,  null);
+        this.panelActivo = new panelChats(this);
         this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
         this.panelActivo.setVisible(true);
     }

@@ -55,7 +55,7 @@ public class panelIzq extends javax.swing.JPanel {
 
         botonChats.setBackground(new java.awt.Color(67, 117, 133));
         botonChats.setForeground(new java.awt.Color(67, 117, 133));
-        botonChats.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botonChats.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonChats.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonChatsMouseClicked(evt);
@@ -76,7 +76,7 @@ public class panelIzq extends javax.swing.JPanel {
 
         botonBuscar.setBackground(new java.awt.Color(67, 117, 133));
         botonBuscar.setForeground(new java.awt.Color(67, 117, 133));
-        botonBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botonBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonBuscarMouseClicked(evt);
@@ -97,7 +97,7 @@ public class panelIzq extends javax.swing.JPanel {
 
         botonPeticiones.setBackground(new java.awt.Color(67, 117, 133));
         botonPeticiones.setForeground(new java.awt.Color(67, 117, 133));
-        botonPeticiones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botonPeticiones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonPeticiones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonPeticionesMouseClicked(evt);
@@ -118,7 +118,7 @@ public class panelIzq extends javax.swing.JPanel {
 
         botonCuenta.setBackground(new java.awt.Color(67, 117, 133));
         botonCuenta.setForeground(new java.awt.Color(67, 117, 133));
-        botonCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botonCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonCuentaMouseClicked(evt);
