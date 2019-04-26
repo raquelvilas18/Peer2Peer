@@ -55,6 +55,9 @@ public class panelIzq extends javax.swing.JPanel {
         botonChats.setForeground(new java.awt.Color(67, 117, 133));
         botonChats.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonChats.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonChatsMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 botonChatsMouseExited(evt);
             }
@@ -76,6 +79,9 @@ public class panelIzq extends javax.swing.JPanel {
         botonBuscar.setForeground(new java.awt.Color(67, 117, 133));
         botonBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonBuscarMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 botonBuscarMouseExited(evt);
             }
@@ -97,6 +103,9 @@ public class panelIzq extends javax.swing.JPanel {
         botonPeticiones.setForeground(new java.awt.Color(67, 117, 133));
         botonPeticiones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonPeticiones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonPeticionesMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 botonPeticionesMouseExited(evt);
             }
@@ -118,6 +127,9 @@ public class panelIzq extends javax.swing.JPanel {
         botonCuenta.setForeground(new java.awt.Color(67, 117, 133));
         botonCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonCuentaMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 botonCuentaMouseExited(evt);
             }
@@ -185,6 +197,26 @@ public class panelIzq extends javax.swing.JPanel {
         // TODO add your handling code here:
         botonCuenta.setBackground(new Color(67,117,133));
     }//GEN-LAST:event_botonCuentaMouseExited
+
+    private void botonChatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonChatsMouseClicked
+        // TODO add your handling code here:
+        parent.panelChats();
+    }//GEN-LAST:event_botonChatsMouseClicked
+
+    private void botonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBuscarMouseClicked
+        // TODO add your handling code here:
+        parent.panelBusqueda();
+    }//GEN-LAST:event_botonBuscarMouseClicked
+
+    private void botonPeticionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonPeticionesMouseClicked
+        // TODO add your handling code here:
+        parent.panelPeticiones();
+    }//GEN-LAST:event_botonPeticionesMouseClicked
+
+    private void botonCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCuentaMouseClicked
+        // TODO add your handling code here:
+        parent.panelPerfil();
+    }//GEN-LAST:event_botonCuentaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

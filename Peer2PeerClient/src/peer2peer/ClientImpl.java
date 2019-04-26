@@ -65,6 +65,11 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
         }
         
     }
+    
+    public ArrayList<String> getPeticionesAmistad() {
+        return this.peticionesAmistad;     
+    }
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

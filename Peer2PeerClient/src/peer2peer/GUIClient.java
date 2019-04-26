@@ -27,7 +27,7 @@ public class GUIClient extends javax.swing.JFrame {
     private ServerInterface servidor;
 
     private JPanel panelIzq;
-    private JPanel panelDer;
+    private JPanel panelActivo;
 
     /**
      * Creates new form GUIClient
@@ -206,7 +206,7 @@ public class GUIClient extends javax.swing.JFrame {
 
                 //Establecer la conexion con el servidor
                 String registryURL = "rmi://" + hostname + ":" + puerto + "/peer2peer";
-                this.servidor  = (ServerInterface) Naming.lookup(registryURL);
+                this.servidor = (ServerInterface) Naming.lookup(registryURL);
 
                 if (servidor.crearCuenta(nombre, password)) {
                     this.iniciarSesion(nombre, password);
@@ -225,22 +225,22 @@ public class GUIClient extends javax.swing.JFrame {
 
     private void botonCrearCuentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCrearCuentaMouseEntered
         // TODO add your handling code here:
-        botonCrearCuenta.setBackground(new Color(84,138,182));
+        botonCrearCuenta.setBackground(new Color(84, 138, 182));
     }//GEN-LAST:event_botonCrearCuentaMouseEntered
 
     private void botonCrearCuentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCrearCuentaMouseExited
         // TODO add your handling code here:
-        botonCrearCuenta.setBackground(new Color(77,117,149));
+        botonCrearCuenta.setBackground(new Color(77, 117, 149));
     }//GEN-LAST:event_botonCrearCuentaMouseExited
 
     private void botonIniciarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIniciarSesionMouseEntered
         // TODO add your handling code here:
-        botonIniciarSesion.setBackground(new Color(84,138,182));
+        botonIniciarSesion.setBackground(new Color(84, 138, 182));
     }//GEN-LAST:event_botonIniciarSesionMouseEntered
 
     private void botonIniciarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIniciarSesionMouseExited
         // TODO add your handling code here:
-        botonIniciarSesion.setBackground(new Color(77,117,149));
+        botonIniciarSesion.setBackground(new Color(77, 117, 149));
     }//GEN-LAST:event_botonIniciarSesionMouseExited
 
     /**
@@ -285,7 +285,33 @@ public class GUIClient extends javax.swing.JFrame {
                 mensajes.get(amigo).set(i - 1, mensajes.get(amigo).get(i));
             }
             mensajes.get(amigo).set(9, new Mensaje(emisor, mensaje));
+        } else {
+            mensajes.get(amigo).add(new Mensaje(emisor, mensaje));
+        }
+    }
 
+    public ClientInterface getCliente() {
+        return cliente;
+    }
+
+    public ClientImpl getClienteIm() {
+        return clienteIm;
+    }
+
+    public ServerInterface getServidor() {
+        return servidor;
+    }
+
+    public void eliminarCuenta() {
+        try {
+            servidor.eliminarCuenta(cliente.getNombre());
+            panelIzq.setVisible(false);
+            panelActivo.setVisible(false);
+            this.remove(panelIzq);
+            this.remove(panelActivo);
+            this.panelLogin.setVisible(true);
+        } catch (RemoteException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -321,9 +347,9 @@ public class GUIClient extends javax.swing.JFrame {
             this.panelIzq = new panelIzq(this, nombre);
             this.add(panelIzq, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 450));
             this.panelIzq.setVisible(true);
-            this.panelDer = new panelDer(this);
-            this.add(panelDer, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
-            this.panelDer.setVisible(true);
+            this.panelActivo = new panelPerfil(this, nombre);
+            this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
+            this.panelActivo.setVisible(true);
         } else {
             this.ocultarLabelErrores();
             this.errorLoginLabel.setVisible(true);
@@ -335,6 +361,37 @@ public class GUIClient extends javax.swing.JFrame {
         this.errorConexionLabel.setVisible(false);
         this.errorCrearCuentaLabel.setVisible(false);
         this.errorLoginLabel.setVisible(false);
+    }
+
+    public void panelPerfil() {
+        try {
+            this.remove(this.panelActivo);
+            this.panelActivo = new panelPerfil(this, this.cliente.getNombre());
+            this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
+            this.panelActivo.setVisible(true);
+        } catch (RemoteException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void panelPeticiones() {
+        this.remove(this.panelActivo);
+        //this.panelActivo = new panelPerfil(this, this.clienteIm.getPeticionesAmistad());
+        this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
+        this.panelActivo.setVisible(true);
+    }
+    
+     public void panelBusqueda() {
+        this.remove(this.panelActivo);
+        //this.panelActivo = new panel(this, this.clienteIm.getPeticionesAmistad());
+        this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
+        this.panelActivo.setVisible(true);
+    }
+      public void panelChats() {
+        this.remove(this.panelActivo);
+        //this.panelActivo = new panelPerfil(this, this.clienteIm.getPeticionesAmistad());
+        this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
+        this.panelActivo.setVisible(true);
     }
 
 }
