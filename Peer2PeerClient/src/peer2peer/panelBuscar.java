@@ -112,6 +112,12 @@ public class panelBuscar extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enviarPeticionMouseClicked(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                enviarPeticionMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                enviarPeticionMouseEntered(evt);
+            }
         });
         enviarPeticion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -216,6 +222,16 @@ public class panelBuscar extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_campoBuscarKeyPressed
+
+    private void enviarPeticionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviarPeticionMouseEntered
+        // TODO add your handling code here:
+        enviarPeticion.setBackground(new Color(87,140,157));
+    }//GEN-LAST:event_enviarPeticionMouseEntered
+
+    private void enviarPeticionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviarPeticionMouseExited
+        // TODO add your handling code here:
+        enviarPeticion.setBackground(new Color(67,117,133));
+    }//GEN-LAST:event_enviarPeticionMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
