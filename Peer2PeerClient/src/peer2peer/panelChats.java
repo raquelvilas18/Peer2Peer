@@ -5,18 +5,31 @@
  */
 package peer2peer;
 
+import java.util.*;
+
 /**
  *
  * @author carlo
  */
 public class panelChats extends javax.swing.JPanel {
     GUIClient parent;
+    String chatActivo;
+    HashMap<String, ArrayList<Mensaje>> mensajes;
     /**
      * Creates new form panelChats
      */
-    public panelChats(GUIClient parent) {
+    public panelChats(GUIClient parent, HashMap<String, ArrayList<Mensaje>> mensajes) {
         initComponents();
         this.parent = parent;
+        chatActivo = null;
+        this.mensajes = mensajes;
+        ModeloTablaUsuarios tabla = new ModeloTablaUsuarios();
+        tablaChats.setModel(tabla);
+        try{
+            tabla.setFilas(new ArrayList<>(Arrays.asList(parent.getClienteIm().getAmigos())));
+        }catch(Exception e){
+            
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,45 +40,155 @@ public class panelChats extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelConver = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        nombreAmigoChat = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        mensaje0 = new javax.swing.JLabel();
+        mensaje9 = new javax.swing.JLabel();
+        mensaje8 = new javax.swing.JLabel();
+        mensaje7 = new javax.swing.JLabel();
+        mensaje6 = new javax.swing.JLabel();
+        mensaje5 = new javax.swing.JLabel();
+        mensaje4 = new javax.swing.JLabel();
+        mensaje3 = new javax.swing.JLabel();
+        mensaje2 = new javax.swing.JLabel();
+        mensaje1 = new javax.swing.JLabel();
         panelAmigos = new javax.swing.JPanel();
-        panelConversacion = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaChats = new javax.swing.JTable();
 
         setMaximumSize(new java.awt.Dimension(680, 450));
         setPreferredSize(new java.awt.Dimension(680, 450));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelAmigosLayout = new javax.swing.GroupLayout(panelAmigos);
-        panelAmigos.setLayout(panelAmigosLayout);
-        panelAmigosLayout.setHorizontalGroup(
-            panelAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
-        );
-        panelAmigosLayout.setVerticalGroup(
-            panelAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
-        );
+        panelConver.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        add(panelAmigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 440, 450));
+        jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(1);
+        jTextArea1.setMaximumSize(new java.awt.Dimension(440, 50));
+        jTextArea1.setMinimumSize(new java.awt.Dimension(440, 50));
+        jTextArea1.setPreferredSize(new java.awt.Dimension(440, 50));
+        jScrollPane1.setViewportView(jTextArea1);
 
-        panelConversacion.setBackground(new java.awt.Color(153, 153, 153));
+        panelConver.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 440, 50));
 
-        javax.swing.GroupLayout panelConversacionLayout = new javax.swing.GroupLayout(panelConversacion);
-        panelConversacion.setLayout(panelConversacionLayout);
-        panelConversacionLayout.setHorizontalGroup(
-            panelConversacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
-        );
-        panelConversacionLayout.setVerticalGroup(
-            panelConversacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
-        );
+        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        add(panelConversacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        nombreAmigoChat.setBackground(new java.awt.Color(102, 102, 102));
+        nombreAmigoChat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombreAmigoChat.setText("NOMBRE DEL AMIGO");
+        jPanel1.add(nombreAmigoChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 270, 50));
+
+        jLabel1.setText("(EN LÍNEA)");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 70, 50));
+
+        jLabel2.setText("DESCONECTADO");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 120, 50));
+
+        jLabel3.setText("jLabel3");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
+
+        panelConver.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 50));
+
+        mensaje0.setBackground(new java.awt.Color(102, 102, 102));
+        mensaje0.setText("jLabel1");
+        panelConver.add(mensaje0, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 365, 420, 35));
+
+        mensaje9.setBackground(new java.awt.Color(102, 102, 102));
+        mensaje9.setText("jLabel1");
+        panelConver.add(mensaje9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 420, 35));
+
+        mensaje8.setBackground(new java.awt.Color(102, 102, 102));
+        mensaje8.setText("jLabel1");
+        panelConver.add(mensaje8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 85, 420, 35));
+
+        mensaje7.setBackground(new java.awt.Color(102, 102, 102));
+        mensaje7.setText("jLabel1");
+        panelConver.add(mensaje7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 420, 35));
+
+        mensaje6.setBackground(new java.awt.Color(102, 102, 102));
+        mensaje6.setText("jLabel1");
+        panelConver.add(mensaje6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 155, 420, 35));
+
+        mensaje5.setBackground(new java.awt.Color(102, 102, 102));
+        mensaje5.setText("jLabel1");
+        panelConver.add(mensaje5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 420, 35));
+
+        mensaje4.setBackground(new java.awt.Color(102, 102, 102));
+        mensaje4.setText("jLabel1");
+        panelConver.add(mensaje4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 225, 420, 35));
+
+        mensaje3.setBackground(new java.awt.Color(102, 102, 102));
+        mensaje3.setText("jLabel1");
+        panelConver.add(mensaje3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 420, 35));
+
+        mensaje2.setBackground(new java.awt.Color(102, 102, 102));
+        mensaje2.setText("jLabel1");
+        panelConver.add(mensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 295, 420, 35));
+
+        mensaje1.setBackground(new java.awt.Color(102, 102, 102));
+        mensaje1.setText("jLabel1");
+        panelConver.add(mensaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 420, 35));
+
+        add(panelConver, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 440, 450));
+
+        panelAmigos.setBackground(new java.awt.Color(153, 153, 153));
+        panelAmigos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tablaChats.setModel(new ModeloTablaUsuarios());
+        tablaChats.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaChatsMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tablaChats);
+
+        panelAmigos.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 240, 400));
+
+        add(panelAmigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 450));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tablaChatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaChatsMouseClicked
+        // TODO add your handling code here:
+        ModeloTablaUsuarios m = (ModeloTablaUsuarios) tablaChats.getModel();
+        try{
+            String receptor = m.getFila(tablaChats.getSelectedRow());
+            nombreAmigoChat.setText(receptor);
+            ArrayList<Mensaje> mensajesChat = mensajes.get(receptor);
+        }catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_tablaChatsMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel mensaje0;
+    private javax.swing.JLabel mensaje1;
+    private javax.swing.JLabel mensaje2;
+    private javax.swing.JLabel mensaje3;
+    private javax.swing.JLabel mensaje4;
+    private javax.swing.JLabel mensaje5;
+    private javax.swing.JLabel mensaje6;
+    private javax.swing.JLabel mensaje7;
+    private javax.swing.JLabel mensaje8;
+    private javax.swing.JLabel mensaje9;
+    private javax.swing.JLabel nombreAmigoChat;
     private javax.swing.JPanel panelAmigos;
-    private javax.swing.JPanel panelConversacion;
+    private javax.swing.JPanel panelConver;
+    private javax.swing.JTable tablaChats;
     // End of variables declaration//GEN-END:variables
 }
