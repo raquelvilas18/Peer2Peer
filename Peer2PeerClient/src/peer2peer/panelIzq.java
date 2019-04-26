@@ -5,6 +5,7 @@
  */
 package peer2peer;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 
 /**
@@ -13,7 +14,7 @@ import javax.swing.JFrame;
  */
 public class panelIzq extends javax.swing.JPanel {
 
-    JFrame parent;
+    GUIClient parent;
     /**
      * Creates new form panelIzq
      */
@@ -21,8 +22,11 @@ public class panelIzq extends javax.swing.JPanel {
         initComponents();
     }
 
-    public panelIzq(JFrame parent) {
+    public panelIzq(GUIClient parent, String nombre) {
+        this.parent = parent;
         initComponents();
+        
+        this.nombreUsuario.setText(nombre);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,117 +48,143 @@ public class panelIzq extends javax.swing.JPanel {
         fotoUsuario = new javax.swing.JLabel();
         nombreUsuario = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(43, 96, 113));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        botonChats.setBackground(new java.awt.Color(204, 255, 0));
+        botonChats.setBackground(new java.awt.Color(67, 117, 133));
+        botonChats.setForeground(new java.awt.Color(67, 117, 133));
+        botonChats.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonChats.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonChatsMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonChatsMouseEntered(evt);
+            }
+        });
+        botonChats.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans Light", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(254, 254, 254));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CHATS");
+        jLabel1.setText("chats");
+        botonChats.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 12, 129, 26));
 
-        javax.swing.GroupLayout botonChatsLayout = new javax.swing.GroupLayout(botonChats);
-        botonChats.setLayout(botonChatsLayout);
-        botonChatsLayout.setHorizontalGroup(
-            botonChatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonChatsLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        botonChatsLayout.setVerticalGroup(
-            botonChatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonChatsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        add(botonChats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 280, 50));
 
-        add(botonChats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 240, 60));
+        botonBuscar.setBackground(new java.awt.Color(67, 117, 133));
+        botonBuscar.setForeground(new java.awt.Color(67, 117, 133));
+        botonBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonBuscarMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonBuscarMouseEntered(evt);
+            }
+        });
+        botonBuscar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        botonBuscar.setBackground(new java.awt.Color(255, 51, 51));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("DejaVu Sans Light", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(254, 254, 254));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("BUSCAR");
+        jLabel2.setText("buscar");
+        botonBuscar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 12, 129, 26));
 
-        javax.swing.GroupLayout botonBuscarLayout = new javax.swing.GroupLayout(botonBuscar);
-        botonBuscar.setLayout(botonBuscarLayout);
-        botonBuscarLayout.setHorizontalGroup(
-            botonBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonBuscarLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        botonBuscarLayout.setVerticalGroup(
-            botonBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonBuscarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        add(botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 280, 50));
 
-        add(botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 240, 60));
+        botonPeticiones.setBackground(new java.awt.Color(67, 117, 133));
+        botonPeticiones.setForeground(new java.awt.Color(67, 117, 133));
+        botonPeticiones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonPeticiones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonPeticionesMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonPeticionesMouseEntered(evt);
+            }
+        });
+        botonPeticiones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        botonPeticiones.setBackground(new java.awt.Color(0, 255, 153));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("DejaVu Sans Light", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(254, 254, 254));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("PETICIONES");
+        jLabel3.setText("peticiones");
+        botonPeticiones.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 12, 129, 26));
 
-        javax.swing.GroupLayout botonPeticionesLayout = new javax.swing.GroupLayout(botonPeticiones);
-        botonPeticiones.setLayout(botonPeticionesLayout);
-        botonPeticionesLayout.setHorizontalGroup(
-            botonPeticionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonPeticionesLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        botonPeticionesLayout.setVerticalGroup(
-            botonPeticionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonPeticionesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        add(botonPeticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 280, 50));
 
-        add(botonPeticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 240, 60));
+        botonCuenta.setBackground(new java.awt.Color(67, 117, 133));
+        botonCuenta.setForeground(new java.awt.Color(67, 117, 133));
+        botonCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonCuentaMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonCuentaMouseEntered(evt);
+            }
+        });
+        botonCuenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        botonCuenta.setBackground(new java.awt.Color(255, 204, 204));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("DejaVu Sans Light", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(254, 254, 254));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("PERFIL");
+        jLabel4.setText("perfil");
+        botonCuenta.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 12, 129, 26));
 
-        javax.swing.GroupLayout botonCuentaLayout = new javax.swing.GroupLayout(botonCuenta);
-        botonCuenta.setLayout(botonCuentaLayout);
-        botonCuentaLayout.setHorizontalGroup(
-            botonCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonCuentaLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        botonCuentaLayout.setVerticalGroup(
-            botonCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonCuentaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        add(botonCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 240, 60));
+        add(botonCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 280, 50));
 
         fotoUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fotoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/round-account-button-with-user-inside_icon-icons.com_72596 (1).png"))); // NOI18N
-        add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 160, 140));
+        fotoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-usuario-masculino-en-círculo-100.png"))); // NOI18N
+        add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 160, 120));
 
-        nombreUsuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        nombreUsuario.setFont(new java.awt.Font("DejaVu Sans Light", 0, 14)); // NOI18N
+        nombreUsuario.setForeground(new java.awt.Color(253, 225, 190));
         nombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombreUsuario.setText("USUARIO");
-        add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, 30));
+        add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 200, 30));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonChatsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonChatsMouseEntered
+        // TODO add your handling code here:
+        botonChats.setBackground(new Color(82,137,155));
+    }//GEN-LAST:event_botonChatsMouseEntered
+
+    private void botonBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBuscarMouseEntered
+        // TODO add your handling code here:
+        botonBuscar.setBackground(new Color(82,137,155));
+    }//GEN-LAST:event_botonBuscarMouseEntered
+
+    private void botonPeticionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonPeticionesMouseEntered
+        // TODO add your handling code here:
+        botonPeticiones.setBackground(new Color(82,137,155));
+    }//GEN-LAST:event_botonPeticionesMouseEntered
+
+    private void botonCuentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCuentaMouseEntered
+        // TODO add your handling code here:
+        botonCuenta.setBackground(new Color(82,137,155));
+    }//GEN-LAST:event_botonCuentaMouseEntered
+
+    private void botonChatsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonChatsMouseExited
+        // TODO add your handling code here:
+        botonChats.setBackground(new Color(67,117,133));
+    }//GEN-LAST:event_botonChatsMouseExited
+
+    private void botonBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBuscarMouseExited
+        // TODO add your handling code here:
+        botonBuscar.setBackground(new Color(67,117,133));
+    }//GEN-LAST:event_botonBuscarMouseExited
+
+    private void botonPeticionesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonPeticionesMouseExited
+        // TODO add your handling code here:
+        botonPeticiones.setBackground(new Color(67,117,133));
+    }//GEN-LAST:event_botonPeticionesMouseExited
+
+    private void botonCuentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCuentaMouseExited
+        // TODO add your handling code here:
+        botonCuenta.setBackground(new Color(67,117,133));
+    }//GEN-LAST:event_botonCuentaMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

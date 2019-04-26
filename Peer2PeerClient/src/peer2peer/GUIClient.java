@@ -318,7 +318,7 @@ public class GUIClient extends javax.swing.JFrame {
         if (servidor.iniciarSesion(cliente, password)) {
             this.ocultarLabelErrores();
             this.panelLogin.setVisible(false);
-            this.panelIzq = new panelIzq(this);
+            this.panelIzq = new panelIzq(this, nombre);
             this.add(panelIzq, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 450));
             this.panelIzq.setVisible(true);
             this.panelDer = new panelDer(this);
