@@ -5,11 +5,14 @@
  */
 package peer2peer;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.rmi.RemoteException;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -33,6 +36,13 @@ public class panelBuscar extends javax.swing.JPanel {
         this.usuario = usuario;
         this.peticionCorrecta.setVisible(false);
         this.peticionIncorrecta.setVisible(false);
+        
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        Font fuente = new Font("SansSerif", Font.ITALIC, 25);
+        headerRenderer.setFont(fuente);
+        headerRenderer.setBackground(new Color(23,118,137));
+        headerRenderer.setForeground(Color.WHITE);
+        this.tablaBuscar.getColumnModel().getColumn(0).setHeaderRenderer(headerRenderer);
     }
 
     /**
@@ -60,12 +70,13 @@ public class panelBuscar extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(580, 430));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        campoBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(175, 175, 175), 1, true));
         campoBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 campoBuscarKeyPressed(evt);
             }
         });
-        add(campoBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 90, 420, 35));
+        add(campoBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 450, 35));
 
         buscar.setBackground(new java.awt.Color(210, 134, 48));
         buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -79,8 +90,11 @@ public class panelBuscar extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-búsqueda-30.png"))); // NOI18N
         buscar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 38, 35));
 
-        add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, -1, 35));
+        add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, -1, 35));
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        tablaBuscar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tablaBuscar.setModel(new ModeloTablaUsuarios());
         tablaBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -89,7 +103,7 @@ public class panelBuscar extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tablaBuscar);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 470, 200));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 500, 200));
 
         enviarPeticion.setBackground(new java.awt.Color(67, 117, 133));
         enviarPeticion.setForeground(new java.awt.Color(67, 117, 133));
@@ -107,15 +121,15 @@ public class panelBuscar extends javax.swing.JPanel {
         jLabel2.setText("Enviar petición");
         enviarPeticion.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 157, 40));
 
-        add(enviarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 260, 40));
+        add(enviarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 260, 40));
 
-        peticionCorrecta.setForeground(new java.awt.Color(0, 255, 51));
+        peticionCorrecta.setForeground(new java.awt.Color(0, 157, 31));
         peticionCorrecta.setText("Petición de amistad enviada correctamente.");
-        add(peticionCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 370, -1));
+        add(peticionCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 370, -1));
 
-        peticionIncorrecta.setForeground(new java.awt.Color(255, 51, 0));
+        peticionIncorrecta.setForeground(new java.awt.Color(155, 32, 1));
         peticionIncorrecta.setText("Fallo al enviar la petición de amistad");
-        add(peticionIncorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 360, -1));
+        add(peticionIncorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 360, -1));
 
         jPanel1.setBackground(new java.awt.Color(234, 168, 87));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

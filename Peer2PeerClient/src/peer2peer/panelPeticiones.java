@@ -52,9 +52,9 @@ public class panelPeticiones extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         botonRechazarPeticion = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         botonAceptarPeticion = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         mensajeAcetarPeticion = new javax.swing.JLabel();
         mensajeRechazarPeticion = new javax.swing.JLabel();
 
@@ -91,10 +91,11 @@ public class panelPeticiones extends javax.swing.JPanel {
         });
         botonRechazarPeticion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Rechazar peticion");
-        botonRechazarPeticion.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 136, 40));
+        jLabel3.setFont(new java.awt.Font("DejaVu Sans Light", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Rechazar petición");
+        botonRechazarPeticion.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 190, 40));
 
         add(botonRechazarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 200, 40));
 
@@ -107,17 +108,20 @@ public class panelPeticiones extends javax.swing.JPanel {
         });
         botonAceptarPeticion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Aceptar peticion");
-        botonAceptarPeticion.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 136, 40));
+        jLabel2.setFont(new java.awt.Font("DejaVu Sans Light", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Aceptar peticion");
+        botonAceptarPeticion.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 180, 40));
 
         add(botonAceptarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 190, 40));
 
+        mensajeAcetarPeticion.setFont(new java.awt.Font("Noto Sans", 0, 10)); // NOI18N
         mensajeAcetarPeticion.setForeground(new java.awt.Color(12, 87, 0));
         mensajeAcetarPeticion.setText("Has agregado un nuevo amigo");
         add(mensajeAcetarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
 
+        mensajeRechazarPeticion.setFont(new java.awt.Font("Noto Sans", 0, 10)); // NOI18N
         mensajeRechazarPeticion.setForeground(new java.awt.Color(135, 1, 1));
         mensajeRechazarPeticion.setText("Has rechazado la peticion");
         add(mensajeRechazarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 290, -1));
@@ -127,7 +131,7 @@ public class panelPeticiones extends javax.swing.JPanel {
         ModeloTablaUsuarios tt;
         tt = (ModeloTablaUsuarios) tablaPeticiones.getModel();
         this.mensajeRechazarPeticion.setText("Has rechazado la peticion de amistad de " + tt.getFila(tablaPeticiones.getSelectedRow()));
-        tt.setFilas(parent.aceptarPeticion(tt.getFila(tablaPeticiones.getSelectedRow())));
+        tt.setFilas(parent.rechazarPeticion(tt.getFila(tablaPeticiones.getSelectedRow())));
         this.mensajeRechazarPeticion.setVisible(true);
         this.mensajeAcetarPeticion.setVisible(false);
     }//GEN-LAST:event_botonRechazarPeticionMouseClicked
@@ -137,7 +141,7 @@ public class panelPeticiones extends javax.swing.JPanel {
         ModeloTablaUsuarios tt;
         tt = (ModeloTablaUsuarios) tablaPeticiones.getModel();
         this.mensajeAcetarPeticion.setText("Ahora tú y " + tt.getFila(tablaPeticiones.getSelectedRow()) + " sois amigos");
-        tt.setFilas(parent.rechazarPeticion(tt.getFila(tablaPeticiones.getSelectedRow())));
+        tt.setFilas(parent.aceptarPeticion(tt.getFila(tablaPeticiones.getSelectedRow())));
         this.mensajeAcetarPeticion.setVisible(true);
         this.mensajeRechazarPeticion.setVisible(false);
     }//GEN-LAST:event_botonAceptarPeticionMouseClicked
@@ -147,8 +151,8 @@ public class panelPeticiones extends javax.swing.JPanel {
     private javax.swing.JPanel botonAceptarPeticion;
     private javax.swing.JPanel botonRechazarPeticion;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel mensajeAcetarPeticion;

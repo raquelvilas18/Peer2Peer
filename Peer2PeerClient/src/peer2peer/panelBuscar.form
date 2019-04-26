@@ -27,12 +27,21 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="campoBuscar">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder roundedCorners="true">
+              <Color PropertyName="color" blue="af" green="af" red="af" type="rgb"/>
+            </LineBorder>
+          </Border>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoBuscarKeyPressed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="111" y="90" width="420" height="35"/>
+          <AbsoluteConstraints x="80" y="70" width="450" height="35"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -50,7 +59,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="530" y="90" width="-1" height="35"/>
+          <AbsoluteConstraints x="530" y="70" width="-1" height="35"/>
         </Constraint>
       </Constraints>
 
@@ -73,12 +82,19 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder/>
+          </Border>
+        </Property>
+      </Properties>
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="110" y="160" width="470" height="200"/>
+          <AbsoluteConstraints x="80" y="120" width="500" height="200"/>
         </Constraint>
       </Constraints>
 
@@ -86,6 +102,11 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="tablaBuscar">
           <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                <EmptyBorder/>
+              </Border>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new ModeloTablaUsuarios()" type="code"/>
             </Property>
@@ -113,7 +134,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="190" y="390" width="260" height="40"/>
+          <AbsoluteConstraints x="190" y="360" width="260" height="40"/>
         </Constraint>
       </Constraints>
 
@@ -143,26 +164,26 @@
     <Component class="javax.swing.JLabel" name="peticionCorrecta">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="ff" red="0" type="rgb"/>
+          <Color blue="1f" green="9d" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Petici&#xf3;n de amistad enviada correctamente."/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="180" y="370" width="370" height="-1"/>
+          <AbsoluteConstraints x="180" y="340" width="370" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="peticionIncorrecta">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="33" red="ff" type="rgb"/>
+          <Color blue="1" green="20" red="9b" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Fallo al enviar la petici&#xf3;n de amistad"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="170" y="370" width="360" height="-1"/>
+          <AbsoluteConstraints x="170" y="340" width="360" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

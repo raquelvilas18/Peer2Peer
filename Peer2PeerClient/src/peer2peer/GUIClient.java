@@ -7,6 +7,8 @@ package peer2peer;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -40,6 +42,17 @@ public class GUIClient extends javax.swing.JFrame {
         this.cliente = null;
         this.clienteIm = null;
         this.servidor = null;
+
+        //CUANDO CIERRAS EL JFRAME ANTES CIERRA SESION
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+                try {
+                    servidor.cerrarSesion(cliente);
+                } catch (RemoteException ex) {
+                    Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
 
         this.setLocationRelativeTo(null);
         this.ocultarLabelErrores();
@@ -91,6 +104,7 @@ public class GUIClient extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelLogin.setBackground(new java.awt.Color(43, 96, 113));
+        panelLogin.setForeground(new java.awt.Color(119, 119, 119));
         panelLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-usuario-masculino-en-círculo-100.png"))); // NOI18N
@@ -265,53 +279,53 @@ public class GUIClient extends javax.swing.JFrame {
 
     private void botonCrearCuentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCrearCuentaMouseEntered
         // TODO add your handling code here:
-        botonCrearCuenta.setBackground(new Color(217,217,217));
+        botonCrearCuenta.setBackground(new Color(217, 217, 217));
     }//GEN-LAST:event_botonCrearCuentaMouseEntered
 
     private void botonCrearCuentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCrearCuentaMouseExited
         // TODO add your handling code here:
-        botonCrearCuenta.setBackground(new Color(254,254,254));
+        botonCrearCuenta.setBackground(new Color(254, 254, 254));
     }//GEN-LAST:event_botonCrearCuentaMouseExited
 
     private void botonIniciarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIniciarSesionMouseEntered
         // TODO add your handling code here:
-        botonIniciarSesion.setBackground(new Color(217,217,217));
+        botonIniciarSesion.setBackground(new Color(217, 217, 217));
     }//GEN-LAST:event_botonIniciarSesionMouseEntered
 
     private void botonIniciarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIniciarSesionMouseExited
         // TODO add your handling code here:
-        botonIniciarSesion.setBackground(new Color(254,254,254));
+        botonIniciarSesion.setBackground(new Color(254, 254, 254));
     }//GEN-LAST:event_botonIniciarSesionMouseExited
 
     private void PasswordTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PasswordTextKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-             this.ocultarLabelErrores();
-        try {
-            // TODO add your handling code here:
-            String hostname = this.IpText.getText();
-            String puerto = this.PuertoText.getText();
-            String nombre = this.NombreText.getText();
-            String password = this.PasswordText.getText();
+            this.ocultarLabelErrores();
+            try {
+                // TODO add your handling code here:
+                String hostname = this.IpText.getText();
+                String puerto = this.PuertoText.getText();
+                String nombre = this.NombreText.getText();
+                String password = this.PasswordText.getText();
 
-            if (hostname.equals("") || puerto.equals("") || nombre.equals("") || password.equals("")) {
-                this.errorCamposVacios.setVisible(true);
-            } else {
-                //Establecer la conexion con el servidor
-                String registryURL = "rmi://" + hostname + ":" + puerto + "/peer2peer";
-                this.servidor = (ServerInterface) Naming.lookup(registryURL);
-                this.iniciarSesion(nombre, password);
+                if (hostname.equals("") || puerto.equals("") || nombre.equals("") || password.equals("")) {
+                    this.errorCamposVacios.setVisible(true);
+                } else {
+                    //Establecer la conexion con el servidor
+                    String registryURL = "rmi://" + hostname + ":" + puerto + "/peer2peer";
+                    this.servidor = (ServerInterface) Naming.lookup(registryURL);
+                    this.iniciarSesion(nombre, password);
+                }
+            } catch (RemoteException ex) {
+                Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+                this.errorConexionLabel.setVisible(true);
+            } catch (NotBoundException ex) {
+                Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+                this.errorConexionLabel.setVisible(true);
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+                this.errorConexionLabel.setVisible(true);
             }
-        } catch (RemoteException ex) {
-            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
-            this.errorConexionLabel.setVisible(true);
-        } catch (NotBoundException ex) {
-            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
-            this.errorConexionLabel.setVisible(true);
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
-            this.errorConexionLabel.setVisible(true);
-        }
         }
     }//GEN-LAST:event_PasswordTextKeyPressed
 
@@ -397,8 +411,8 @@ public class GUIClient extends javax.swing.JFrame {
             Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public boolean actualizarPassword(String password){
+
+    public boolean actualizarPassword(String password) {
         try {
             return (servidor.actualizarPassword(cliente.getNombre(), password));
         } catch (RemoteException ex) {
@@ -406,22 +420,23 @@ public class GUIClient extends javax.swing.JFrame {
             return false;
         }
     }
-    
+
     //Acepta la peticion y devuellve las peticiones pendientes actualizadas
-    public ArrayList<String> aceptarPeticion(String destinatario){
+    public ArrayList<String> aceptarPeticion(String destinatario) {
         try {
-            servidor.aceptarPeticion(destinatario,cliente.getNombre());
+            servidor.aceptarPeticion(destinatario, cliente.getNombre());
             servidor.acualizarPeticiones(cliente);
+            servidor.acualizarAmigos(cliente);
             return clienteIm.getPeticionesAmistad();
         } catch (RemoteException ex) {
             Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
-    
-    public ArrayList<String> rechazarPeticion(String destinatario){
+
+    public ArrayList<String> rechazarPeticion(String destinatario) {
         try {
-            servidor.rechazarPeticion(destinatario,cliente.getNombre());
+            servidor.rechazarPeticion(destinatario, cliente.getNombre());
             servidor.acualizarPeticiones(cliente);
             return clienteIm.getPeticionesAmistad();
         } catch (RemoteException ex) {
@@ -454,7 +469,7 @@ public class GUIClient extends javax.swing.JFrame {
 
     private void iniciarSesion(String nombre, String password) throws RemoteException {
         //Crear el objeto cliente
-        
+
         this.clienteIm = new ClientImpl(this);
         this.cliente = clienteIm;
         clienteIm.setNombre(nombre);
@@ -468,7 +483,7 @@ public class GUIClient extends javax.swing.JFrame {
             this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
             this.panelActivo.setVisible(true);
             this.panelNotificaciones = new panelNotificaciones();
-            this.add(panelNotificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 0, 300, 450));
+            this.add(panelNotificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, 300, 450));
             this.panelNotificaciones.setVisible(true);
             this.vaciarCamposLogin();
         } else {
@@ -502,7 +517,7 @@ public class GUIClient extends javax.swing.JFrame {
             this.remove(this.panelActivo);
             servidor.acualizarPeticiones(cliente);
             this.panelActivo = new panelPeticiones(this, this.clienteIm.getPeticionesAmistad());
-            
+
             this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
             this.panelActivo.setVisible(true);
         } catch (RemoteException ex) {
@@ -531,19 +546,19 @@ public class GUIClient extends javax.swing.JFrame {
                     mensajes.put(amigo, new ArrayList<Mensaje>());
                 }
             }
-        }catch(Exception e){
-            
+        } catch (Exception e) {
+
         }
         this.panelActivo = new panelChats(this, mensajes);
         this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
         this.panelActivo.setVisible(true);
     }
-    
-    public void addNotificacion(String notificacion){
+
+    public void addNotificacion(String notificacion) {
         this.panelNotificaciones.addNotificacion(notificacion);
     }
-    
-    public void cerrarSesion(){
+
+    public void cerrarSesion() {
         try {
             servidor.cerrarSesion(cliente);
             panelIzq.setVisible(false);
@@ -551,18 +566,19 @@ public class GUIClient extends javax.swing.JFrame {
             this.remove(panelIzq);
             this.remove(panelActivo);
             this.panelLogin.setVisible(true);
+            this.panelNotificaciones.vaciar();
         } catch (RemoteException ex) {
             Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private void vaciarCamposLogin(){
+
+    private void vaciarCamposLogin() {
         this.NombreText.setText("");
         this.PasswordText.setText("");
         this.PuertoText.setText("");
     }
-    
-    public boolean enviarPeticion(String receptor){
+
+    public boolean enviarPeticion(String receptor) {
         try {
             return (servidor.enviarPeticion(cliente.getNombre(), receptor));
         } catch (RemoteException ex) {
@@ -577,5 +593,6 @@ public class GUIClient extends javax.swing.JFrame {
         }
         
     }
+
 
 }
