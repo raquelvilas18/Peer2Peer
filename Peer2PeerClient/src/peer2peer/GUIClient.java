@@ -28,6 +28,7 @@ public class GUIClient extends javax.swing.JFrame {
 
     private JPanel panelIzq;
     private JPanel panelActivo;
+    private panelNotificaciones panelNotificaciones;
 
     /**
      * Creates new form GUIClient
@@ -52,6 +53,7 @@ public class GUIClient extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSeparator1 = new javax.swing.JSeparator();
         panelLogin = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         NombreText = new javax.swing.JTextField();
@@ -72,17 +74,29 @@ public class GUIClient extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1200, 500));
+        setMinimumSize(new java.awt.Dimension(1200, 450));
+        setPreferredSize(new java.awt.Dimension(1200, 450));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelLogin.setBackground(new java.awt.Color(127, 150, 168));
+        panelLogin.setBackground(new java.awt.Color(43, 96, 113));
         panelLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/round-account-button-with-user-inside_icon-icons.com_72596 (1).png"))); // NOI18N
-        panelLogin.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
-        panelLogin.add(NombreText, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 320, 30));
-        panelLogin.add(PasswordText, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 320, 30));
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-usuario-masculino-en-círculo-100.png"))); // NOI18N
+        panelLogin.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, -1, -1));
 
-        botonIniciarSesion.setBackground(new java.awt.Color(77, 117, 149));
+        NombreText.setBackground(new java.awt.Color(43, 96, 113));
+        NombreText.setForeground(new java.awt.Color(207, 207, 207));
+        NombreText.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 144, 160), 1, true));
+        panelLogin.add(NombreText, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 320, 30));
+
+        PasswordText.setBackground(new java.awt.Color(43, 96, 113));
+        PasswordText.setForeground(new java.awt.Color(207, 207, 207));
+        PasswordText.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 144, 160), 1, true));
+        panelLogin.add(PasswordText, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 320, 30));
+
+        botonIniciarSesion.setBackground(new java.awt.Color(254, 254, 254));
         botonIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -97,45 +111,56 @@ public class GUIClient extends javax.swing.JFrame {
         });
         botonIniciarSesion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel16.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel16.setForeground(new java.awt.Color(1, 1, 1));
         jLabel16.setText("Iniciar Sesion");
         botonIniciarSesion.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 120, 20));
 
-        panelLogin.add(botonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 220, 40));
+        panelLogin.add(botonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 220, 40));
 
+        jLabel17.setForeground(new java.awt.Color(254, 254, 254));
         jLabel17.setText("Nombre");
-        panelLogin.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, -1, -1));
+        panelLogin.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, -1, -1));
 
+        jLabel18.setForeground(new java.awt.Color(254, 254, 254));
         jLabel18.setText("Contraseña");
-        panelLogin.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
-        panelLogin.add(PuertoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 320, 30));
+        panelLogin.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, -1));
 
+        PuertoText.setBackground(new java.awt.Color(43, 96, 113));
+        PuertoText.setForeground(new java.awt.Color(207, 207, 207));
+        PuertoText.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 144, 160), 1, true));
+        panelLogin.add(PuertoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 320, 30));
+
+        jLabel19.setForeground(new java.awt.Color(254, 254, 254));
         jLabel19.setText("Puerto");
-        panelLogin.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, -1, -1));
+        panelLogin.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, -1, -1));
 
+        IpText.setBackground(new java.awt.Color(43, 96, 113));
+        IpText.setForeground(new java.awt.Color(207, 207, 207));
         IpText.setText("localhost");
-        panelLogin.add(IpText, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 320, 30));
+        IpText.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 144, 160), 1, true));
+        panelLogin.add(IpText, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 320, 30));
 
+        jLabel20.setForeground(new java.awt.Color(254, 254, 254));
         jLabel20.setText("host");
-        panelLogin.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, -1));
+        panelLogin.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, -1, -1));
 
         errorConexionLabel.setForeground(new java.awt.Color(168, 1, 1));
         errorConexionLabel.setText("No se ha podido conectar con el servidor");
-        panelLogin.add(errorConexionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 300, 30));
+        panelLogin.add(errorConexionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 300, 30));
 
         errorLoginLabel.setForeground(new java.awt.Color(168, 1, 1));
         errorLoginLabel.setText("El nombre de usuario o contraseña es incorrecto");
-        panelLogin.add(errorLoginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 320, 20));
+        panelLogin.add(errorLoginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 320, 20));
 
         errorCamposVacios.setForeground(new java.awt.Color(161, 1, 1));
         errorCamposVacios.setText("Completa todos los campos");
-        panelLogin.add(errorCamposVacios, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 370, -1));
+        panelLogin.add(errorCamposVacios, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, 370, -1));
 
         errorCrearCuentaLabel.setForeground(new java.awt.Color(168, 1, 1));
         errorCrearCuentaLabel.setText("No se ha podido crear la cuenta: el nombre de usuario ya está en uso");
-        panelLogin.add(errorCrearCuentaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 470, 30));
+        panelLogin.add(errorCrearCuentaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 470, 30));
 
-        botonCrearCuenta.setBackground(new java.awt.Color(77, 117, 149));
+        botonCrearCuenta.setBackground(new java.awt.Color(254, 254, 254));
         botonCrearCuenta.setForeground(new java.awt.Color(77, 117, 149));
         botonCrearCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonCrearCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -151,13 +176,13 @@ public class GUIClient extends javax.swing.JFrame {
         });
         botonCrearCuenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel21.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel21.setForeground(new java.awt.Color(1, 1, 1));
         jLabel21.setText("Crear cuenta");
         botonCrearCuenta.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 120, 20));
 
-        panelLogin.add(botonCrearCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 220, 40));
+        panelLogin.add(botonCrearCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 220, 40));
 
-        getContentPane().add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 450));
+        getContentPane().add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -225,22 +250,22 @@ public class GUIClient extends javax.swing.JFrame {
 
     private void botonCrearCuentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCrearCuentaMouseEntered
         // TODO add your handling code here:
-        botonCrearCuenta.setBackground(new Color(84, 138, 182));
+        botonCrearCuenta.setBackground(new Color(217,217,217));
     }//GEN-LAST:event_botonCrearCuentaMouseEntered
 
     private void botonCrearCuentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCrearCuentaMouseExited
         // TODO add your handling code here:
-        botonCrearCuenta.setBackground(new Color(77, 117, 149));
+        botonCrearCuenta.setBackground(new Color(254,254,254));
     }//GEN-LAST:event_botonCrearCuentaMouseExited
 
     private void botonIniciarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIniciarSesionMouseEntered
         // TODO add your handling code here:
-        botonIniciarSesion.setBackground(new Color(84, 138, 182));
+        botonIniciarSesion.setBackground(new Color(217,217,217));
     }//GEN-LAST:event_botonIniciarSesionMouseEntered
 
     private void botonIniciarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIniciarSesionMouseExited
         // TODO add your handling code here:
-        botonIniciarSesion.setBackground(new Color(77, 117, 149));
+        botonIniciarSesion.setBackground(new Color(254,254,254));
     }//GEN-LAST:event_botonIniciarSesionMouseExited
 
     /**
@@ -365,12 +390,13 @@ public class GUIClient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel panelLogin;
     // End of variables declaration//GEN-END:variables
 
     private void iniciarSesion(String nombre, String password) throws RemoteException {
         //Crear el objeto cliente
-        this.clienteIm = new ClientImpl();
+        this.clienteIm = new ClientImpl(this);
         this.cliente = clienteIm;
         clienteIm.setNombre(nombre);
         if (servidor.iniciarSesion(cliente, password)) {
@@ -382,6 +408,10 @@ public class GUIClient extends javax.swing.JFrame {
             this.panelActivo = new panelPerfil(this, nombre);
             this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
             this.panelActivo.setVisible(true);
+            this.panelNotificaciones = new panelNotificaciones();
+            this.add(panelNotificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 0, 300, 450));
+            this.panelNotificaciones.setVisible(true);
+            
         } else {
             this.ocultarLabelErrores();
             this.errorLoginLabel.setVisible(true);
@@ -417,11 +447,15 @@ public class GUIClient extends javax.swing.JFrame {
     }
 
     public void panelBusqueda() {
-        this.panelActivo.setVisible(false);
-        this.remove(this.panelActivo);
-        this.panelActivo = new panelBuscar(this);
-        this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
-        this.panelActivo.setVisible(true);
+        try {
+            this.panelActivo.setVisible(false);
+            this.remove(this.panelActivo);
+            this.panelActivo = new panelBuscar(this, cliente.getNombre());
+            this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
+            this.panelActivo.setVisible(true);
+        } catch (RemoteException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void panelChats() {
@@ -430,6 +464,10 @@ public class GUIClient extends javax.swing.JFrame {
         this.panelActivo = new panelChats(this);
         this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
         this.panelActivo.setVisible(true);
+    }
+    
+    public void addNotificacion(String notificacion){
+        this.panelNotificaciones.addNotificacion(notificacion);
     }
 
 }

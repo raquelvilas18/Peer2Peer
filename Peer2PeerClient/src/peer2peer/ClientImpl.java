@@ -24,13 +24,15 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
     private HashMap<String, ClientInterface> amigosConectados;
     private ArrayList<String> peticionesAmistad;
     private String[] amigos;
+    GUIClient interfaz;
 
-    public ClientImpl() throws RemoteException {
+    public ClientImpl(GUIClient interfaz) throws RemoteException {
         super();
         this.nombre = null;
         this.amigosConectados = new HashMap<>();
         this.peticionesAmistad = new ArrayList<>();
         this.amigos = null;
+        this.interfaz = interfaz;
     }
     
      public void addAmigoConectado(ClientInterface amigoConectado) throws java.rmi.RemoteException{
@@ -41,12 +43,14 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
 
     public void nuevoAmigoConectado(ClientInterface amigoConectado) throws java.rmi.RemoteException{
        addAmigoConectado(amigoConectado);
-       this.recibirMensaje("Se acaba de conectar",amigoConectado.getNombre());
+       
+       interfaz.addNotificacion(amigoConectado.getNombre()+ " ha iniciado sesion");
     }
 
     public void nuevoAmigoDesconectado(String amigoDesconectado) throws java.rmi.RemoteException{
         amigosConectados.remove(amigoDesconectado);
-        this.recibirMensaje("Se acaba de desconectar",amigoDesconectado);
+        //this.recibirMensaje("Se acaba de desconectar",amigoDesconectado);
+        interfaz.addNotificacion(amigoDesconectado+ " ha cerrado sesion");
     }
 
     public String[] getAmigos() throws java.rmi.RemoteException{

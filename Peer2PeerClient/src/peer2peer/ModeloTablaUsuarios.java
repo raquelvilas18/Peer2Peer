@@ -56,6 +56,16 @@ public class ModeloTablaUsuarios extends AbstractTableModel{
     public String getFila(int fila){
         return usuarios.get(fila);
     }
+    
+    public void addFila(String it){
+        this.usuarios.add(it);
+        fireTableDataChanged();
+    }
+    
+    public void removeFila(int index){
+        this.usuarios.remove(index);
+        fireTableDataChanged();
+    }
 
     
 }

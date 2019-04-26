@@ -30,6 +30,7 @@ public class panelChats extends javax.swing.JPanel {
         panelAmigos = new javax.swing.JPanel();
         panelConversacion = new javax.swing.JPanel();
 
+        setMaximumSize(new java.awt.Dimension(680, 450));
         setPreferredSize(new java.awt.Dimension(680, 450));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

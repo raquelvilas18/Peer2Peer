@@ -46,6 +46,8 @@ public class panelPerfil extends javax.swing.JPanel {
         mensajePsswActualizada = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(254, 254, 254));
+        setMaximumSize(new java.awt.Dimension(680, 450));
+        setMinimumSize(new java.awt.Dimension(680, 450));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setText("Contraseña");
@@ -98,7 +100,7 @@ public class panelPerfil extends javax.swing.JPanel {
 
         jLabel10.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("PERFIL DE USUARIO");
+        jLabel10.setText("Perfil usuario");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 460, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 720, 50));

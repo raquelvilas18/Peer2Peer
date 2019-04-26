@@ -13,6 +13,7 @@ import java.util.*;
 public class panelBuscar extends javax.swing.JPanel {
 
     GUIClient parent;
+    String usuario;
 
     /**
      * Creates new form panelDer
@@ -21,9 +22,10 @@ public class panelBuscar extends javax.swing.JPanel {
     public panelBuscar(){
         initComponents();
     }
-    public panelBuscar(GUIClient parent) {
+    public panelBuscar(GUIClient parent, String usuario) {
         initComponents();
         this.parent = parent;
+        this.usuario = usuario;
         this.peticionCorrecta.setVisible(false);
         this.peticionIncorrecta.setVisible(false);
     }
@@ -130,7 +132,7 @@ public class panelBuscar extends javax.swing.JPanel {
         tabla.setFilas(new ArrayList<String>());
         try{
             if(campoBuscar.getText()==null||campoBuscar.getText().equals("")) campoBuscar.setText("");
-            String [] usuarios = parent.getServidor().buscarPersona(campoBuscar.getText().toLowerCase());
+            String [] usuarios = parent.getServidor().buscarPersona(usuario,campoBuscar.getText().toLowerCase());
             if(usuarios.length>0){
                 tabla = new ModeloTablaUsuarios();
                 tablaBuscar.setModel(tabla);
