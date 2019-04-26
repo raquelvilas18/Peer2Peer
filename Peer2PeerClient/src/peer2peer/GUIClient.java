@@ -314,6 +314,38 @@ public class GUIClient extends javax.swing.JFrame {
             Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public boolean actualizarPassword(String password){
+        try {
+            return (servidor.actualizarPassword(cliente.getNombre(), password));
+        } catch (RemoteException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    //Acepta la peticion y devuellve las peticiones pendientes actualizadas
+    public ArrayList<String> aceptarPeticion(String destinatario){
+        try {
+            servidor.aceptarPeticion(destinatario,cliente.getNombre());
+            servidor.acualizarPeticiones(cliente);
+            return clienteIm.getPeticionesAmistad();
+        } catch (RemoteException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public ArrayList<String> rechazarPeticion(String destinatario){
+        try {
+            servidor.rechazarPeticion(destinatario,cliente.getNombre());
+            servidor.acualizarPeticiones(cliente);
+            return clienteIm.getPeticionesAmistad();
+        } catch (RemoteException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField IpText;
@@ -379,6 +411,7 @@ public class GUIClient extends javax.swing.JFrame {
         this.panelActivo.setVisible(false);
         this.remove(this.panelActivo);
         this.panelActivo = new panelPeticiones(this, this.clienteIm.getPeticionesAmistad());
+
         this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
         this.panelActivo.setVisible(true);
     }

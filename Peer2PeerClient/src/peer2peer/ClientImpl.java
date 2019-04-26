@@ -29,7 +29,7 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
         super();
         this.nombre = null;
         this.amigosConectados = new HashMap<>();
-        this.peticionesAmistad = null;
+        this.peticionesAmistad = new ArrayList<>();
         this.amigos = null;
     }
     
@@ -60,6 +60,7 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
 
 
     public void setPeticionesAmistad(String[] peticionesAmistad) {
+        this.peticionesAmistad = new ArrayList<>();
         for(int i=0; i<peticionesAmistad.length; i++){
            this.peticionesAmistad.add(peticionesAmistad[i]);   
         }

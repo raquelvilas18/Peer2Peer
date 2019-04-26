@@ -13,14 +13,17 @@ import java.util.ArrayList;
  */
 public class panelPeticiones extends javax.swing.JPanel {
     GUIClient parent;
-    ArrayList<String> peticiones;
     /**
      * Creates new form panelPeticiones
      */
     public panelPeticiones(GUIClient parent, ArrayList<String> peticiones) {
         initComponents();
+        this.mensajeAcetarPeticion.setVisible(false);
+        this.mensajeRechazarPeticion.setVisible(false);
         this.parent = parent;
-        this.peticiones = peticiones;
+        ModeloTablaUsuarios tt;
+        tt = (ModeloTablaUsuarios) tablaPeticiones.getModel();
+        tt.setFilas(peticiones);
     }
 
     /**
@@ -32,90 +35,106 @@ public class panelPeticiones extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        rechazarPeticion = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        aceptarPeticion = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaPeticiones = new javax.swing.JTable();
-        jLabel11 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        botonRechazarPeticion = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        botonAceptarPeticion = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        mensajeAcetarPeticion = new javax.swing.JLabel();
+        mensajeRechazarPeticion = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(254, 254, 254));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        rechazarPeticion.setBackground(new java.awt.Color(51, 204, 255));
-
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("RECHAZAR PETICION");
-
-        javax.swing.GroupLayout rechazarPeticionLayout = new javax.swing.GroupLayout(rechazarPeticion);
-        rechazarPeticion.setLayout(rechazarPeticionLayout);
-        rechazarPeticionLayout.setHorizontalGroup(
-            rechazarPeticionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-            .addGroup(rechazarPeticionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(rechazarPeticionLayout.createSequentialGroup()
-                    .addGap(0, 12, Short.MAX_VALUE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 12, Short.MAX_VALUE)))
-        );
-        rechazarPeticionLayout.setVerticalGroup(
-            rechazarPeticionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(rechazarPeticionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(rechazarPeticionLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        add(rechazarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 160, 40));
-
-        aceptarPeticion.setBackground(new java.awt.Color(51, 204, 255));
-
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("ACEPTAR PETICION");
-
-        javax.swing.GroupLayout aceptarPeticionLayout = new javax.swing.GroupLayout(aceptarPeticion);
-        aceptarPeticion.setLayout(aceptarPeticionLayout);
-        aceptarPeticionLayout.setHorizontalGroup(
-            aceptarPeticionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-            .addGroup(aceptarPeticionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(aceptarPeticionLayout.createSequentialGroup()
-                    .addGap(0, 12, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 12, Short.MAX_VALUE)))
-        );
-        aceptarPeticionLayout.setVerticalGroup(
-            aceptarPeticionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(aceptarPeticionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(aceptarPeticionLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        add(aceptarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 160, 40));
 
         tablaPeticiones.setModel(new ModeloTablaUsuarios());
         jScrollPane2.setViewportView(tablaPeticiones);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, 140));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 490, 240));
 
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("PETICIONES DE AMISTAD PENDIENTES");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 460, 30));
+        jPanel1.setBackground(new java.awt.Color(234, 168, 87));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Peticiones de amistad pendientes");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 460, 30));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 720, 50));
+
+        botonRechazarPeticion.setBackground(new java.awt.Color(23, 118, 137));
+        botonRechazarPeticion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonRechazarPeticion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonRechazarPeticionMouseClicked(evt);
+            }
+        });
+        botonRechazarPeticion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Rechazar peticion");
+        botonRechazarPeticion.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 136, 40));
+
+        add(botonRechazarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 240, 40));
+
+        botonAceptarPeticion.setBackground(new java.awt.Color(23, 118, 137));
+        botonAceptarPeticion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonAceptarPeticion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonAceptarPeticionMouseClicked(evt);
+            }
+        });
+        botonAceptarPeticion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Aceptar peticion");
+        botonAceptarPeticion.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 136, 40));
+
+        add(botonAceptarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 240, 40));
+
+        mensajeAcetarPeticion.setForeground(new java.awt.Color(12, 87, 0));
+        mensajeAcetarPeticion.setText("Has agregado un nuevo amigo");
+        add(mensajeAcetarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
+
+        mensajeRechazarPeticion.setForeground(new java.awt.Color(135, 1, 1));
+        mensajeRechazarPeticion.setText("Has rechazado la peticion");
+        add(mensajeRechazarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 190, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonRechazarPeticionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRechazarPeticionMouseClicked
+        ModeloTablaUsuarios tt;
+        tt = (ModeloTablaUsuarios) tablaPeticiones.getModel();
+        this.mensajeRechazarPeticion.setText("Has rechazado la peticion de amistad de " + tt.getFila(tablaPeticiones.getSelectedRow()));
+        tt.setFilas(parent.aceptarPeticion(tt.getFila(tablaPeticiones.getSelectedRow())));
+        this.mensajeRechazarPeticion.setVisible(true);
+        this.mensajeAcetarPeticion.setVisible(false);
+    }//GEN-LAST:event_botonRechazarPeticionMouseClicked
+
+    private void botonAceptarPeticionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAceptarPeticionMouseClicked
+        // TODO add your handling code here:
+        ModeloTablaUsuarios tt;
+        tt = (ModeloTablaUsuarios) tablaPeticiones.getModel();
+        this.mensajeAcetarPeticion.setText("Ahora tú y " + tt.getFila(tablaPeticiones.getSelectedRow()) + " sois amigos");
+        tt.setFilas(parent.rechazarPeticion(tt.getFila(tablaPeticiones.getSelectedRow())));
+        this.mensajeAcetarPeticion.setVisible(true);
+        this.mensajeRechazarPeticion.setVisible(false);
+    }//GEN-LAST:event_botonAceptarPeticionMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel aceptarPeticion;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
+    private javax.swing.JPanel botonAceptarPeticion;
+    private javax.swing.JPanel botonRechazarPeticion;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JPanel rechazarPeticion;
+    private javax.swing.JLabel mensajeAcetarPeticion;
+    private javax.swing.JLabel mensajeRechazarPeticion;
     private javax.swing.JTable tablaPeticiones;
     // End of variables declaration//GEN-END:variables
 }

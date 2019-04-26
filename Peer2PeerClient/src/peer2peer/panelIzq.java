@@ -60,6 +60,9 @@ public class panelIzq extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonChatsMouseClicked(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonChatsMouseExited1(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonChatsMouseEntered(evt);
             }
@@ -80,6 +83,9 @@ public class panelIzq extends javax.swing.JPanel {
         botonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonBuscarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonBuscarMouseExited1(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonBuscarMouseEntered(evt);
@@ -102,6 +108,9 @@ public class panelIzq extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonPeticionesMouseClicked(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonPeticionesMouseExited1(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonPeticionesMouseEntered(evt);
             }
@@ -122,6 +131,9 @@ public class panelIzq extends javax.swing.JPanel {
         botonCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonCuentaMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonCuentaMouseExited1(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonCuentaMouseEntered(evt);
@@ -208,6 +220,26 @@ public class panelIzq extends javax.swing.JPanel {
         // TODO add your handling code here:
         parent.panelPeticiones();
     }//GEN-LAST:event_botonPeticionesMouseClicked
+
+    private void botonChatsMouseExited1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonChatsMouseExited1
+        // TODO add your handling code here:
+        botonChats.setBackground(new Color(67,117,133));
+    }//GEN-LAST:event_botonChatsMouseExited1
+
+    private void botonBuscarMouseExited1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBuscarMouseExited1
+        // TODO add your handling code here:
+        botonBuscar.setBackground(new Color(67,117,133));
+    }//GEN-LAST:event_botonBuscarMouseExited1
+
+    private void botonPeticionesMouseExited1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonPeticionesMouseExited1
+        // TODO add your handling code here:
+        botonPeticiones.setBackground(new Color(67,117,133));
+    }//GEN-LAST:event_botonPeticionesMouseExited1
+
+    private void botonCuentaMouseExited1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCuentaMouseExited1
+        // TODO add your handling code here:
+        botonCuenta.setBackground(new Color(67,117,133));
+    }//GEN-LAST:event_botonCuentaMouseExited1
 
 
 
