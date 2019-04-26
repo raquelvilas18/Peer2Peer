@@ -10,7 +10,7 @@ import java.util.*;
  * @author carlo
  */
 public class GUIClient extends javax.swing.JFrame {
-    private HashMap<String, ArrayList<String[]>> mensajes;
+    private HashMap<String, ArrayList<Mensaje>> mensajes;
     private ClientInterface cliente;
     private ClientImpl clienteIm;
     private ServerInterface servidor;
@@ -478,6 +478,17 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
     }
+    public void anadirMensaje(String amigo, String emisor, String mensaje){
+        if(this.mensajes.get(amigo).size()==10){
+            ArrayList<Mensaje> aux = new ArrayList<>();
+            for(int i =1; i<10; i++){
+                mensajes.get(amigo).set(i-1, mensajes.get(amigo).get(i));
+            }
+            mensajes.get(amigo).set(9, new Mensaje(emisor, mensaje));
+            
+            
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botonBuscar;
@@ -523,3 +534,5 @@ public class GUIClient extends javax.swing.JFrame {
     private javax.swing.JPanel panelPeticiones;
     // End of variables declaration//GEN-END:variables
 }
+
+
