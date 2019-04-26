@@ -4,12 +4,21 @@
  * and open the template in the editor.
  */
 package peer2peer;
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author carlo
  */
 public class GUIClient extends javax.swing.JFrame {
+
     private HashMap<String, ArrayList<String[]>> mensajes;
     private ClientInterface cliente;
     private ClientImpl clienteIm;
@@ -24,6 +33,9 @@ public class GUIClient extends javax.swing.JFrame {
         this.cliente = null;
         this.clienteIm = null;
         this.servidor = null;
+
+        this.errorConexionLabel.setVisible(false);
+        this.errorLoginLabel.setVisible(false);
     }
 
     /**
@@ -43,6 +55,12 @@ public class GUIClient extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        PuertoText = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        IpText = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        errorConexionLabel = new javax.swing.JLabel();
+        errorLoginLabel = new javax.swing.JLabel();
         panelDer = new javax.swing.JPanel();
         panelChats = new javax.swing.JPanel();
         panelAmigos = new javax.swing.JPanel();
@@ -91,9 +109,9 @@ public class GUIClient extends javax.swing.JFrame {
         panelLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/round-account-button-with-user-inside_icon-icons.com_72596 (1).png"))); // NOI18N
-        panelLogin.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 33, -1, -1));
-        panelLogin.add(NombreText, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 320, 40));
-        panelLogin.add(PasswordText, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 320, 40));
+        panelLogin.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, -1, -1));
+        panelLogin.add(NombreText, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 320, 30));
+        panelLogin.add(PasswordText, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 320, 30));
 
         botonIniciarSesion.setBackground(new java.awt.Color(254, 254, 254));
         botonIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -106,13 +124,29 @@ public class GUIClient extends javax.swing.JFrame {
         jLabel16.setText("Iniciar sesion");
         botonIniciarSesion.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 120, 20));
 
-        panelLogin.add(botonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 220, 40));
+        panelLogin.add(botonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 220, 40));
 
         jLabel17.setText("Nombre");
-        panelLogin.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
+        panelLogin.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, -1));
 
         jLabel18.setText("Contraseña");
-        panelLogin.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, -1));
+        panelLogin.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, -1));
+        panelLogin.add(PuertoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 320, 30));
+
+        jLabel19.setText("Puerto");
+        panelLogin.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, -1, -1));
+
+        IpText.setText("localhost");
+        panelLogin.add(IpText, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 320, 30));
+
+        jLabel20.setText("IP");
+        panelLogin.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
+
+        errorConexionLabel.setText("No se ha podido conectar con el servidor");
+        panelLogin.add(errorConexionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 300, 30));
+
+        errorLoginLabel.setText("El nombre de usuario o contraseña es incorrecto");
+        panelLogin.add(errorLoginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 320, 20));
 
         getContentPane().add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 450));
 
@@ -481,8 +515,37 @@ public class GUIClient extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIniciarSesionMouseClicked
-        // TODO add your handling code here:
-        
+        try {
+            // TODO add your handling code here:
+            String hostname = this.IpText.getText();
+            String puerto = this.PuertoText.getText();
+            String nombre = this.NombreText.getText();
+            String password = this.PasswordText.getText();
+
+            String registryURL = "rmi://" + hostname + ":" + puerto + "/peer2peer";
+            ServerInterface servidor = (ServerInterface) Naming.lookup(registryURL);
+            ClientImpl clienteIm = new ClientImpl();
+            ClientInterface cliente = clienteIm;
+            clienteIm.setNombre(nombre);
+            if (servidor.iniciarSesion(cliente, password)) {
+                this.panelLogin.setVisible(false);
+            }else{
+                this.errorLoginLabel.setVisible(true);
+                this.errorConexionLabel.setVisible(false);
+            }
+        } catch (RemoteException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+            this.errorLoginLabel.setVisible(false);
+            this.errorConexionLabel.setVisible(true);
+        } catch (NotBoundException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+            this.errorLoginLabel.setVisible(false);
+            this.errorConexionLabel.setVisible(true);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+            this.errorLoginLabel.setVisible(false);
+            this.errorConexionLabel.setVisible(true);
+        }
     }//GEN-LAST:event_botonIniciarSesionMouseClicked
 
     /**
@@ -521,9 +584,11 @@ public class GUIClient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField IpText;
     private javax.swing.JTextField NombreText;
     private javax.swing.JPanel PanelIzq;
     private javax.swing.JPasswordField PasswordText;
+    private javax.swing.JTextField PuertoText;
     private javax.swing.JPanel botonBuscar;
     private javax.swing.JPanel botonChats;
     private javax.swing.JPanel botonCuenta;
@@ -536,6 +601,8 @@ public class GUIClient extends javax.swing.JFrame {
     private javax.swing.JPanel enviarPeticion2;
     private javax.swing.JPanel enviarPeticion3;
     private javax.swing.JPanel enviarPeticion4;
+    private javax.swing.JLabel errorConexionLabel;
+    private javax.swing.JLabel errorLoginLabel;
     private javax.swing.JLabel fotoUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -547,7 +614,9 @@ public class GUIClient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

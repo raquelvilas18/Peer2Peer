@@ -25,7 +25,9 @@ public class Client {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        try {
+        GUIClient interfaz = new GUIClient();
+        interfaz.setVisible(true);
+        /*try {
             int RMIPort;
             InputStreamReader is = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(is);
@@ -70,7 +72,7 @@ public class Client {
         } catch (Exception e) {
             System.out.println("Exception in CallbackClient: " + e);
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, e);
-        }
+        }*/
     }
 
 }
