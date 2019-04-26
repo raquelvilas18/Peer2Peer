@@ -83,7 +83,9 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
         this.nombre = nombre;
     }
     public void recibirMensaje(String mensaje,String nombreEmisor) {
-        System.out.println(nombreEmisor + ": " + mensaje);
+        interfaz.anadirMensaje(nombreEmisor, nombreEmisor, mensaje);
+        interfaz.addNotificacion("Mensaje recibido de " + nombreEmisor);
+        interfaz.escribirMensajes(nombreEmisor);
     }
 
     public String getNombre() {

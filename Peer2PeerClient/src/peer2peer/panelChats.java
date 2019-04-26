@@ -5,7 +5,11 @@
  */
 package peer2peer;
 
+import java.rmi.RemoteException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -205,157 +209,162 @@ public class panelChats extends javax.swing.JPanel {
         if(parent.getClienteIm().getAmigosConectados().get(nombreAmigoChat.getText())==null || textoMensaje.getText()==null || textoMensaje.getText()==""){
             return;
         }else{
-            
+            try {
+                parent.getClienteIm().getAmigosConectados().get(nombreAmigoChat.getText()).recibirMensaje(textoMensaje.getText(), parent.getClienteIm().getNombre());
+                parent.anadirMensaje(nombreAmigoChat.getText(), parent.getClienteIm().getNombre(), textoMensaje.getText());
+                escribirMensajes(nombreAmigoChat.getText());
+            } catch (RemoteException ex) {
+                Logger.getLogger(panelChats.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        //clienteIm.getAmigosConectados().get(receptor).recibirMensaje(mensaje, clienteIm.getNombre());
     }//GEN-LAST:event_enviarMensajeMouseClicked
     public void escribirMensajes(String receptor){
         ArrayList<Mensaje> mensajesChat = mensajes.get(receptor);
             switch(mensajesChat.size()){
                 case 10:
                     mensaje0.setText(mensajesChat.get(9).getMensaje());
-                    if(mensajesChat.get(9).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(9).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje1.setText(mensajesChat.get(8).getMensaje());
-                    if(mensajesChat.get(8).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(8).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje2.setText(mensajesChat.get(7).getMensaje());
-                    if(mensajesChat.get(7).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(7).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje3.setText(mensajesChat.get(6).getMensaje());
-                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje3.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje3.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje4.setText(mensajesChat.get(5).getMensaje());
-                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje4.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje4.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje5.setText(mensajesChat.get(4).getMensaje());
-                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje5.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje5.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje5.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje5.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje6.setText(mensajesChat.get(3).getMensaje());
-                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje6.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje6.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje6.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje6.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje7.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje7.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje7.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje7.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje7.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje8.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje8.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje8.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje8.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje8.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje9.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje9.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje9.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje9.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje9.setHorizontalAlignment(SwingConstants.RIGHT);}
                     break;
                 case 9:
                     mensaje0.setText(mensajesChat.get(8).getMensaje());
-                    if(mensajesChat.get(8).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(8).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje1.setText(mensajesChat.get(7).getMensaje());
-                    if(mensajesChat.get(7).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(7).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje2.setText(mensajesChat.get(6).getMensaje());
-                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje3.setText(mensajesChat.get(5).getMensaje());
-                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje3.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje3.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje4.setText(mensajesChat.get(4).getMensaje());
-                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje4.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje4.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje5.setText(mensajesChat.get(3).getMensaje());
-                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje5.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje5.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje5.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje5.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje6.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje6.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje6.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje6.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje6.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje7.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje7.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje7.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje7.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje7.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje8.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje8.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje8.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje8.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje8.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje9.setText("");
                     break;
                 case 8:
                     mensaje0.setText(mensajesChat.get(7).getMensaje());
-                    if(mensajesChat.get(7).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(7).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje1.setText(mensajesChat.get(6).getMensaje());
-                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje2.setText(mensajesChat.get(5).getMensaje());
-                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje3.setText(mensajesChat.get(4).getMensaje());
-                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje3.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje3.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje4.setText(mensajesChat.get(3).getMensaje());
-                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje4.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje4.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje5.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje5.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje5.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje5.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje5.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje6.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje6.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje6.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje6.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje6.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje7.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje7.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje7.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje7.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje7.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje8.setText("");
                     mensaje9.setText("");
                     break;
                 case 7:
                     mensaje0.setText(mensajesChat.get(6).getMensaje());
-                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje1.setText(mensajesChat.get(5).getMensaje());
-                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje2.setText(mensajesChat.get(4).getMensaje());
-                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje3.setText(mensajesChat.get(3).getMensaje());
-                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje3.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje3.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje4.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje4.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje4.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje5.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje5.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje5.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje5.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje5.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje6.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje6.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje6.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje6.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje6.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje7.setText("");
                     mensaje8.setText("");
@@ -363,28 +372,28 @@ public class panelChats extends javax.swing.JPanel {
                     break;
                 case 6:
                     mensaje0.setText(mensajesChat.get(5).getMensaje());
-                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje1.setText(mensajesChat.get(4).getMensaje());
-                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje2.setText(mensajesChat.get(3).getMensaje());
-                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje3.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje3.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje3.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje4.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje4.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje4.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje5.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje5.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje5.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje5.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje5.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje6.setText("");
                     mensaje7.setText("");
@@ -393,24 +402,24 @@ public class panelChats extends javax.swing.JPanel {
                     break;
                 case 5:
                     mensaje0.setText(mensajesChat.get(4).getMensaje());
-                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje1.setText(mensajesChat.get(3).getMensaje());
-                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje2.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje3.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje3.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje3.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje4.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje4.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje4.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje5.setText("");
                     mensaje6.setText("");
@@ -420,20 +429,20 @@ public class panelChats extends javax.swing.JPanel {
                     break;
                 case 4:
                     mensaje0.setText(mensajesChat.get(3).getMensaje());
-                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje1.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje2.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje3.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje3.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje3.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje4.setText("");
                     mensaje5.setText("");
@@ -444,16 +453,16 @@ public class panelChats extends javax.swing.JPanel {
                     break;
                 case 3:
                     mensaje0.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje1.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje2.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje3.setText("");
                     mensaje4.setText("");
@@ -465,12 +474,12 @@ public class panelChats extends javax.swing.JPanel {
                     break;
                 case 2:
                     mensaje0.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje1.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje2.setText("");
                     mensaje3.setText("");
@@ -483,8 +492,8 @@ public class panelChats extends javax.swing.JPanel {
                     break;
                 case 1:
                     mensaje0.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
-                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
                     
                     mensaje1.setText("");
                     mensaje2.setText("");
