@@ -140,13 +140,17 @@ public class GUIClient extends javax.swing.JFrame {
             String nombre = this.NombreText.getText();
             String password = this.PasswordText.getText();
 
+            //Establecer la conexion con el servidor
             String registryURL = "rmi://" + hostname + ":" + puerto + "/peer2peer";
             ServerInterface servidor = (ServerInterface) Naming.lookup(registryURL);
-            ClientImpl clienteIm = new ClientImpl();
-            ClientInterface cliente = clienteIm;
+            
+            //Crear el objeto cliente
+            this.clienteIm  = new ClientImpl();
+            this.cliente  = clienteIm;
             clienteIm.setNombre(nombre);
             if (servidor.iniciarSesion(cliente, password)) {
                 this.panelLogin.setVisible(false);
+                
             }else{
                 this.errorLoginLabel.setVisible(true);
                 this.errorConexionLabel.setVisible(false);
