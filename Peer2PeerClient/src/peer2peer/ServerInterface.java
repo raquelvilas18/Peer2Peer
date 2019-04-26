@@ -17,8 +17,10 @@ public interface ServerInterface extends java.rmi.Remote{
 
     public void cerrarSesion( ClientInterface callbackClientObject)throws java.rmi.RemoteException;
     
+
     public String[] buscarPersona(String nombre)throws java.rmi.RemoteException;
     
     public void enviarPeticion(String emisor, String receptor)throws java.rmi.RemoteException;
+
     
 }
