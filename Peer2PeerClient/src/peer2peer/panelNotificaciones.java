@@ -5,6 +5,7 @@
  */
 package peer2peer;
 
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -19,6 +20,7 @@ public class panelNotificaciones extends javax.swing.JPanel {
      */
     public panelNotificaciones() {
         initComponents();
+        tablaNotificaciones.setDefaultRenderer(String.class, new RowRendererNotificaciones());
     }
 
     /**
@@ -51,12 +53,15 @@ public class panelNotificaciones extends javax.swing.JPanel {
         add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 360, 50));
 
         jScrollPane1.setBackground(new java.awt.Color(254, 254, 254));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        tablaNotificaciones.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tablaNotificaciones.setModel(new ModeloTablaUsuarios());
+        tablaNotificaciones.setGridColor(new java.awt.Color(254, 254, 254));
         tablaNotificaciones.setTableHeader(null);
         jScrollPane1.setViewportView(tablaNotificaciones);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 270, 300));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 280, 300));
 
         botonLeido.setBackground(new java.awt.Color(144, 144, 144));
         botonLeido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -68,10 +73,10 @@ public class panelNotificaciones extends javax.swing.JPanel {
         botonLeido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel2.setText("Marcar como leida");
-        botonLeido.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -3, -1, 30));
+        jLabel2.setText("Borrar notificacion");
+        botonLeido.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 140, 30));
 
-        add(botonLeido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 150, 30));
+        add(botonLeido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 180, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonLeidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLeidoMouseClicked
@@ -80,15 +85,21 @@ public class panelNotificaciones extends javax.swing.JPanel {
         tt = (ModeloTablaUsuarios) tablaNotificaciones.getModel();
         tt.removeFila(tablaNotificaciones.getSelectedRow());
 
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        tablaNotificaciones.setDefaultRenderer(String.class, centerRenderer);
+//        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+//        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+//        tablaNotificaciones.setDefaultRenderer(String.class, centerRenderer);
     }//GEN-LAST:event_botonLeidoMouseClicked
 
     public void addNotificacion(String notificacion) {
         ModeloTablaUsuarios tt;
         tt = (ModeloTablaUsuarios) tablaNotificaciones.getModel();
         tt.addFila(notificacion);
+    }
+    
+    public void vaciar(){
+        ModeloTablaUsuarios tt;
+        tt = (ModeloTablaUsuarios) tablaNotificaciones.getModel();
+        tt.setFilas(new ArrayList<>());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

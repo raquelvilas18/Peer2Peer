@@ -13,9 +13,9 @@ import java.util.Vector;
  */
 public interface ServerInterface extends java.rmi.Remote{
     
-    public boolean iniciarSesion(ClientInterface ClientObject, String password) throws java.rmi.RemoteException;
+    public boolean iniciarSesion(ClientInterface callbackClientObject, String password) throws java.rmi.RemoteException;
 
-    public void cerrarSesion( ClientInterface ClientObject)throws java.rmi.RemoteException;
+    public void cerrarSesion( ClientInterface callbackClientObject)throws java.rmi.RemoteException;
     
     public String[] buscarPersona(String usuario,String nombre)throws java.rmi.RemoteException;
     
@@ -32,4 +32,6 @@ public interface ServerInterface extends java.rmi.Remote{
     public boolean actualizarPassword(String nombre, String nuevaPasswrod)throws java.rmi.RemoteException;
     
     public void acualizarPeticiones(ClientInterface ClientObject) throws java.rmi.RemoteException;
+    
+    public void acualizarAmigos(ClientInterface ClientObject) throws java.rmi.RemoteException;
 }
