@@ -28,6 +28,9 @@ public class GUIClient extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        panelChats = new javax.swing.JPanel();
+        panelAmigos = new javax.swing.JPanel();
+        panelConversacion = new javax.swing.JPanel();
         panelBuscar = new javax.swing.JPanel();
         campoBuscar = new javax.swing.JTextField();
         buscar = new javax.swing.JPanel();
@@ -71,6 +74,38 @@ public class GUIClient extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelChats.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        javax.swing.GroupLayout panelAmigosLayout = new javax.swing.GroupLayout(panelAmigos);
+        panelAmigos.setLayout(panelAmigosLayout);
+        panelAmigosLayout.setHorizontalGroup(
+            panelAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+        );
+        panelAmigosLayout.setVerticalGroup(
+            panelAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+
+        panelChats.add(panelAmigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 440, 450));
+
+        panelConversacion.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout panelConversacionLayout = new javax.swing.GroupLayout(panelConversacion);
+        panelConversacion.setLayout(panelConversacionLayout);
+        panelConversacionLayout.setHorizontalGroup(
+            panelConversacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+        );
+        panelConversacionLayout.setVerticalGroup(
+            panelConversacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+
+        panelChats.add(panelConversacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel1.add(panelChats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
 
         panelBuscar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -366,7 +401,7 @@ public class GUIClient extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("CHATS");
+        jLabel4.setText("PERFIL");
 
         javax.swing.GroupLayout botonCuentaLayout = new javax.swing.GroupLayout(botonCuenta);
         botonCuenta.setLayout(botonCuentaLayout);
@@ -394,7 +429,7 @@ public class GUIClient extends javax.swing.JFrame {
         nombreUsuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         nombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombreUsuario.setText("USUARIO");
-        jPanel2.add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 200, 30));
+        jPanel2.add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 450));
 
@@ -472,7 +507,10 @@ public class GUIClient extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel nombreUsuario;
+    private javax.swing.JPanel panelAmigos;
     private javax.swing.JPanel panelBuscar;
+    private javax.swing.JPanel panelChats;
+    private javax.swing.JPanel panelConversacion;
     private javax.swing.JPanel panelPerfil;
     private javax.swing.JPanel panelPeticiones;
     // End of variables declaration//GEN-END:variables
