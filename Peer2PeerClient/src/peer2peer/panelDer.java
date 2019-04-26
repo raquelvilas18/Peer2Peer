@@ -58,6 +58,7 @@ public class panelDer extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         panelPeticiones = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -167,89 +168,47 @@ public class panelDer extends javax.swing.JPanel {
         panelPerfil.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setText("Contraseña");
-        panelPerfil.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 100, 29));
+        panelPerfil.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 100, 29));
 
         jLabel7.setText("Nombre usuario");
-        panelPerfil.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 100, 29));
+        panelPerfil.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 100, 29));
 
         jTextField1.setText("jTextField1");
-        panelPerfil.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 320, 30));
+        panelPerfil.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 320, 30));
 
         jPasswordField1.setText("jPasswordField1");
-        panelPerfil.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 320, 30));
+        panelPerfil.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 320, 30));
 
         enviarPeticion1.setBackground(new java.awt.Color(51, 204, 255));
+        enviarPeticion1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Enviar petición");
+        enviarPeticion1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 0, 136, 40));
 
-        javax.swing.GroupLayout enviarPeticion1Layout = new javax.swing.GroupLayout(enviarPeticion1);
-        enviarPeticion1.setLayout(enviarPeticion1Layout);
-        enviarPeticion1Layout.setHorizontalGroup(
-            enviarPeticion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-            .addGroup(enviarPeticion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(enviarPeticion1Layout.createSequentialGroup()
-                    .addGap(0, 12, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 12, Short.MAX_VALUE)))
-        );
-        enviarPeticion1Layout.setVerticalGroup(
-            enviarPeticion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(enviarPeticion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(enviarPeticion1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        panelPerfil.add(enviarPeticion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 160, 40));
+        panelPerfil.add(enviarPeticion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 160, 40));
 
         enviarPeticion2.setBackground(new java.awt.Color(51, 204, 255));
+        enviarPeticion2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Enviar petición");
+        enviarPeticion2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 0, 136, 40));
 
-        javax.swing.GroupLayout enviarPeticion2Layout = new javax.swing.GroupLayout(enviarPeticion2);
-        enviarPeticion2.setLayout(enviarPeticion2Layout);
-        enviarPeticion2Layout.setHorizontalGroup(
-            enviarPeticion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(enviarPeticion2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        enviarPeticion2Layout.setVerticalGroup(
-            enviarPeticion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
+        panelPerfil.add(enviarPeticion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 160, 40));
 
-        panelPerfil.add(enviarPeticion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 160, 40));
+        jPanel1.setBackground(new java.awt.Color(234, 168, 87));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(165, 165, 165));
-
+        jLabel10.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("PERFIL DE USUARIO");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 460, 30));
 
         panelPerfil.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 720, 70));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-editar-usuario-masculino-100(1).png"))); // NOI18N
+        panelPerfil.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, -1, -1));
 
         add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
 
@@ -342,6 +301,7 @@ public class panelDer extends javax.swing.JPanel {
     private javax.swing.JPanel enviarPeticion2;
     private javax.swing.JPanel enviarPeticion3;
     private javax.swing.JPanel enviarPeticion4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
