@@ -75,8 +75,8 @@ public class GUIClient extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1200, 500));
-        setMinimumSize(new java.awt.Dimension(1200, 450));
-        setPreferredSize(new java.awt.Dimension(1200, 450));
+        setMinimumSize(new java.awt.Dimension(1200, 470));
+        setPreferredSize(new java.awt.Dimension(1200, 470));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -396,6 +396,7 @@ public class GUIClient extends javax.swing.JFrame {
 
     private void iniciarSesion(String nombre, String password) throws RemoteException {
         //Crear el objeto cliente
+        
         this.clienteIm = new ClientImpl(this);
         this.cliente = clienteIm;
         clienteIm.setNombre(nombre);
@@ -411,7 +412,7 @@ public class GUIClient extends javax.swing.JFrame {
             this.panelNotificaciones = new panelNotificaciones();
             this.add(panelNotificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 0, 300, 450));
             this.panelNotificaciones.setVisible(true);
-            
+            this.vaciarCamposLogin();
         } else {
             this.ocultarLabelErrores();
             this.errorLoginLabel.setVisible(true);
@@ -438,12 +439,17 @@ public class GUIClient extends javax.swing.JFrame {
     }
 
     public void panelPeticiones() {
-        this.panelActivo.setVisible(false);
-        this.remove(this.panelActivo);
-        this.panelActivo = new panelPeticiones(this, this.clienteIm.getPeticionesAmistad());
-
-        this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
-        this.panelActivo.setVisible(true);
+        try {
+            this.panelActivo.setVisible(false);
+            this.remove(this.panelActivo);
+            servidor.acualizarPeticiones(cliente);
+            this.panelActivo = new panelPeticiones(this, this.clienteIm.getPeticionesAmistad());
+            
+            this.add(panelActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
+            this.panelActivo.setVisible(true);
+        } catch (RemoteException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void panelBusqueda() {
@@ -468,6 +474,25 @@ public class GUIClient extends javax.swing.JFrame {
     
     public void addNotificacion(String notificacion){
         this.panelNotificaciones.addNotificacion(notificacion);
+    }
+    
+    public void cerrarSesion(){
+        try {
+            servidor.cerrarSesion(cliente);
+            panelIzq.setVisible(false);
+            panelActivo.setVisible(false);
+            this.remove(panelIzq);
+            this.remove(panelActivo);
+            this.panelLogin.setVisible(true);
+        } catch (RemoteException ex) {
+            Logger.getLogger(GUIClient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void vaciarCamposLogin(){
+        this.NombreText.setText("");
+        this.PasswordText.setText("");
+        this.PuertoText.setText("");
     }
 
 }

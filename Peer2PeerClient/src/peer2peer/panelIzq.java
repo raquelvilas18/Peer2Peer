@@ -47,6 +47,7 @@ public class panelIzq extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         fotoUsuario = new javax.swing.JLabel();
         nombreUsuario = new javax.swing.JLabel();
+        cerrarSesion = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(43, 96, 113));
         setMinimumSize(new java.awt.Dimension(240, 450));
@@ -75,7 +76,7 @@ public class panelIzq extends javax.swing.JPanel {
         jLabel1.setText("chats");
         botonChats.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 12, 129, 26));
 
-        add(botonChats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 250, 50));
+        add(botonChats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 250, 50));
 
         botonBuscar.setBackground(new java.awt.Color(67, 117, 133));
         botonBuscar.setForeground(new java.awt.Color(67, 117, 133));
@@ -99,7 +100,7 @@ public class panelIzq extends javax.swing.JPanel {
         jLabel2.setText("buscar");
         botonBuscar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 12, 129, 26));
 
-        add(botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 250, 50));
+        add(botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 250, 50));
 
         botonPeticiones.setBackground(new java.awt.Color(67, 117, 133));
         botonPeticiones.setForeground(new java.awt.Color(67, 117, 133));
@@ -123,7 +124,7 @@ public class panelIzq extends javax.swing.JPanel {
         jLabel3.setText("peticiones");
         botonPeticiones.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 12, 129, 26));
 
-        add(botonPeticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 250, 50));
+        add(botonPeticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 250, 50));
 
         botonCuenta.setBackground(new java.awt.Color(67, 117, 133));
         botonCuenta.setForeground(new java.awt.Color(67, 117, 133));
@@ -147,7 +148,7 @@ public class panelIzq extends javax.swing.JPanel {
         jLabel4.setText("perfil");
         botonCuenta.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 12, 129, 26));
 
-        add(botonCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 250, 50));
+        add(botonCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 250, 50));
 
         fotoUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fotoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-usuario-masculino-en-círculo-100.png"))); // NOI18N
@@ -158,6 +159,16 @@ public class panelIzq extends javax.swing.JPanel {
         nombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombreUsuario.setText("USUARIO");
         add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 200, 30));
+
+        cerrarSesion.setForeground(new java.awt.Color(254, 254, 254));
+        cerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-apagar-18.png"))); // NOI18N
+        cerrarSesion.setText("Cerrar sesión");
+        cerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cerrarSesionMouseClicked(evt);
+            }
+        });
+        add(cerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonChatsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonChatsMouseEntered
@@ -241,6 +252,11 @@ public class panelIzq extends javax.swing.JPanel {
         botonCuenta.setBackground(new Color(67,117,133));
     }//GEN-LAST:event_botonCuentaMouseExited1
 
+    private void cerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarSesionMouseClicked
+        // TODO add your handling code here:
+        parent.cerrarSesion();
+    }//GEN-LAST:event_cerrarSesionMouseClicked
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -248,6 +264,7 @@ public class panelIzq extends javax.swing.JPanel {
     private javax.swing.JPanel botonChats;
     private javax.swing.JPanel botonCuenta;
     private javax.swing.JPanel botonPeticiones;
+    private javax.swing.JLabel cerrarSesion;
     private javax.swing.JLabel fotoUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
