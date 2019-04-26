@@ -5,6 +5,7 @@
  */
 package peer2peer;
 
+import java.awt.event.KeyEvent;
 import java.rmi.RemoteException;
 import java.util.*;
 import java.util.logging.Level;
@@ -16,26 +17,28 @@ import javax.swing.SwingConstants;
  * @author carlo
  */
 public class panelChats extends javax.swing.JPanel {
+
     GUIClient parent;
     String chatActivo;
     HashMap<String, ArrayList<Mensaje>> mensajes;
+
     /**
      * Creates new form panelChats
      */
     public panelChats(GUIClient parent, HashMap<String, ArrayList<Mensaje>> mensajes) {
         initComponents();
         this.parent = parent;
-        chatActivo = null;
         this.mensajes = mensajes;
         ModeloTablaUsuarios tabla = new ModeloTablaUsuarios();
         tablaChats.setModel(tabla);
         this.panelConver.setVisible(false);
-        try{
+        try {
             tabla.setFilas(new ArrayList<>(Arrays.asList(parent.getClienteIm().getAmigos())));
-        }catch(Exception e){
-            
+        } catch (Exception e) {
+
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -103,43 +106,43 @@ public class panelChats extends javax.swing.JPanel {
 
         mensaje0.setBackground(new java.awt.Color(102, 102, 102));
         mensaje0.setText("jLabel1");
-        panelConver.add(mensaje0, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 420, 35));
+        panelConver.add(mensaje0, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 400, 35));
 
         mensaje9.setBackground(new java.awt.Color(102, 102, 102));
         mensaje9.setText("jLabel1");
-        panelConver.add(mensaje9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 420, 35));
+        panelConver.add(mensaje9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 400, 35));
 
         mensaje8.setBackground(new java.awt.Color(102, 102, 102));
         mensaje8.setText("jLabel1");
-        panelConver.add(mensaje8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 420, 35));
+        panelConver.add(mensaje8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 400, 35));
 
         mensaje7.setBackground(new java.awt.Color(102, 102, 102));
         mensaje7.setText("jLabel1");
-        panelConver.add(mensaje7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 420, 35));
+        panelConver.add(mensaje7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 400, 35));
 
         mensaje6.setBackground(new java.awt.Color(102, 102, 102));
         mensaje6.setText("jLabel1");
-        panelConver.add(mensaje6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 420, 35));
+        panelConver.add(mensaje6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 400, 35));
 
         mensaje5.setBackground(new java.awt.Color(102, 102, 102));
         mensaje5.setText("jLabel1");
-        panelConver.add(mensaje5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 420, 35));
+        panelConver.add(mensaje5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 400, 35));
 
         mensaje4.setBackground(new java.awt.Color(102, 102, 102));
         mensaje4.setText("jLabel1");
-        panelConver.add(mensaje4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 420, 35));
+        panelConver.add(mensaje4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 400, 35));
 
         mensaje3.setBackground(new java.awt.Color(102, 102, 102));
         mensaje3.setText("jLabel1");
-        panelConver.add(mensaje3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 420, 35));
+        panelConver.add(mensaje3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 400, 35));
 
         mensaje2.setBackground(new java.awt.Color(102, 102, 102));
         mensaje2.setText("jLabel1");
-        panelConver.add(mensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 420, 35));
+        panelConver.add(mensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 400, 35));
 
         mensaje1.setBackground(new java.awt.Color(102, 102, 102));
         mensaje1.setText("jLabel1");
-        panelConver.add(mensaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 420, 35));
+        panelConver.add(mensaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 400, 35));
 
         enviarMensaje.setBackground(new java.awt.Color(255, 255, 255));
         enviarMensaje.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -150,11 +153,16 @@ public class panelChats extends javax.swing.JPanel {
         enviarMensaje.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-enviado-34.png"))); // NOI18N
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enviarMensaje.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 30));
 
         panelConver.add(enviarMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 40, 30));
 
-        textoMensaje.setText("jTextField1");
+        textoMensaje.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textoMensajeKeyPressed(evt);
+            }
+        });
         panelConver.add(textoMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 400, 30));
 
         add(panelConver, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 440, 450));
@@ -191,334 +199,529 @@ public class panelChats extends javax.swing.JPanel {
         // TODO add your handling code here:
         ModeloTablaUsuarios m = (ModeloTablaUsuarios) tablaChats.getModel();
         this.panelConver.setVisible(true);
-        try{
+        try {
             String receptor = m.getFila(tablaChats.getSelectedRow());
             nombreAmigoChat.setText(receptor);
-            if(parent.getClienteIm().getAmigosConectados().get(receptor)==null){
+            if (parent.getClienteIm().getAmigosConectados().get(receptor) == null) {
                 enLinea.setVisible(false);
                 desconectado.setVisible(true);
+            }else{
+                enLinea.setVisible(true);
+                desconectado.setVisible(false);
             }
             escribirMensajes(receptor);
-        }catch(Exception e){
-            
+        } catch (Exception e) {
+
         }
     }//GEN-LAST:event_tablaChatsMouseClicked
 
     private void enviarMensajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviarMensajeMouseClicked
         // TODO add your handling code here:
-        if(parent.getClienteIm().getAmigosConectados().get(nombreAmigoChat.getText())==null || textoMensaje.getText()==null || textoMensaje.getText()==""){
+        if (parent.getClienteIm().getAmigosConectados().get(nombreAmigoChat.getText()) == null) {
+                enLinea.setVisible(false);
+                desconectado.setVisible(true);
+            }else{
+                enLinea.setVisible(true);
+                desconectado.setVisible(false);
+            }
+        if (parent.getClienteIm().getAmigosConectados().get(nombreAmigoChat.getText()) == null || textoMensaje.getText() == null || textoMensaje.getText() == "") {
             return;
-        }else{
+        } else {
             try {
                 parent.getClienteIm().getAmigosConectados().get(nombreAmigoChat.getText()).recibirMensaje(textoMensaje.getText(), parent.getClienteIm().getNombre());
                 parent.anadirMensaje(nombreAmigoChat.getText(), parent.getClienteIm().getNombre(), textoMensaje.getText());
                 escribirMensajes(nombreAmigoChat.getText());
+                textoMensaje.setText("");
             } catch (RemoteException ex) {
                 Logger.getLogger(panelChats.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_enviarMensajeMouseClicked
-    public void escribirMensajes(String receptor){
+
+    private void textoMensajeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoMensajeKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (parent.getClienteIm().getAmigosConectados().get(nombreAmigoChat.getText()) == null || textoMensaje.getText() == null || textoMensaje.getText() == "") {
+                return;
+            } else {
+                try {
+                    parent.getClienteIm().getAmigosConectados().get(nombreAmigoChat.getText()).recibirMensaje(textoMensaje.getText(), parent.getClienteIm().getNombre());
+                    parent.anadirMensaje(nombreAmigoChat.getText(), parent.getClienteIm().getNombre(), textoMensaje.getText());
+                    escribirMensajes(nombreAmigoChat.getText());
+                    textoMensaje.setText("");
+                } catch (RemoteException ex) {
+                    Logger.getLogger(panelChats.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+    }//GEN-LAST:event_textoMensajeKeyPressed
+    public void escribirMensajes(String receptor) {
+
         ArrayList<Mensaje> mensajesChat = mensajes.get(receptor);
-            switch(mensajesChat.size()){
-                case 10:
-                    mensaje0.setText(mensajesChat.get(9).getMensaje());
-                    if(mensajesChat.get(9).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje1.setText(mensajesChat.get(8).getMensaje());
-                    if(mensajesChat.get(8).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje2.setText(mensajesChat.get(7).getMensaje());
-                    if(mensajesChat.get(7).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje3.setText(mensajesChat.get(6).getMensaje());
-                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje4.setText(mensajesChat.get(5).getMensaje());
-                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje5.setText(mensajesChat.get(4).getMensaje());
-                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje5.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje5.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje6.setText(mensajesChat.get(3).getMensaje());
-                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje6.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje6.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje7.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje7.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje7.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje8.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje8.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje8.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje9.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje9.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje9.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    break;
-                case 9:
-                    mensaje0.setText(mensajesChat.get(8).getMensaje());
-                    if(mensajesChat.get(8).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje1.setText(mensajesChat.get(7).getMensaje());
-                    if(mensajesChat.get(7).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje2.setText(mensajesChat.get(6).getMensaje());
-                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje3.setText(mensajesChat.get(5).getMensaje());
-                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje4.setText(mensajesChat.get(4).getMensaje());
-                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje5.setText(mensajesChat.get(3).getMensaje());
-                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje5.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje5.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje6.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje6.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje6.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje7.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje7.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje7.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje8.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje8.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje8.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje9.setText("");
-                    break;
-                case 8:
-                    mensaje0.setText(mensajesChat.get(7).getMensaje());
-                    if(mensajesChat.get(7).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje1.setText(mensajesChat.get(6).getMensaje());
-                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje2.setText(mensajesChat.get(5).getMensaje());
-                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje3.setText(mensajesChat.get(4).getMensaje());
-                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje4.setText(mensajesChat.get(3).getMensaje());
-                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje5.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje5.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje5.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje6.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje6.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje6.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje7.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje7.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje7.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje8.setText("");
-                    mensaje9.setText("");
-                    break;
-                case 7:
-                    mensaje0.setText(mensajesChat.get(6).getMensaje());
-                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje1.setText(mensajesChat.get(5).getMensaje());
-                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje2.setText(mensajesChat.get(4).getMensaje());
-                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje3.setText(mensajesChat.get(3).getMensaje());
-                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje4.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje5.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje5.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje5.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje6.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje6.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje6.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje7.setText("");
-                    mensaje8.setText("");
-                    mensaje9.setText("");
-                    break;
-                case 6:
-                    mensaje0.setText(mensajesChat.get(5).getMensaje());
-                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje1.setText(mensajesChat.get(4).getMensaje());
-                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje2.setText(mensajesChat.get(3).getMensaje());
-                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje3.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje4.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje5.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje5.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje5.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje6.setText("");
-                    mensaje7.setText("");
-                    mensaje8.setText("");
-                    mensaje9.setText("");
-                    break;
-                case 5:
-                    mensaje0.setText(mensajesChat.get(4).getMensaje());
-                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje1.setText(mensajesChat.get(3).getMensaje());
-                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje2.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje3.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje4.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje5.setText("");
-                    mensaje6.setText("");
-                    mensaje7.setText("");
-                    mensaje8.setText("");
-                    mensaje9.setText("");
-                    break;
-                case 4:
-                    mensaje0.setText(mensajesChat.get(3).getMensaje());
-                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje1.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje2.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje3.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje4.setText("");
-                    mensaje5.setText("");
-                    mensaje6.setText("");
-                    mensaje7.setText("");
-                    mensaje8.setText("");
-                    mensaje9.setText("");
-                    break;
-                case 3:
-                    mensaje0.setText(mensajesChat.get(2).getMensaje());
-                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje1.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje2.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje3.setText("");
-                    mensaje4.setText("");
-                    mensaje5.setText("");
-                    mensaje6.setText("");
-                    mensaje7.setText("");
-                    mensaje8.setText("");
-                    mensaje9.setText("");
-                    break;
-                case 2:
-                    mensaje0.setText(mensajesChat.get(1).getMensaje());
-                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje1.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje2.setText("");
-                    mensaje3.setText("");
-                    mensaje4.setText("");
-                    mensaje5.setText("");
-                    mensaje6.setText("");
-                    mensaje7.setText("");
-                    mensaje8.setText("");
-                    mensaje9.setText("");
-                    break;
-                case 1:
-                    mensaje0.setText(mensajesChat.get(0).getMensaje());
-                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
-                    }else{mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);}
-                    
-                    mensaje1.setText("");
-                    mensaje2.setText("");
-                    mensaje3.setText("");
-                    mensaje4.setText("");
-                    mensaje5.setText("");
-                    mensaje6.setText("");
-                    mensaje7.setText("");
-                    mensaje8.setText("");
-                    mensaje9.setText("");
-                    break;
-                case 0:
-                    mensaje0.setText("");
-                    mensaje1.setText("");
-                    mensaje2.setText("");
-                    mensaje3.setText("");
-                    mensaje4.setText("");
-                    mensaje5.setText("");
-                    mensaje6.setText("");
-                    mensaje7.setText("");
-                    mensaje8.setText("");
-                    mensaje9.setText("");
-                    break;
-                    
-                    
+        switch (mensajesChat.size()) {
+            case 10:
+                mensaje0.setText(mensajesChat.get(9).getMensaje());
+                if (mensajesChat.get(9).getEmisor().equals(receptor)) {
+                    mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje1.setText(mensajesChat.get(8).getMensaje());
+                if (mensajesChat.get(8).getEmisor().equals(receptor)) {
+                    mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje2.setText(mensajesChat.get(7).getMensaje());
+                if (mensajesChat.get(7).getEmisor().equals(receptor)) {
+                    mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje3.setText(mensajesChat.get(6).getMensaje());
+                if (mensajesChat.get(6).getEmisor().equals(receptor)) {
+                    mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje4.setText(mensajesChat.get(5).getMensaje());
+                if (mensajesChat.get(5).getEmisor().equals(receptor)) {
+                    mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje5.setText(mensajesChat.get(4).getMensaje());
+                if (mensajesChat.get(4).getEmisor().equals(receptor)) {
+                    mensaje5.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje5.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje6.setText(mensajesChat.get(3).getMensaje());
+                if (mensajesChat.get(3).getEmisor().equals(receptor)) {
+                    mensaje6.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje6.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje7.setText(mensajesChat.get(2).getMensaje());
+                if (mensajesChat.get(2).getEmisor().equals(receptor)) {
+                    mensaje7.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje7.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje8.setText(mensajesChat.get(1).getMensaje());
+                if (mensajesChat.get(1).getEmisor().equals(receptor)) {
+                    mensaje8.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje8.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje9.setText(mensajesChat.get(0).getMensaje());
+                if (mensajesChat.get(0).getEmisor().equals(receptor)) {
+                    mensaje9.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje9.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+                break;
+            case 9:
+                mensaje0.setText(mensajesChat.get(8).getMensaje());
+                if (mensajesChat.get(8).getEmisor().equals(receptor)) {
+                    mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje1.setText(mensajesChat.get(7).getMensaje());
+                if (mensajesChat.get(7).getEmisor().equals(receptor)) {
+                    mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje2.setText(mensajesChat.get(6).getMensaje());
+                if (mensajesChat.get(6).getEmisor().equals(receptor)) {
+                    mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje3.setText(mensajesChat.get(5).getMensaje());
+                if (mensajesChat.get(5).getEmisor().equals(receptor)) {
+                    mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje4.setText(mensajesChat.get(4).getMensaje());
+                if (mensajesChat.get(4).getEmisor().equals(receptor)) {
+                    mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje5.setText(mensajesChat.get(3).getMensaje());
+                if (mensajesChat.get(3).getEmisor().equals(receptor)) {
+                    mensaje5.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje5.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje6.setText(mensajesChat.get(2).getMensaje());
+                if (mensajesChat.get(2).getEmisor().equals(receptor)) {
+                    mensaje6.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje6.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje7.setText(mensajesChat.get(1).getMensaje());
+                if (mensajesChat.get(1).getEmisor().equals(receptor)) {
+                    mensaje7.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje7.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje8.setText(mensajesChat.get(0).getMensaje());
+                if (mensajesChat.get(0).getEmisor().equals(receptor)) {
+                    mensaje8.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje8.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje9.setText("");
+                break;
+            case 8:
+                mensaje0.setText(mensajesChat.get(7).getMensaje());
+                if (mensajesChat.get(7).getEmisor().equals(receptor)) {
+                    mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje1.setText(mensajesChat.get(6).getMensaje());
+                if (mensajesChat.get(6).getEmisor().equals(receptor)) {
+                    mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje2.setText(mensajesChat.get(5).getMensaje());
+                if (mensajesChat.get(5).getEmisor().equals(receptor)) {
+                    mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje3.setText(mensajesChat.get(4).getMensaje());
+                if (mensajesChat.get(4).getEmisor().equals(receptor)) {
+                    mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje4.setText(mensajesChat.get(3).getMensaje());
+                if (mensajesChat.get(3).getEmisor().equals(receptor)) {
+                    mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje5.setText(mensajesChat.get(2).getMensaje());
+                if (mensajesChat.get(2).getEmisor().equals(receptor)) {
+                    mensaje5.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje5.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje6.setText(mensajesChat.get(1).getMensaje());
+                if (mensajesChat.get(1).getEmisor().equals(receptor)) {
+                    mensaje6.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje6.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje7.setText(mensajesChat.get(0).getMensaje());
+                if (mensajesChat.get(0).getEmisor().equals(receptor)) {
+                    mensaje7.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje7.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje8.setText("");
+                mensaje9.setText("");
+                break;
+            case 7:
+                mensaje0.setText(mensajesChat.get(6).getMensaje());
+                if (mensajesChat.get(6).getEmisor().equals(receptor)) {
+                    mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje1.setText(mensajesChat.get(5).getMensaje());
+                if (mensajesChat.get(5).getEmisor().equals(receptor)) {
+                    mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje2.setText(mensajesChat.get(4).getMensaje());
+                if (mensajesChat.get(4).getEmisor().equals(receptor)) {
+                    mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje3.setText(mensajesChat.get(3).getMensaje());
+                if (mensajesChat.get(3).getEmisor().equals(receptor)) {
+                    mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje4.setText(mensajesChat.get(2).getMensaje());
+                if (mensajesChat.get(2).getEmisor().equals(receptor)) {
+                    mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje5.setText(mensajesChat.get(1).getMensaje());
+                if (mensajesChat.get(1).getEmisor().equals(receptor)) {
+                    mensaje5.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje5.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje6.setText(mensajesChat.get(0).getMensaje());
+                if (mensajesChat.get(0).getEmisor().equals(receptor)) {
+                    mensaje6.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje6.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje7.setText("");
+                mensaje8.setText("");
+                mensaje9.setText("");
+                break;
+            case 6:
+                mensaje0.setText(mensajesChat.get(5).getMensaje());
+                if (mensajesChat.get(5).getEmisor().equals(receptor)) {
+                    mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje1.setText(mensajesChat.get(4).getMensaje());
+                if (mensajesChat.get(4).getEmisor().equals(receptor)) {
+                    mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje2.setText(mensajesChat.get(3).getMensaje());
+                if (mensajesChat.get(3).getEmisor().equals(receptor)) {
+                    mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje3.setText(mensajesChat.get(2).getMensaje());
+                if (mensajesChat.get(2).getEmisor().equals(receptor)) {
+                    mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje4.setText(mensajesChat.get(1).getMensaje());
+                if (mensajesChat.get(1).getEmisor().equals(receptor)) {
+                    mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje5.setText(mensajesChat.get(0).getMensaje());
+                if (mensajesChat.get(0).getEmisor().equals(receptor)) {
+                    mensaje5.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje5.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje6.setText("");
+                mensaje7.setText("");
+                mensaje8.setText("");
+                mensaje9.setText("");
+                break;
+            case 5:
+                mensaje0.setText(mensajesChat.get(4).getMensaje());
+                if (mensajesChat.get(4).getEmisor().equals(receptor)) {
+                    mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje1.setText(mensajesChat.get(3).getMensaje());
+                if (mensajesChat.get(3).getEmisor().equals(receptor)) {
+                    mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje2.setText(mensajesChat.get(2).getMensaje());
+                if (mensajesChat.get(2).getEmisor().equals(receptor)) {
+                    mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje3.setText(mensajesChat.get(1).getMensaje());
+                if (mensajesChat.get(1).getEmisor().equals(receptor)) {
+                    mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje4.setText(mensajesChat.get(0).getMensaje());
+                if (mensajesChat.get(0).getEmisor().equals(receptor)) {
+                    mensaje4.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje4.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje5.setText("");
+                mensaje6.setText("");
+                mensaje7.setText("");
+                mensaje8.setText("");
+                mensaje9.setText("");
+                break;
+            case 4:
+                mensaje0.setText(mensajesChat.get(3).getMensaje());
+                if (mensajesChat.get(3).getEmisor().equals(receptor)) {
+                    mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje1.setText(mensajesChat.get(2).getMensaje());
+                if (mensajesChat.get(2).getEmisor().equals(receptor)) {
+                    mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje2.setText(mensajesChat.get(1).getMensaje());
+                if (mensajesChat.get(1).getEmisor().equals(receptor)) {
+                    mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje3.setText(mensajesChat.get(0).getMensaje());
+                if (mensajesChat.get(0).getEmisor().equals(receptor)) {
+                    mensaje3.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje3.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje4.setText("");
+                mensaje5.setText("");
+                mensaje6.setText("");
+                mensaje7.setText("");
+                mensaje8.setText("");
+                mensaje9.setText("");
+                break;
+            case 3:
+                mensaje0.setText(mensajesChat.get(2).getMensaje());
+                if (mensajesChat.get(2).getEmisor().equals(receptor)) {
+                    mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje1.setText(mensajesChat.get(1).getMensaje());
+                if (mensajesChat.get(1).getEmisor().equals(receptor)) {
+                    mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje2.setText(mensajesChat.get(0).getMensaje());
+                if (mensajesChat.get(0).getEmisor().equals(receptor)) {
+                    mensaje2.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje2.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje3.setText("");
+                mensaje4.setText("");
+                mensaje5.setText("");
+                mensaje6.setText("");
+                mensaje7.setText("");
+                mensaje8.setText("");
+                mensaje9.setText("");
+                break;
+            case 2:
+                mensaje0.setText(mensajesChat.get(1).getMensaje());
+                if (mensajesChat.get(1).getEmisor().equals(receptor)) {
+                    mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje1.setText(mensajesChat.get(0).getMensaje());
+                if (mensajesChat.get(0).getEmisor().equals(receptor)) {
+                    mensaje1.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje1.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje2.setText("");
+                mensaje3.setText("");
+                mensaje4.setText("");
+                mensaje5.setText("");
+                mensaje6.setText("");
+                mensaje7.setText("");
+                mensaje8.setText("");
+                mensaje9.setText("");
+                break;
+            case 1:
+                mensaje0.setText(mensajesChat.get(0).getMensaje());
+                if (mensajesChat.get(0).getEmisor().equals(receptor)) {
+                    mensaje0.setHorizontalAlignment(SwingConstants.LEFT);
+                } else {
+                    mensaje0.setHorizontalAlignment(SwingConstants.RIGHT);
+                }
+
+                mensaje1.setText("");
+                mensaje2.setText("");
+                mensaje3.setText("");
+                mensaje4.setText("");
+                mensaje5.setText("");
+                mensaje6.setText("");
+                mensaje7.setText("");
+                mensaje8.setText("");
+                mensaje9.setText("");
+                break;
+            case 0:
+                mensaje0.setText("");
+                mensaje1.setText("");
+                mensaje2.setText("");
+                mensaje3.setText("");
+                mensaje4.setText("");
+                mensaje5.setText("");
+                mensaje6.setText("");
+                mensaje7.setText("");
+                mensaje8.setText("");
+                mensaje9.setText("");
+                break;
+
         }
     }
 
