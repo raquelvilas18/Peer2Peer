@@ -5,6 +5,7 @@
  */
 package peer2peer;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -36,8 +37,10 @@ public class panelNotificaciones extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaNotificaciones = new javax.swing.JTable();
-        botonLeido = new javax.swing.JPanel();
+        botonVaciar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        botonLeido = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -61,7 +64,30 @@ public class panelNotificaciones extends javax.swing.JPanel {
         tablaNotificaciones.setTableHeader(null);
         jScrollPane1.setViewportView(tablaNotificaciones);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 280, 300));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 280, 340));
+
+        botonVaciar.setBackground(new java.awt.Color(144, 144, 144));
+        botonVaciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonVaciar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonVaciarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonVaciarMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonVaciarMouseEntered(evt);
+            }
+        });
+        botonVaciar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setBackground(new java.awt.Color(254, 254, 254));
+        jLabel2.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-basura-18.png"))); // NOI18N
+        jLabel2.setText("Vaciar");
+        botonVaciar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 80, 30));
+
+        add(botonVaciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 80, 30));
 
         botonLeido.setBackground(new java.awt.Color(144, 144, 144));
         botonLeido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -69,26 +95,58 @@ public class panelNotificaciones extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonLeidoMouseClicked(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonLeidoMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonLeidoMouseEntered(evt);
+            }
         });
         botonLeido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel2.setText("Borrar notificacion");
-        botonLeido.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 140, 30));
+        jLabel3.setBackground(new java.awt.Color(254, 254, 254));
+        jLabel3.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel3.setText("Borrar notificacion");
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonLeido.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 140, 30));
 
-        add(botonLeido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 180, 30));
+        add(botonLeido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 160, 30));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonVaciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonVaciarMouseClicked
+        // TODO add your handling code here:
+        this.vaciar();
+//        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+//        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+//        tablaNotificaciones.setDefaultRenderer(String.class, centerRenderer);
+    }//GEN-LAST:event_botonVaciarMouseClicked
 
     private void botonLeidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLeidoMouseClicked
         // TODO add your handling code here:
         ModeloTablaUsuarios tt;
         tt = (ModeloTablaUsuarios) tablaNotificaciones.getModel();
         tt.removeFila(tablaNotificaciones.getSelectedRow());
-
-//        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-//        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-//        tablaNotificaciones.setDefaultRenderer(String.class, centerRenderer);
     }//GEN-LAST:event_botonLeidoMouseClicked
+
+    private void botonVaciarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonVaciarMouseEntered
+        // TODO add your handling code here:
+        botonVaciar.setBackground(new Color(162,162,162));
+    }//GEN-LAST:event_botonVaciarMouseEntered
+
+    private void botonLeidoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLeidoMouseEntered
+        // TODO add your handling code here:
+        botonLeido.setBackground(new Color(162,162,162));
+    }//GEN-LAST:event_botonLeidoMouseEntered
+
+    private void botonLeidoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLeidoMouseExited
+        // TODO add your handling code here:
+        botonLeido.setBackground(new Color(144,144,144));
+    }//GEN-LAST:event_botonLeidoMouseExited
+
+    private void botonVaciarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonVaciarMouseExited
+        // TODO add your handling code here:
+        botonVaciar.setBackground(new Color(144,144,144));
+    }//GEN-LAST:event_botonVaciarMouseExited
 
     public void addNotificacion(String notificacion) {
         ModeloTablaUsuarios tt;
@@ -104,9 +162,11 @@ public class panelNotificaciones extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botonLeido;
+    private javax.swing.JPanel botonVaciar;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaNotificaciones;
     // End of variables declaration//GEN-END:variables

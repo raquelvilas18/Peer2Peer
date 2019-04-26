@@ -82,11 +82,17 @@ public class panelPeticiones extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 720, 50));
 
-        botonRechazarPeticion.setBackground(new java.awt.Color(23, 118, 137));
+        botonRechazarPeticion.setBackground(new java.awt.Color(67, 117, 133));
         botonRechazarPeticion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonRechazarPeticion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonRechazarPeticionMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonRechazarPeticionMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonRechazarPeticionMouseEntered(evt);
             }
         });
         botonRechazarPeticion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,11 +105,17 @@ public class panelPeticiones extends javax.swing.JPanel {
 
         add(botonRechazarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 200, 40));
 
-        botonAceptarPeticion.setBackground(new java.awt.Color(23, 118, 137));
+        botonAceptarPeticion.setBackground(new java.awt.Color(67, 117, 133));
         botonAceptarPeticion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonAceptarPeticion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonAceptarPeticionMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonAceptarPeticionMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonAceptarPeticionMouseEntered(evt);
             }
         });
         botonAceptarPeticion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -145,6 +157,26 @@ public class panelPeticiones extends javax.swing.JPanel {
         this.mensajeAcetarPeticion.setVisible(true);
         this.mensajeRechazarPeticion.setVisible(false);
     }//GEN-LAST:event_botonAceptarPeticionMouseClicked
+
+    private void botonRechazarPeticionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRechazarPeticionMouseExited
+        // TODO add your handling code here:
+        botonRechazarPeticion.setBackground(new Color(67,117,133));
+    }//GEN-LAST:event_botonRechazarPeticionMouseExited
+
+    private void botonAceptarPeticionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAceptarPeticionMouseExited
+        // TODO add your handling code here:
+        botonAceptarPeticion.setBackground(new Color(67,117,133));
+    }//GEN-LAST:event_botonAceptarPeticionMouseExited
+
+    private void botonRechazarPeticionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRechazarPeticionMouseEntered
+        // TODO add your handling code here:
+        botonRechazarPeticion.setBackground(new Color(87,140,157));
+    }//GEN-LAST:event_botonRechazarPeticionMouseEntered
+
+    private void botonAceptarPeticionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAceptarPeticionMouseEntered
+        // TODO add your handling code here:
+        this.botonAceptarPeticion.setBackground(new Color(87,140,157));
+    }//GEN-LAST:event_botonAceptarPeticionMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

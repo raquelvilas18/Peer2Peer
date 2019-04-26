@@ -1,5 +1,7 @@
 package peer2peer;
 
+import java.awt.Color;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -37,9 +39,9 @@ public class panelPerfil extends javax.swing.JPanel {
         nombreUsuarioText = new javax.swing.JTextField();
         passwordText = new javax.swing.JPasswordField();
         botonEliminarCuenta = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         botonActualizarPassword = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -63,35 +65,49 @@ public class panelPerfil extends javax.swing.JPanel {
         passwordText.setText("jPasswordField1");
         add(passwordText, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 320, 30));
 
-        botonEliminarCuenta.setBackground(new java.awt.Color(23, 118, 137));
+        botonEliminarCuenta.setBackground(new java.awt.Color(67, 117, 133));
         botonEliminarCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonEliminarCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonEliminarCuentaMouseClicked(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonEliminarCuentaMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonEliminarCuentaMouseEntered(evt);
+            }
         });
         botonEliminarCuenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Eliminar cuenta");
-        botonEliminarCuenta.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 136, 40));
+        jLabel2.setFont(new java.awt.Font("DejaVu Sans Light", 0, 15)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Eliminar cuenta");
+        botonEliminarCuenta.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 180, 40));
 
         add(botonEliminarCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 190, 40));
 
-        botonActualizarPassword.setBackground(new java.awt.Color(23, 118, 137));
+        botonActualizarPassword.setBackground(new java.awt.Color(67, 117, 133));
         botonActualizarPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonActualizarPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonActualizarPasswordMouseClicked(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonActualizarPasswordMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonActualizarPasswordMouseEntered(evt);
+            }
         });
         botonActualizarPassword.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Actualizar contraseña");
-        botonActualizarPassword.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 180, 40));
+        jLabel3.setFont(new java.awt.Font("DejaVu Sans Light", 0, 15)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Actualizar contraseña");
+        botonActualizarPassword.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 180, 40));
 
         add(botonActualizarPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 200, 40));
 
@@ -125,16 +141,36 @@ public class panelPerfil extends javax.swing.JPanel {
        }
     }//GEN-LAST:event_botonActualizarPasswordMouseClicked
 
+    private void botonEliminarCuentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarCuentaMouseExited
+        // TODO add your handling code here:
+        botonEliminarCuenta.setBackground(new Color(67,117,133));
+    }//GEN-LAST:event_botonEliminarCuentaMouseExited
+
+    private void botonActualizarPasswordMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonActualizarPasswordMouseExited
+        // TODO add your handling code here:
+        botonActualizarPassword.setBackground(new Color(67,117,133));
+    }//GEN-LAST:event_botonActualizarPasswordMouseExited
+
+    private void botonEliminarCuentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarCuentaMouseEntered
+        // TODO add your handling code here:
+        botonEliminarCuenta.setBackground(new Color(87,140,157));
+    }//GEN-LAST:event_botonEliminarCuentaMouseEntered
+
+    private void botonActualizarPasswordMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonActualizarPasswordMouseEntered
+        // TODO add your handling code here:
+        botonActualizarPassword.setBackground(new Color(87,140,157));
+    }//GEN-LAST:event_botonActualizarPasswordMouseEntered
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botonActualizarPassword;
     private javax.swing.JPanel botonEliminarCuenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel mensajePsswActualizada;
     private javax.swing.JTextField nombreUsuarioText;

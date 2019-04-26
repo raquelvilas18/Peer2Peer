@@ -96,6 +96,7 @@ public class panelBuscar extends javax.swing.JPanel {
 
         tablaBuscar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tablaBuscar.setModel(new ModeloTablaUsuarios());
+        tablaBuscar.setGridColor(new java.awt.Color(254, 254, 254));
         tablaBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaBuscarMouseClicked(evt);
@@ -152,17 +153,13 @@ public class panelBuscar extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.peticionCorrecta.setVisible(false);
         this.peticionIncorrecta.setVisible(false);
-        ModeloTablaUsuarios tabla = new ModeloTablaUsuarios();
-        tablaBuscar.setModel(tabla);
-        tabla.setFilas(new ArrayList<String>());
+        ModeloTablaUsuarios tabla = (ModeloTablaUsuarios) this.tablaBuscar.getModel();
         try {
             if (campoBuscar.getText() == null || campoBuscar.getText().equals("")) {
                 campoBuscar.setText("");
             }
             String[] usuarios = parent.getServidor().buscarPersona(usuario, campoBuscar.getText().toLowerCase());
             if (usuarios.length > 0) {
-                tabla = new ModeloTablaUsuarios();
-                tablaBuscar.setModel(tabla);
                 ArrayList<String> filas = new ArrayList<>(Arrays.asList(usuarios));
                 tabla.setFilas(filas);
             }
