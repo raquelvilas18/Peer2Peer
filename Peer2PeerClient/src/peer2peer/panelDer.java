@@ -5,17 +5,26 @@
  */
 package peer2peer;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author raquel
  */
 public class panelDer extends javax.swing.JPanel {
+    
+    JFrame parent;
 
     /**
      * Creates new form panelDer
      */
-    public panelDer() {
+    
+    public panelDer(){
         initComponents();
+    }
+    public panelDer(JFrame parent) {
+        initComponents();
+        this.parent = parent;
     }
 
     /**
@@ -106,7 +115,7 @@ public class panelDer extends javax.swing.JPanel {
         );
         buscarLayout.setVerticalGroup(
             buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 35, Short.MAX_VALUE)
         );
 
         panelBuscar.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 90, -1, 35));
@@ -179,9 +188,9 @@ public class panelDer extends javax.swing.JPanel {
             .addGap(0, 160, Short.MAX_VALUE)
             .addGroup(enviarPeticion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(enviarPeticion1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 12, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 12, Short.MAX_VALUE)))
         );
         enviarPeticion1Layout.setVerticalGroup(
             enviarPeticion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,9 +264,9 @@ public class panelDer extends javax.swing.JPanel {
             .addGap(0, 160, Short.MAX_VALUE)
             .addGroup(enviarPeticion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(enviarPeticion3Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 12, Short.MAX_VALUE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 12, Short.MAX_VALUE)))
         );
         enviarPeticion3Layout.setVerticalGroup(
             enviarPeticion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,9 +292,9 @@ public class panelDer extends javax.swing.JPanel {
             .addGap(0, 160, Short.MAX_VALUE)
             .addGroup(enviarPeticion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(enviarPeticion4Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 12, Short.MAX_VALUE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 12, Short.MAX_VALUE)))
         );
         enviarPeticion4Layout.setVerticalGroup(
             enviarPeticion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

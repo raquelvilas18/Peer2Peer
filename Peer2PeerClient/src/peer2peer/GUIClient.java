@@ -37,6 +37,7 @@ public class GUIClient extends javax.swing.JFrame {
         this.clienteIm = null;
         this.servidor = null;
 
+        this.setLocationRelativeTo(null);
         this.errorConexionLabel.setVisible(false);
         this.errorLoginLabel.setVisible(false);
     }
@@ -150,7 +151,12 @@ public class GUIClient extends javax.swing.JFrame {
             clienteIm.setNombre(nombre);
             if (servidor.iniciarSesion(cliente, password)) {
                 this.panelLogin.setVisible(false);
-                
+                this.panelIzq = new panelIzq(this);
+                this.add(panelIzq, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 450));
+                this.panelIzq.setVisible(true);
+                this.panelDer = new panelDer(this);
+                this.add(panelDer, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 680, 450));
+                this.panelDer.setVisible(true);
             }else{
                 this.errorLoginLabel.setVisible(true);
                 this.errorConexionLabel.setVisible(false);

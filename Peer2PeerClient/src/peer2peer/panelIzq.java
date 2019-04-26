@@ -5,12 +5,15 @@
  */
 package peer2peer;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author raquel
  */
 public class panelIzq extends javax.swing.JPanel {
 
+    JFrame parent;
     /**
      * Creates new form panelIzq
      */
@@ -18,6 +21,9 @@ public class panelIzq extends javax.swing.JPanel {
         initComponents();
     }
 
+    public panelIzq(JFrame parent) {
+        initComponents();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
