@@ -25,6 +25,7 @@ public class panelChats extends javax.swing.JPanel {
         this.mensajes = mensajes;
         ModeloTablaUsuarios tabla = new ModeloTablaUsuarios();
         tablaChats.setModel(tabla);
+        this.panelConver.setVisible(false);
         try{
             tabla.setFilas(new ArrayList<>(Arrays.asList(parent.getClienteIm().getAmigos())));
         }catch(Exception e){
@@ -41,12 +42,10 @@ public class panelChats extends javax.swing.JPanel {
     private void initComponents() {
 
         panelConver = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         nombreAmigoChat = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        enLinea = new javax.swing.JLabel();
+        desconectado = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         mensaje0 = new javax.swing.JLabel();
         mensaje9 = new javax.swing.JLabel();
@@ -58,6 +57,10 @@ public class panelChats extends javax.swing.JPanel {
         mensaje3 = new javax.swing.JLabel();
         mensaje2 = new javax.swing.JLabel();
         mensaje1 = new javax.swing.JLabel();
+        enviarMensaje = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        textoMensaje = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
         panelAmigos = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaChats = new javax.swing.JTable();
@@ -67,16 +70,6 @@ public class panelChats extends javax.swing.JPanel {
 
         panelConver.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(1);
-        jTextArea1.setMaximumSize(new java.awt.Dimension(440, 50));
-        jTextArea1.setMinimumSize(new java.awt.Dimension(440, 50));
-        jTextArea1.setPreferredSize(new java.awt.Dimension(440, 50));
-        jScrollPane1.setViewportView(jTextArea1);
-
-        panelConver.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 440, 50));
-
         jPanel1.setBackground(new java.awt.Color(102, 102, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -85,11 +78,11 @@ public class panelChats extends javax.swing.JPanel {
         nombreAmigoChat.setText("NOMBRE DEL AMIGO");
         jPanel1.add(nombreAmigoChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 270, 50));
 
-        jLabel1.setText("(EN LÍNEA)");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 70, 50));
+        enLinea.setText("(EN LÍNEA)");
+        jPanel1.add(enLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 70, 50));
 
-        jLabel2.setText("DESCONECTADO");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 120, 50));
+        desconectado.setText("DESCONECTADO");
+        jPanel1.add(desconectado, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 120, 50));
 
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
@@ -136,6 +129,22 @@ public class panelChats extends javax.swing.JPanel {
         mensaje1.setText("jLabel1");
         panelConver.add(mensaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 420, 35));
 
+        enviarMensaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enviarMensajeMouseClicked(evt);
+            }
+        });
+        enviarMensaje.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setText("jLabel4");
+        enviarMensaje.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
+
+        panelConver.add(enviarMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 40, 40));
+
+        textoMensaje.setText("jTextField1");
+        panelConver.add(textoMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 400, 40));
+        panelConver.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 410, -1));
+
         add(panelConver, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 440, 450));
 
         panelAmigos.setBackground(new java.awt.Color(153, 153, 153));
@@ -157,24 +166,337 @@ public class panelChats extends javax.swing.JPanel {
     private void tablaChatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaChatsMouseClicked
         // TODO add your handling code here:
         ModeloTablaUsuarios m = (ModeloTablaUsuarios) tablaChats.getModel();
+        this.panelConver.setVisible(true);
         try{
             String receptor = m.getFila(tablaChats.getSelectedRow());
             nombreAmigoChat.setText(receptor);
-            ArrayList<Mensaje> mensajesChat = mensajes.get(receptor);
+            if(parent.getClienteIm().getAmigosConectados().get(receptor)==null){
+                enLinea.setVisible(false);
+                desconectado.setVisible(true);
+            }
+            escribirMensajes(receptor);
         }catch(Exception e){
             
         }
     }//GEN-LAST:event_tablaChatsMouseClicked
 
+    private void enviarMensajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviarMensajeMouseClicked
+        // TODO add your handling code here:
+        //clienteIm.getAmigosConectados().get(receptor).recibirMensaje(mensaje, clienteIm.getNombre());
+    }//GEN-LAST:event_enviarMensajeMouseClicked
+    public void escribirMensajes(String receptor){
+        ArrayList<Mensaje> mensajesChat = mensajes.get(receptor);
+            switch(mensajesChat.size()){
+                case 10:
+                    mensaje0.setText(mensajesChat.get(9).getMensaje());
+                    if(mensajesChat.get(9).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje1.setText(mensajesChat.get(8).getMensaje());
+                    if(mensajesChat.get(8).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje2.setText(mensajesChat.get(7).getMensaje());
+                    if(mensajesChat.get(7).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje3.setText(mensajesChat.get(6).getMensaje());
+                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje3.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje3.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje4.setText(mensajesChat.get(5).getMensaje());
+                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje4.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje4.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje5.setText(mensajesChat.get(4).getMensaje());
+                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje5.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje5.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje6.setText(mensajesChat.get(3).getMensaje());
+                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje6.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje6.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje7.setText(mensajesChat.get(2).getMensaje());
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje7.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje7.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje8.setText(mensajesChat.get(1).getMensaje());
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje8.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje8.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje9.setText(mensajesChat.get(0).getMensaje());
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje9.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje9.setAlignmentX(RIGHT_ALIGNMENT);}
+                    break;
+                case 9:
+                    mensaje0.setText(mensajesChat.get(8).getMensaje());
+                    if(mensajesChat.get(8).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje1.setText(mensajesChat.get(7).getMensaje());
+                    if(mensajesChat.get(7).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje2.setText(mensajesChat.get(6).getMensaje());
+                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje3.setText(mensajesChat.get(5).getMensaje());
+                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje3.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje3.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje4.setText(mensajesChat.get(4).getMensaje());
+                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje4.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje4.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje5.setText(mensajesChat.get(3).getMensaje());
+                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje5.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje5.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje6.setText(mensajesChat.get(2).getMensaje());
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje6.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje6.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje7.setText(mensajesChat.get(1).getMensaje());
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje7.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje7.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje8.setText(mensajesChat.get(0).getMensaje());
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje8.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje8.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje9.setText("");
+                    break;
+                case 8:
+                    mensaje0.setText(mensajesChat.get(7).getMensaje());
+                    if(mensajesChat.get(7).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje1.setText(mensajesChat.get(6).getMensaje());
+                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje2.setText(mensajesChat.get(5).getMensaje());
+                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje3.setText(mensajesChat.get(4).getMensaje());
+                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje3.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje3.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje4.setText(mensajesChat.get(3).getMensaje());
+                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje4.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje4.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje5.setText(mensajesChat.get(2).getMensaje());
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje5.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje5.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje6.setText(mensajesChat.get(1).getMensaje());
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje6.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje6.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje7.setText(mensajesChat.get(0).getMensaje());
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje7.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje7.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje8.setText("");
+                    mensaje9.setText("");
+                    break;
+                case 7:
+                    mensaje0.setText(mensajesChat.get(6).getMensaje());
+                    if(mensajesChat.get(6).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje1.setText(mensajesChat.get(5).getMensaje());
+                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje2.setText(mensajesChat.get(4).getMensaje());
+                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje3.setText(mensajesChat.get(3).getMensaje());
+                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje3.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje3.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje4.setText(mensajesChat.get(2).getMensaje());
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje4.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje4.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje5.setText(mensajesChat.get(1).getMensaje());
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje5.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje5.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje6.setText(mensajesChat.get(0).getMensaje());
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje6.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje6.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje7.setText("");
+                    mensaje8.setText("");
+                    mensaje9.setText("");
+                    break;
+                case 6:
+                    mensaje0.setText(mensajesChat.get(5).getMensaje());
+                    if(mensajesChat.get(5).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje1.setText(mensajesChat.get(4).getMensaje());
+                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje2.setText(mensajesChat.get(3).getMensaje());
+                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje3.setText(mensajesChat.get(2).getMensaje());
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje3.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje3.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje4.setText(mensajesChat.get(1).getMensaje());
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje4.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje4.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje5.setText(mensajesChat.get(0).getMensaje());
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje5.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje5.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje6.setText("");
+                    mensaje7.setText("");
+                    mensaje8.setText("");
+                    mensaje9.setText("");
+                    break;
+                case 5:
+                    mensaje0.setText(mensajesChat.get(4).getMensaje());
+                    if(mensajesChat.get(4).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje1.setText(mensajesChat.get(3).getMensaje());
+                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje2.setText(mensajesChat.get(2).getMensaje());
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje3.setText(mensajesChat.get(1).getMensaje());
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje3.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje3.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje4.setText(mensajesChat.get(0).getMensaje());
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje4.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje4.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje5.setText("");
+                    mensaje6.setText("");
+                    mensaje7.setText("");
+                    mensaje8.setText("");
+                    mensaje9.setText("");
+                    break;
+                case 4:
+                    mensaje0.setText(mensajesChat.get(3).getMensaje());
+                    if(mensajesChat.get(3).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje1.setText(mensajesChat.get(2).getMensaje());
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje2.setText(mensajesChat.get(1).getMensaje());
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje3.setText(mensajesChat.get(0).getMensaje());
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje3.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje3.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje4.setText("");
+                    mensaje5.setText("");
+                    mensaje6.setText("");
+                    mensaje7.setText("");
+                    mensaje8.setText("");
+                    mensaje9.setText("");
+                    break;
+                case 3:
+                    mensaje0.setText(mensajesChat.get(2).getMensaje());
+                    if(mensajesChat.get(2).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje1.setText(mensajesChat.get(1).getMensaje());
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje2.setText(mensajesChat.get(0).getMensaje());
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje2.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje2.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje3.setText("");
+                    mensaje4.setText("");
+                    mensaje5.setText("");
+                    mensaje6.setText("");
+                    mensaje7.setText("");
+                    mensaje8.setText("");
+                    mensaje9.setText("");
+                    break;
+                case 2:
+                    mensaje0.setText(mensajesChat.get(1).getMensaje());
+                    if(mensajesChat.get(1).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje1.setText(mensajesChat.get(0).getMensaje());
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje1.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje1.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje2.setText("");
+                    mensaje3.setText("");
+                    mensaje4.setText("");
+                    mensaje5.setText("");
+                    mensaje6.setText("");
+                    mensaje7.setText("");
+                    mensaje8.setText("");
+                    mensaje9.setText("");
+                    break;
+                case 1:
+                    mensaje0.setText(mensajesChat.get(0).getMensaje());
+                    if(mensajesChat.get(0).getEmisor().equals(receptor)){ mensaje0.setAlignmentX(LEFT_ALIGNMENT);
+                    }else{mensaje0.setAlignmentX(RIGHT_ALIGNMENT);}
+                    
+                    mensaje1.setText("");
+                    mensaje2.setText("");
+                    mensaje3.setText("");
+                    mensaje4.setText("");
+                    mensaje5.setText("");
+                    mensaje6.setText("");
+                    mensaje7.setText("");
+                    mensaje8.setText("");
+                    mensaje9.setText("");
+                    break;
+                case 0:
+                    mensaje0.setText("");
+                    mensaje1.setText("");
+                    mensaje2.setText("");
+                    mensaje3.setText("");
+                    mensaje4.setText("");
+                    mensaje5.setText("");
+                    mensaje6.setText("");
+                    mensaje7.setText("");
+                    mensaje8.setText("");
+                    mensaje9.setText("");
+                    break;
+                    
+                    
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel desconectado;
+    private javax.swing.JLabel enLinea;
+    private javax.swing.JPanel enviarMensaje;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel mensaje0;
     private javax.swing.JLabel mensaje1;
     private javax.swing.JLabel mensaje2;
@@ -189,5 +511,6 @@ public class panelChats extends javax.swing.JPanel {
     private javax.swing.JPanel panelAmigos;
     private javax.swing.JPanel panelConver;
     private javax.swing.JTable tablaChats;
+    private javax.swing.JTextField textoMensaje;
     // End of variables declaration//GEN-END:variables
 }
