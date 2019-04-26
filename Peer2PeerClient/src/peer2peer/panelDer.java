@@ -5,17 +5,30 @@
  */
 package peer2peer;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.JFrame;
+
 /**
  *
  * @author raquel
  */
 public class panelDer extends javax.swing.JPanel {
+    
+    GUIClient parent;
 
     /**
      * Creates new form panelDer
      */
-    public panelDer() {
+    
+    public panelDer(){
         initComponents();
+    }
+    public panelDer(GUIClient parent) {
+        initComponents();
+        this.parent = parent;
+        this.peticionCorrecta.setVisible(false);
+        this.peticionIncorrecta.setVisible(false);
     }
 
     /**
@@ -27,17 +40,14 @@ public class panelDer extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelBuscar = new javax.swing.JPanel();
-        campoBuscar = new javax.swing.JTextField();
-        buscar = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        enviarPeticion = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        panelChats = new javax.swing.JPanel();
-        panelAmigos = new javax.swing.JPanel();
-        panelConversacion = new javax.swing.JPanel();
+        panelPeticiones = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaPeticiones = new javax.swing.JTable();
+        enviarPeticion3 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        enviarPeticion4 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
         panelPerfil = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -48,100 +58,101 @@ public class panelDer extends javax.swing.JPanel {
         enviarPeticion2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        panelPeticiones = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        enviarPeticion3 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        enviarPeticion4 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
+        panelBuscar = new javax.swing.JPanel();
+        campoBuscar = new javax.swing.JTextField();
+        buscar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaBuscar = new javax.swing.JTable();
+        enviarPeticion = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        peticionCorrecta = new javax.swing.JLabel();
+        peticionIncorrecta = new javax.swing.JLabel();
+        panelChats = new javax.swing.JPanel();
+        panelAmigos = new javax.swing.JPanel();
+        panelConversacion = new javax.swing.JPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelBuscar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelPeticiones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        campoBuscar.setText("jTextField1");
-        panelBuscar.add(campoBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 90, 420, 35));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("PETICIONES DE AMISTAD PENDIENTES");
+        panelPeticiones.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 460, 30));
 
-        buscar.setBackground(new java.awt.Color(153, 153, 153));
+        tablaPeticiones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tablaPeticiones);
 
-        javax.swing.GroupLayout buscarLayout = new javax.swing.GroupLayout(buscar);
-        buscar.setLayout(buscarLayout);
-        buscarLayout.setHorizontalGroup(
-            buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 41, Short.MAX_VALUE)
+        panelPeticiones.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, 140));
+
+        enviarPeticion3.setBackground(new java.awt.Color(51, 204, 255));
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("ACEPTAR PETICION");
+
+        javax.swing.GroupLayout enviarPeticion3Layout = new javax.swing.GroupLayout(enviarPeticion3);
+        enviarPeticion3.setLayout(enviarPeticion3Layout);
+        enviarPeticion3Layout.setHorizontalGroup(
+            enviarPeticion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+            .addGroup(enviarPeticion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(enviarPeticion3Layout.createSequentialGroup()
+                    .addGap(0, 12, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 12, Short.MAX_VALUE)))
         );
-        buscarLayout.setVerticalGroup(
-            buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        panelBuscar.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 90, -1, 35));
-
-        jTable1.setModel(new ModeloTablaUsuarios());
-        jScrollPane1.setViewportView(jTable1);
-
-        panelBuscar.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 470, 200));
-
-        enviarPeticion.setBackground(new java.awt.Color(51, 204, 255));
-
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Enviar petición");
-
-        javax.swing.GroupLayout enviarPeticionLayout = new javax.swing.GroupLayout(enviarPeticion);
-        enviarPeticion.setLayout(enviarPeticionLayout);
-        enviarPeticionLayout.setHorizontalGroup(
-            enviarPeticionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(enviarPeticionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        enviarPeticionLayout.setVerticalGroup(
-            enviarPeticionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
-
-        panelBuscar.add(enviarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 160, 40));
-
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("BUSCAR USUARIOS");
-        panelBuscar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 490, 30));
-
-        add(panelBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
-
-        panelChats.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        javax.swing.GroupLayout panelAmigosLayout = new javax.swing.GroupLayout(panelAmigos);
-        panelAmigos.setLayout(panelAmigosLayout);
-        panelAmigosLayout.setHorizontalGroup(
-            panelAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
-        );
-        panelAmigosLayout.setVerticalGroup(
-            panelAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+        enviarPeticion3Layout.setVerticalGroup(
+            enviarPeticion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(enviarPeticion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(enviarPeticion3Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        panelChats.add(panelAmigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 440, 450));
+        panelPeticiones.add(enviarPeticion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 160, 40));
 
-        panelConversacion.setBackground(new java.awt.Color(153, 153, 153));
+        enviarPeticion4.setBackground(new java.awt.Color(51, 204, 255));
 
-        javax.swing.GroupLayout panelConversacionLayout = new javax.swing.GroupLayout(panelConversacion);
-        panelConversacion.setLayout(panelConversacionLayout);
-        panelConversacionLayout.setHorizontalGroup(
-            panelConversacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("RECHAZAR PETICION");
+
+        javax.swing.GroupLayout enviarPeticion4Layout = new javax.swing.GroupLayout(enviarPeticion4);
+        enviarPeticion4.setLayout(enviarPeticion4Layout);
+        enviarPeticion4Layout.setHorizontalGroup(
+            enviarPeticion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+            .addGroup(enviarPeticion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(enviarPeticion4Layout.createSequentialGroup()
+                    .addGap(0, 12, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 12, Short.MAX_VALUE)))
         );
-        panelConversacionLayout.setVerticalGroup(
-            panelConversacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+        enviarPeticion4Layout.setVerticalGroup(
+            enviarPeticion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(enviarPeticion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(enviarPeticion4Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        panelChats.add(panelConversacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        panelPeticiones.add(enviarPeticion4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 160, 40));
 
-        add(panelChats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
+        add(panelPeticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
 
         panelPerfil.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -212,85 +223,154 @@ public class panelDer extends javax.swing.JPanel {
 
         add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
 
-        panelPeticiones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelBuscar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelBuscar.add(campoBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 90, 420, 35));
 
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("PETICIONES DE AMISTAD PENDIENTES");
-        panelPeticiones.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 460, 30));
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        buscar.setBackground(new java.awt.Color(153, 153, 153));
+        buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscarMouseClicked(evt);
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        });
 
-        panelPeticiones.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, 140));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-búsqueda-30.png"))); // NOI18N
 
-        enviarPeticion3.setBackground(new java.awt.Color(51, 204, 255));
-
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("ACEPTAR PETICION");
-
-        javax.swing.GroupLayout enviarPeticion3Layout = new javax.swing.GroupLayout(enviarPeticion3);
-        enviarPeticion3.setLayout(enviarPeticion3Layout);
-        enviarPeticion3Layout.setHorizontalGroup(
-            enviarPeticion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-            .addGroup(enviarPeticion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(enviarPeticion3Layout.createSequentialGroup()
-                    .addGap(0, 12, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 12, Short.MAX_VALUE)))
+        javax.swing.GroupLayout buscarLayout = new javax.swing.GroupLayout(buscar);
+        buscar.setLayout(buscarLayout);
+        buscarLayout.setHorizontalGroup(
+            buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buscarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1))
         );
-        enviarPeticion3Layout.setVerticalGroup(
-            enviarPeticion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(enviarPeticion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(enviarPeticion3Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        buscarLayout.setVerticalGroup(
+            buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
-        panelPeticiones.add(enviarPeticion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 160, 40));
+        panelBuscar.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 90, -1, 35));
 
-        enviarPeticion4.setBackground(new java.awt.Color(51, 204, 255));
+        tablaBuscar.setModel(new ModeloTablaUsuarios());
+        tablaBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaBuscarMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablaBuscar);
 
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("RECHAZAR PETICION");
+        panelBuscar.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 470, 200));
 
-        javax.swing.GroupLayout enviarPeticion4Layout = new javax.swing.GroupLayout(enviarPeticion4);
-        enviarPeticion4.setLayout(enviarPeticion4Layout);
-        enviarPeticion4Layout.setHorizontalGroup(
-            enviarPeticion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-            .addGroup(enviarPeticion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(enviarPeticion4Layout.createSequentialGroup()
-                    .addGap(0, 12, Short.MAX_VALUE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 12, Short.MAX_VALUE)))
+        enviarPeticion.setBackground(new java.awt.Color(51, 204, 255));
+        enviarPeticion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enviarPeticionMouseClicked(evt);
+            }
+        });
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Enviar petición");
+
+        javax.swing.GroupLayout enviarPeticionLayout = new javax.swing.GroupLayout(enviarPeticion);
+        enviarPeticion.setLayout(enviarPeticionLayout);
+        enviarPeticionLayout.setHorizontalGroup(
+            enviarPeticionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
         );
-        enviarPeticion4Layout.setVerticalGroup(
-            enviarPeticion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(enviarPeticion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(enviarPeticion4Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        enviarPeticionLayout.setVerticalGroup(
+            enviarPeticionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        panelPeticiones.add(enviarPeticion4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 160, 40));
+        panelBuscar.add(enviarPeticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 390, 160, 40));
 
-        add(panelPeticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("BUSCAR USUARIOS");
+        panelBuscar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 490, 30));
+
+        peticionCorrecta.setForeground(new java.awt.Color(0, 255, 51));
+        peticionCorrecta.setText("Petición de amistad enviada correctamente.");
+        panelBuscar.add(peticionCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 260, -1));
+
+        peticionIncorrecta.setForeground(new java.awt.Color(255, 51, 0));
+        peticionIncorrecta.setText("Fallo al enviar la petición de amistad");
+        panelBuscar.add(peticionIncorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 220, -1));
+
+        add(panelBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
+
+        panelChats.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        javax.swing.GroupLayout panelAmigosLayout = new javax.swing.GroupLayout(panelAmigos);
+        panelAmigos.setLayout(panelAmigosLayout);
+        panelAmigosLayout.setHorizontalGroup(
+            panelAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+        );
+        panelAmigosLayout.setVerticalGroup(
+            panelAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+
+        panelChats.add(panelAmigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 440, 450));
+
+        panelConversacion.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout panelConversacionLayout = new javax.swing.GroupLayout(panelConversacion);
+        panelConversacion.setLayout(panelConversacionLayout);
+        panelConversacionLayout.setHorizontalGroup(
+            panelConversacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+        );
+        panelConversacionLayout.setVerticalGroup(
+            panelConversacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+
+        panelChats.add(panelConversacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        add(panelChats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void enviarPeticionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviarPeticionMouseClicked
+        // TODO add your handling code here:
+        ModeloTablaUsuarios m = (ModeloTablaUsuarios) tablaBuscar.getModel();
+        String receptor = m.getFila(tablaBuscar.getSelectedRow());
+        try{
+        if(parent.getServidor().enviarPeticion(parent.getClienteIm().getNombre(), receptor)){
+            this.peticionCorrecta.setVisible(true);
+            this.peticionIncorrecta.setVisible(false);
+        }else{ 
+            this.peticionCorrecta.setVisible(false);
+            this.peticionIncorrecta.setVisible(true);
+        }
+        }catch(Exception ex){
+            System.out.println("Fallo enviando peticion (enviarPeticionMouseClicked");
+        }
+        
+    }//GEN-LAST:event_enviarPeticionMouseClicked
+
+    private void buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarMouseClicked
+        // TODO add your handling code here:
+        this.peticionCorrecta.setVisible(false);
+        this.peticionIncorrecta.setVisible(false);
+        try{
+            if(campoBuscar.getText()==null||campoBuscar.getText().equals("")) campoBuscar.setText("");
+            String [] usuarios = parent.getServidor().buscarPersona(campoBuscar.getText().toLowerCase());
+            if(usuarios.length>0){
+                ModeloTablaUsuarios tabla = new ModeloTablaUsuarios();
+                tablaBuscar.setModel(tabla);
+                ArrayList<String> filas = new ArrayList<>(Arrays.asList(usuarios));
+                tabla.setFilas(filas);
+            }
+        }catch(Exception ex){
+            System.out.println("Fallo buscando usuarios (buscarMouseClicked)");
+        }
+    }//GEN-LAST:event_buscarMouseClicked
+
+    private void tablaBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaBuscarMouseClicked
+        // TODO add your handling code here:
+        this.peticionCorrecta.setVisible(false);
+        this.peticionIncorrecta.setVisible(false);
+    }//GEN-LAST:event_tablaBuscarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -301,6 +381,7 @@ public class panelDer extends javax.swing.JPanel {
     private javax.swing.JPanel enviarPeticion2;
     private javax.swing.JPanel enviarPeticion3;
     private javax.swing.JPanel enviarPeticion4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -314,8 +395,6 @@ public class panelDer extends javax.swing.JPanel {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel panelAmigos;
     private javax.swing.JPanel panelBuscar;
@@ -323,5 +402,9 @@ public class panelDer extends javax.swing.JPanel {
     private javax.swing.JPanel panelConversacion;
     private javax.swing.JPanel panelPerfil;
     private javax.swing.JPanel panelPeticiones;
+    private javax.swing.JLabel peticionCorrecta;
+    private javax.swing.JLabel peticionIncorrecta;
+    private javax.swing.JTable tablaBuscar;
+    private javax.swing.JTable tablaPeticiones;
     // End of variables declaration//GEN-END:variables
 }
