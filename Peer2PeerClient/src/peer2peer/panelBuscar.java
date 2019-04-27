@@ -36,11 +36,11 @@ public class panelBuscar extends javax.swing.JPanel {
         this.usuario = usuario;
         this.peticionCorrecta.setVisible(false);
         this.peticionIncorrecta.setVisible(false);
-        
+
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
         Font fuente = new Font("SansSerif", Font.ITALIC, 25);
         headerRenderer.setFont(fuente);
-        headerRenderer.setBackground(new Color(23,118,137));
+        headerRenderer.setBackground(new Color(23, 118, 137));
         headerRenderer.setForeground(Color.WHITE);
         this.tablaBuscar.getColumnModel().getColumn(0).setHeaderRenderer(headerRenderer);
     }
@@ -177,16 +177,16 @@ public class panelBuscar extends javax.swing.JPanel {
     private void enviarPeticionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviarPeticionMouseClicked
         // TODO add your handling code here:
         ModeloTablaUsuarios m = (ModeloTablaUsuarios) tablaBuscar.getModel();
-        try{
+        try {
             String receptor = m.getFila(tablaBuscar.getSelectedRow());
-            if(parent.getServidor().enviarPeticion(parent.getClienteIm().getNombre(), receptor)){
+            if (parent.getServidor().enviarPeticion(parent.getClienteIm().getNombre(), receptor)) {
                 this.peticionCorrecta.setVisible(true);
                 this.peticionIncorrecta.setVisible(false);
-            }else{
+            } else {
                 this.peticionCorrecta.setVisible(false);
                 this.peticionIncorrecta.setVisible(true);
             }
-        }catch(Exception ex){
+        } catch (Exception ex) {
             this.peticionCorrecta.setVisible(false);
             this.peticionIncorrecta.setVisible(true);
             System.out.println("Fallo enviando peticion (enviarPeticionMouseClicked");
@@ -197,37 +197,32 @@ public class panelBuscar extends javax.swing.JPanel {
     private void campoBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoBuscarKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            this.peticionCorrecta.setVisible(false);
+            this.peticionIncorrecta.setVisible(false);
+            ModeloTablaUsuarios tabla = (ModeloTablaUsuarios) this.tablaBuscar.getModel();
             try {
-                this.peticionCorrecta.setVisible(false);
-                this.peticionIncorrecta.setVisible(false);
-                ModeloTablaUsuarios tabla = new ModeloTablaUsuarios();
-                tablaBuscar.setModel(tabla);
-                tabla.setFilas(new ArrayList<String>());
-                
                 if (campoBuscar.getText() == null || campoBuscar.getText().equals("")) {
                     campoBuscar.setText("");
                 }
                 String[] usuarios = parent.getServidor().buscarPersona(usuario, campoBuscar.getText().toLowerCase());
                 if (usuarios.length > 0) {
-                    tabla = new ModeloTablaUsuarios();
-                    tablaBuscar.setModel(tabla);
                     ArrayList<String> filas = new ArrayList<>(Arrays.asList(usuarios));
                     tabla.setFilas(filas);
                 }
-            } catch (RemoteException ex) {
-                Logger.getLogger(panelBuscar.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                System.out.println("Fallo buscando usuarios (buscarMouseClicked)");
             }
         }
     }//GEN-LAST:event_campoBuscarKeyPressed
 
     private void enviarPeticionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviarPeticionMouseEntered
         // TODO add your handling code here:
-        enviarPeticion.setBackground(new Color(87,140,157));
+        enviarPeticion.setBackground(new Color(87, 140, 157));
     }//GEN-LAST:event_enviarPeticionMouseEntered
 
     private void enviarPeticionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviarPeticionMouseExited
         // TODO add your handling code here:
-        enviarPeticion.setBackground(new Color(67,117,133));
+        enviarPeticion.setBackground(new Color(67, 117, 133));
     }//GEN-LAST:event_enviarPeticionMouseExited
 
 

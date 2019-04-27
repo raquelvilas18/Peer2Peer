@@ -5,12 +5,15 @@
  */
 package peer2peer;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.rmi.RemoteException;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -30,6 +33,12 @@ public class panelChats extends javax.swing.JPanel {
         this.parent = parent;
         this.mensajes = mensajes;
         ModeloTablaUsuarios tabla = new ModeloTablaUsuarios();
+         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        Font fuente = new Font("SansSerif", Font.PLAIN, 14);
+        
+        this.tablaChats.setTableHeader(null);;
+        this.tablaChats.setFont(fuente);
+        this.tablaChats.setRowHeight(25);
         tablaChats.setModel(tabla);
         this.panelConver.setVisible(false);
         try {
@@ -81,11 +90,12 @@ public class panelChats extends javax.swing.JPanel {
         panelConver.setBackground(new java.awt.Color(255, 255, 255));
         panelConver.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(43, 96, 113));
+        jPanel1.setBackground(new java.awt.Color(80, 140, 31));
+        jPanel1.setFont(jPanel1.getFont());
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nombreAmigoChat.setBackground(new java.awt.Color(255, 255, 255));
-        nombreAmigoChat.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        nombreAmigoChat.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         nombreAmigoChat.setForeground(new java.awt.Color(255, 255, 255));
         nombreAmigoChat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nombreAmigoChat.setText("NOMBRE DEL AMIGO");
@@ -153,7 +163,7 @@ public class panelChats extends javax.swing.JPanel {
         enviarMensaje.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-enviado-34.png"))); // NOI18N
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         enviarMensaje.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 30));
 
         panelConver.add(enviarMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 40, 30));
@@ -173,6 +183,8 @@ public class panelChats extends javax.swing.JPanel {
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
 
         tablaChats.setModel(new ModeloTablaUsuarios());
+        tablaChats.setGridColor(new java.awt.Color(254, 254, 254));
+        tablaChats.setSelectionBackground(new java.awt.Color(142, 193, 91));
         tablaChats.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaChatsMouseClicked(evt);

@@ -123,29 +123,31 @@ public class panelNotificaciones extends javax.swing.JPanel {
 
     private void botonLeidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLeidoMouseClicked
         // TODO add your handling code here:
-        ModeloTablaUsuarios tt;
-        tt = (ModeloTablaUsuarios) tablaNotificaciones.getModel();
-        tt.removeFila(tablaNotificaciones.getSelectedRow());
+        if (tablaNotificaciones.getSelectedRow() >= 0) {
+            ModeloTablaUsuarios tt;
+            tt = (ModeloTablaUsuarios) tablaNotificaciones.getModel();
+            tt.removeFila(tablaNotificaciones.getSelectedRow());
+        }
     }//GEN-LAST:event_botonLeidoMouseClicked
 
     private void botonVaciarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonVaciarMouseEntered
         // TODO add your handling code here:
-        botonVaciar.setBackground(new Color(162,162,162));
+        botonVaciar.setBackground(new Color(162, 162, 162));
     }//GEN-LAST:event_botonVaciarMouseEntered
 
     private void botonLeidoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLeidoMouseEntered
         // TODO add your handling code here:
-        botonLeido.setBackground(new Color(162,162,162));
+        botonLeido.setBackground(new Color(162, 162, 162));
     }//GEN-LAST:event_botonLeidoMouseEntered
 
     private void botonLeidoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLeidoMouseExited
         // TODO add your handling code here:
-        botonLeido.setBackground(new Color(144,144,144));
+        botonLeido.setBackground(new Color(144, 144, 144));
     }//GEN-LAST:event_botonLeidoMouseExited
 
     private void botonVaciarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonVaciarMouseExited
         // TODO add your handling code here:
-        botonVaciar.setBackground(new Color(144,144,144));
+        botonVaciar.setBackground(new Color(144, 144, 144));
     }//GEN-LAST:event_botonVaciarMouseExited
 
     public void addNotificacion(String notificacion) {
@@ -153,8 +155,8 @@ public class panelNotificaciones extends javax.swing.JPanel {
         tt = (ModeloTablaUsuarios) tablaNotificaciones.getModel();
         tt.addFila(notificacion);
     }
-    
-    public void vaciar(){
+
+    public void vaciar() {
         ModeloTablaUsuarios tt;
         tt = (ModeloTablaUsuarios) tablaNotificaciones.getModel();
         tt.setFilas(new ArrayList<>());
